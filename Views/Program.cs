@@ -13,36 +13,104 @@ namespace Chess
     {
         static void Main(string[] args)
         {
+            string fileMessage = "";
+            FileRead("C:\\Neumont Apps\\Visual Studio\\Project Course\\Chess\\Chess.txt", ref fileMessage);
+            string[] splitString = SplitString('\n', fileMessage);
+            foreach(string line in splitString)
+            {
+                ParseInput(line);
+            }
         }
 
-        static void FileRead(string path)
+        static void FileRead(string path, ref string text)
         {
-            try
-            {
-                FileStream stream = new FileStream(path, FileMode.Open);
-                BinaryFormatter bf = new BinaryFormatter();
-                try
-                {
+            text = File.ReadAllText(path);
+        }
 
-                }
-                catch (IndexOutOfRangeException)
-                {
-                    Console.WriteLine(path + " has been loaded");
-                }
-                stream.Close();
-            }
-            catch (FileNotFoundException)
+        static string[] SplitString(char symbol, string textBeingSplit)
+        {
+            return textBeingSplit.Split(symbol);
+        }
+
+        static void ParseInput(string toParse)
+        {            
+            
+            if (toParse.Length == 5)
             {
-                Console.WriteLine("File doesn't exist \n\n");
+                Console.WriteLine(parsePiecePlacement(toParse));
             }
-            catch (SerializationException)
+            else if(toParse.Length == 6)
             {
-                Console.WriteLine("Failed to Load \n\n");
+
             }
-            catch (IOException)
+        }
+
+        static string parsePieceMovement(string movement)
+        {
+            string output = "";
+
+            
+            return output;
+        }
+
+        static string parsePiecePlacement(string message)
+        {
+            string output = "";
+            string color = "";
+            if (string.Compare(message[1].ToString(), "l") == 0)
             {
-                Console.WriteLine("There was an error with your path \n\n");
+                color = "White";
             }
+            else if (string.Compare(message[1].ToString(), "d") == 0)
+            {
+                color = "Black";
+            }
+            switch (message[0])
+            {
+                case 'Q':
+                    output += $"Place the {color} Queen at ";
+                    break;
+                case 'K':
+                    output += $"Place the {color} King at ";
+                    break;
+                case 'B':
+                    output += $"Place the {color} Bishop at ";
+                    break;
+                case 'N':
+                    output += $"Place the {color} Knight at ";
+                    break;
+                case 'R':
+                    output += $"Place the {color} Rook at ";
+                    break;
+                case 'P':
+                    output += $"Place the {color} Pawn at ";
+                    break;
+            }
+            ChessCoordinates cc = Coordinates(message.Substring(2));
+            return output += cc.ToString();
+        }
+
+        struct ChessCoordinates
+        {
+            char Column;
+            int Row;
+            public ChessCoordinates(char column, int row)
+            {
+                Column = column;
+                Row = row;
+            }
+            override
+            public string ToString()
+            {
+                return $"Column: {Column}, Row: {Row}";
+            }
+        }
+
+        static ChessCoordinates Coordinates(string movement)
+        {
+            int.TryParse(movement[1].ToString(), out int number);
+            ChessCoordinates coordinates = new ChessCoordinates(movement[0], number);
+            return coordinates;
         }
     }
 }
