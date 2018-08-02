@@ -13,13 +13,14 @@ namespace Chess
     {
         static void Main(string[] args)
         {
-            string fileMessage = "";
-            FileRead("C:\\Neumont Apps\\Visual Studio\\Project Course\\Chess\\Chess.txt", ref fileMessage);
-            string[] splitString = SplitString('\n', fileMessage);
-            foreach(string line in splitString)
-            {
-                ParseInput(line);
-            }
+            //string fileMessage = "";
+            //FileRead("C:\\Neumont Apps\\Visual Studio\\Project Course\\Chess\\Chess.txt", ref fileMessage);
+            //string[] splitString = SplitString('\n', fileMessage);
+            //foreach(string line in splitString)
+            //{
+            //    ParseInput(line);
+            //}
+            ParseInput("d1 f4 ");
         }
 
         static void FileRead(string path, ref string text)
@@ -41,7 +42,7 @@ namespace Chess
             }
             else if(toParse.Length == 6)
             {
-
+                parsePieceMovement(toParse);
             }
         }
 
@@ -49,7 +50,12 @@ namespace Chess
         {
             string output = "";
 
-            
+            ChessCoordinates cc1 = Coordinates(movement.Substring(0, 2));
+
+            ChessCoordinates cc2 = Coordinates(movement.Substring(3));
+
+            output = $"The piece at {cc1.ToString()} has moved to {cc2.ToString()}.";
+
             return output;
         }
 
