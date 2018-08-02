@@ -15,7 +15,7 @@ namespace Chess
         static void Main(string[] args)
         {
             string fileMessage = "";
-            FileRead("C:\\Neumont Apps\\Visual Studio\\Project Course\\ChessRepo\\Chess\\Chess.txt", ref fileMessage);
+            FileRead("Chess.txt", ref fileMessage);
             string[] splitString = SplitString('\n', fileMessage);
             foreach (string line in splitString)
             {
@@ -42,7 +42,8 @@ namespace Chess
 
         static void FileRead(string path, ref string text)
         {
-            text = File.ReadAllText(path);
+            string fullpath =Path.GetFullPath(path);
+            text = File.ReadAllText(fullpath);
         }
 
         static string[] SplitString(char symbol, string textBeingSplit)
