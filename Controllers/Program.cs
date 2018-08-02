@@ -13,6 +13,7 @@ namespace Chess
     {
         static void Main(string[] args)
         {
+<<<<<<< Updated upstream
             //string fileMessage = "";
             //FileRead("C:\\Neumont Apps\\Visual Studio\\Project Course\\ChessRepo\\Chess\\Chess.txt", ref fileMessage);
             //string[] splitString = SplitString('\n', fileMessage);
@@ -21,6 +22,16 @@ namespace Chess
             //    ParseInput(line);
             //}
             ParseInput("f1 h1 g1 e1 ");
+=======
+            string fileMessage = "";
+            FileRead("C:\\Neumont Apps\\Visual Studio\\Project Course\\ChessRepo\\Chess\\Chess.txt", ref fileMessage);
+            string[] splitString = SplitString('\n', fileMessage);
+            foreach(string line in splitString)
+            {
+                ParseInput(line);
+            }
+
+>>>>>>> Stashed changes
         }
 
         static void FileRead(string path, ref string text)
@@ -125,12 +136,20 @@ namespace Chess
                 Column = column;
                 Row = row;
             }
+
             override
             public string ToString()
             {
                 return $"Column: {Column}, Row: {Row}";
             }
         }
+
+        static void DrawChessBoard()
+        {
+
+        }
+
+
 
         static ChessCoordinates Coordinates(string movement)
         {
