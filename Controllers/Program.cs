@@ -1,5 +1,4 @@
-﻿using Chess.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,29 +14,12 @@ namespace Chess
         static void Main(string[] args)
         {
             string fileMessage = "";
-            FileRead("C:\\Neumont Apps\\Visual Studio\\Project Course\\ChessRepo\\Chess\\Chess.txt", ref fileMessage);
+            //FileRead("C:\\Neumont Apps\\Visual Studio\\Project Course\\ChessRepo\\Chess\\Chess.txt", ref fileMessage);
             string[] splitString = SplitString('\n', fileMessage);
             foreach (string line in splitString)
             {
-                ParseInput(line);
-
+                ParseInput(args[0] + "\n");
             }
-            ChessCoordinates[,] board = new ChessCoordinates[8, 8];
-            DrawChessBoard(board);
-
-
-        }
-
-        enum ColumnCoordinates
-        {
-            A,
-            B,
-            C,
-            D,
-            E,
-            F,
-            G,
-            H
         }
 
         static void FileRead(string path, ref string text)
@@ -51,17 +33,17 @@ namespace Chess
         }
 
         static void ParseInput(string toParse)
-        {
-
+        {            
+            
             if (toParse.Length == 5)
             {
                 Console.WriteLine(parsePiecePlacement(toParse));
             }
-            else if (toParse.Length == 6)
+            else if(toParse.Length == 6)
             {
                 parsePieceMovement(toParse);
             }
-            else if (toParse.Length == 12)
+            else if(toParse.Length == 12)
             {
                 parseCastling(toParse);
             }
@@ -137,15 +119,11 @@ namespace Chess
         {
             char Column;
             int Row;
-            ChessPiece piece;
-            public ChessCoordinates(char column, int row, ChessPiece piece = null) : this()
+            public ChessCoordinates(char column, int row)
             {
                 Column = column;
                 Row = row;
-                Piece = piece;
             }
-
-            public ChessPiece Piece { get; set; }
 
             override
             public string ToString()
@@ -154,49 +132,12 @@ namespace Chess
             }
         }
 
-        static void DrawChessBoard(ChessCoordinates[,] coordinates)
+        static void DrawChessBoard()
         {
-            for (int i = 0; i < 8; i++)
-            {
-                Console.Write($"  {ColumnCoordinates.A + i}");
-            }
-            Console.WriteLine();
-            for (int i = 0; i < coordinates.GetLength(0); i++)
-            {
-                Console.Write($"{1+i}");
-                for (int j = 0; j < coordinates.GetLength(1); j++)
-                {
-                    if (i % 2 == 0)
-                    {
-                        if (coordinates[i, j].Piece == null && j % 2 == 0)
-                        {
-                            Console.Write(" - ");
-                        }
-                        else if (coordinates[i, j].Piece == null && j % 2 == 1)
-                        {
-                            Console.Write(" + ");
-                        }
-                    }
-                    else if (i % 2 == 1)
-                    {
-                        if (coordinates[i, j].Piece == null && j % 2 == 0)
-                        {
-                            Console.Write(" + ");
-                        }
-                        else if (coordinates[i, j].Piece == null && j % 2 == 1)
-                        {
-                            Console.Write(" - ");
-                        }
-                    }
-                }
-                Console.WriteLine($" {1+i} ");
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                Console.Write($"  {ColumnCoordinates.A + i}");
-            }
-            Console.WriteLine();
+
         }
+
+
 
         static ChessCoordinates Coordinates(string movement)
         {
