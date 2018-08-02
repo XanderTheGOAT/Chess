@@ -13,6 +13,7 @@ namespace Chess
     {
         static void Main(string[] args)
         {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
             //string fileMessage = "";
             //FileRead("C:\\Neumont Apps\\Visual Studio\\Project Course\\ChessRepo\\Chess\\Chess.txt", ref fileMessage);
@@ -21,6 +22,15 @@ namespace Chess
             //{
             //    ParseInput(line);
             //}
+=======
+            string fileMessage = "";
+            FileRead("C:\\Neumont Apps\\Visual Studio\\Project Course\\ChessRepo\\Chess\\Chess.txt", ref fileMessage);
+            string[] splitString = SplitString('\n', fileMessage);
+            foreach (string line in splitString)
+            {
+                ParseInput(args[0] + "\n");
+            }
+>>>>>>> master
             ParseInput("f1 h1 g1 e1 ");
 =======
             string fileMessage = "";
