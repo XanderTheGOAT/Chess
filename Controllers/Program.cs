@@ -14,7 +14,7 @@ namespace Chess
         static void Main(string[] args)
         {
             string fileMessage = "";
-            FileRead("C:\\Neumont Apps\\Visual Studio\\Project Course\\Chess\\Chess.txt", ref fileMessage);
+            FileRead("C:\\Neumont Apps\\Visual Studio\\Project Course\\ChessRepo\\Chess\\Chess.txt", ref fileMessage);
             string[] splitString = SplitString('\n', fileMessage);
             foreach(string line in splitString)
             {
@@ -57,11 +57,11 @@ namespace Chess
         {
             string output = "";
             string color = "";
-            if (string.Compare(message[1].ToString(), "l") == 0)
+            if (string.Equals(message[1].ToString(), "l", StringComparison.CurrentCultureIgnoreCase))
             {
                 color = "White";
             }
-            else if (string.Compare(message[1].ToString(), "d") == 0)
+            else if (string.Equals(message[1].ToString(), "d", StringComparison.CurrentCultureIgnoreCase))
             {
                 color = "Black";
             }
