@@ -44,7 +44,13 @@
   <ItemGroup>
     <Compile Include="Controllers\Program.cs" />
     <Compile Include="Interfaces\IChessPiece.cs" />
+    <Compile Include="Models\Bishop.cs" />
     <Compile Include="Models\ChessPiece.cs" />
+    <Compile Include="Models\King.cs" />
+    <Compile Include="Models\Knight.cs" />
+    <Compile Include="Models\Pawn.cs" />
+    <Compile Include="Models\Queen.cs" />
+    <Compile Include="Models\Rook.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

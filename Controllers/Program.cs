@@ -17,13 +17,14 @@ namespace Chess
             string fileMessage = "";
             FileRead("C:\\Neumont Apps\\Visual Studio\\Project Course\\ChessRepo\\Chess\\Chess.txt", ref fileMessage);
             string[] splitString = SplitString('\n', fileMessage);
-            foreach(string line in splitString)
+            foreach (string line in splitString)
             {
                 ParseInput(line);
 
             }
-            ChessCoordinates[][] board = new ChessCoordinates[8][8]();
+            ChessCoordinates[,] board = new ChessCoordinates[8, 8];
             DrawChessBoard(board);
+
 
         }
 
@@ -38,7 +39,7 @@ namespace Chess
             G,
             H
         }
-        
+
         static void FileRead(string path, ref string text)
         {
             text = File.ReadAllText(path);
@@ -50,17 +51,17 @@ namespace Chess
         }
 
         static void ParseInput(string toParse)
-        {            
-            
+        {
+
             if (toParse.Length == 5)
             {
                 Console.WriteLine(parsePiecePlacement(toParse));
             }
-            else if(toParse.Length == 6)
+            else if (toParse.Length == 6)
             {
                 parsePieceMovement(toParse);
             }
-            else if(toParse.Length == 12)
+            else if (toParse.Length == 12)
             {
                 parseCastling(toParse);
             }
@@ -153,22 +154,48 @@ namespace Chess
             }
         }
 
-        static void DrawChessBoard(ChessCoordinates[][] coordinates)
+        static void DrawChessBoard(ChessCoordinates[,] coordinates)
         {
-            for (int i = 0; i < coordinates.Length; i++)
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < coordinates[i].Length; j++)
+                Console.Write($"  {ColumnCoordinates.A + i}");
+            }
+            Console.WriteLine();
+            for (int i = 0; i < coordinates.GetLength(0); i++)
+            {
+                Console.Write($"{1+i}");
+                for (int j = 0; j < coordinates.GetLength(1); j++)
                 {
-                    if(coordinates[i][j].Piece.Equals(null) && j % 2 ==0)
+                    if (i % 2 == 0)
                     {
-                        Console.Write('-');
+                        if (coordinates[i, j].Piece == null && j % 2 == 0)
+                        {
+                            Console.Write(" - ");
+                        }
+                        else if (coordinates[i, j].Piece == null && j % 2 == 1)
+                        {
+                            Console.Write(" + ");
+                        }
                     }
-                    else if(coordinates[i][j].Piece.Equals(null)&& j% 2 ==1)
+                    else if (i % 2 == 1)
                     {
-                        Console.Write('+');
+                        if (coordinates[i, j].Piece == null && j % 2 == 0)
+                        {
+                            Console.Write(" + ");
+                        }
+                        else if (coordinates[i, j].Piece == null && j % 2 == 1)
+                        {
+                            Console.Write(" - ");
+                        }
                     }
                 }
+                Console.WriteLine($" {1+i} ");
             }
+            for (int i = 0; i < 8; i++)
+            {
+                Console.Write($"  {ColumnCoordinates.A + i}");
+            }
+            Console.WriteLine();
         }
 
         static ChessCoordinates Coordinates(string movement)
