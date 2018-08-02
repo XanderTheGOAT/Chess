@@ -13,24 +13,14 @@ namespace Chess
     {
         static void Main(string[] args)
         {
-<<<<<<< HEAD:Controllers/Program.cs
-            string fileMessage = "";
-            FileRead("C:\\Neumont Apps\\Visual Studio\\Project Course\\ChessRepo\\Chess\\Chess.txt", ref fileMessage);
-            string[] splitString = SplitString('\n', fileMessage);
-            foreach(string line in splitString)
-            {
-                ParseInput(line);
-            }
-=======
             //string fileMessage = "";
-            //FileRead("C:\\Neumont Apps\\Visual Studio\\Project Course\\Chess\\Chess.txt", ref fileMessage);
+            //FileRead("C:\\Neumont Apps\\Visual Studio\\Project Course\\ChessRepo\\Chess\\Chess.txt", ref fileMessage);
             //string[] splitString = SplitString('\n', fileMessage);
             //foreach(string line in splitString)
             //{
             //    ParseInput(line);
             //}
-            ParseInput("d1 f4 ");
->>>>>>> master:Views/Program.cs
+            ParseInput("f1 h1 g1 e1 ");
         }
 
         static void FileRead(string path, ref string text)
@@ -53,6 +43,10 @@ namespace Chess
             else if(toParse.Length == 6)
             {
                 parsePieceMovement(toParse);
+            }
+            else if(toParse.Length == 12)
+            {
+                parseCastling(toParse);
             }
         }
 
@@ -104,6 +98,22 @@ namespace Chess
             }
             ChessCoordinates cc = Coordinates(message.Substring(2));
             return output += cc.ToString();
+        }
+
+        static string parseCastling(string move)
+        {
+            string output = "";
+
+            string[] moves = move.Split(' ');
+
+            ChessCoordinates cc1 = Coordinates(moves[0]);
+            ChessCoordinates cc2 = Coordinates(moves[1]);
+            ChessCoordinates cc3 = Coordinates(moves[2]);
+            ChessCoordinates cc4 = Coordinates(moves[3]);
+
+            output = $"The piece at {cc1.ToString()} moved to {cc2.ToString()} and the piece at {cc3.ToString()} moved to {cc4.ToString()}.";
+
+            return output;
         }
 
         struct ChessCoordinates
