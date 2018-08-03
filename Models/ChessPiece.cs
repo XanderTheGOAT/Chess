@@ -7,11 +7,17 @@ using System.Threading.Tasks;
 
 namespace Chess.Models
 {
-    class ChessPiece : IChessPiece
+    abstract class ChessPiece : IChessPiece
     {
         public void Movement()
         {
 
+        }
+
+        override
+        public string ToString()
+        {
+            return "";
         }
     }
 }

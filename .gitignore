@@ -12,3 +12,5 @@ obj/Debug/Chess.csproj.FileListAbsolute.txt
 *.ide-shm
 *.ide-wal
 .vs/Chess/v15/Server/sqlite3/storage.ide
+.vs/Chess/v15/Server/sqlite3/storage.ide-shm
+.vs/Chess/v15/Server/sqlite3/storage.ide-wal

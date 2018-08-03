@@ -9,5 +9,7 @@ namespace Chess.Interfaces
     interface IChessPiece
     {
         void Movement();
+
+        string ToString();
     }
 }

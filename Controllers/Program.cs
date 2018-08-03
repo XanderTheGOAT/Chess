@@ -15,7 +15,8 @@ namespace Chess
         static void Main(string[] args)
         {
             string fileMessage = "";
-            FileRead("Chess.txt", ref fileMessage);
+            FileRead(args[0], ref fileMessage);
+            //var lines = File.ReadLines($"../../{fileName}");
             string[] splitString = SplitString('\n', fileMessage);
             foreach (string line in splitString)
             {
@@ -36,7 +37,23 @@ namespace Chess
         {
             return textBeingSplit.Split(symbol);
         }
+<<<<<<< HEAD
         #region Parsing Data
+=======
+
+        enum ColumnCoordinates
+        {
+            A,
+            B,
+            C,
+            D,
+            E,
+            F,
+            G,
+            H
+        }
+
+>>>>>>> SettingUpBoard
         static void ParseInput(string toParse)
         {
 
@@ -46,13 +63,24 @@ namespace Chess
             }
             else if (toParse.Length == 6)
             {
+<<<<<<< HEAD
                 ParsePieceMovement(toParse);
+=======
+                Console.WriteLine(ParsePieceMovement(toParse));
+>>>>>>> SettingUpBoard
             }
             else if (toParse.Length == 12)
             {
+<<<<<<< HEAD
                 ParseCastling(toParse);
             }
         }
+=======
+                Console.WriteLine(ParseCastling(toParse));
+            }
+        }
+
+>>>>>>> SettingUpBoard
         static string ParsePieceMovement(string movement)
         {
             string output = "";
