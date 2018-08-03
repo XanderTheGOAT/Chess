@@ -17,7 +17,8 @@ namespace Chess
         static void Main(string[] args)
         {
             string fileMessage = "";
-            FileRead("Chess.txt", ref fileMessage);
+            FileRead(args[0], ref fileMessage);
+            //var lines = File.ReadLines($"../../{fileName}");
             string[] splitString = SplitString('\n', fileMessage);
             DrawChessBoard(board);
             foreach (string line in splitString)
@@ -54,19 +55,19 @@ namespace Chess
             
             if (toParse.Length == 5)
             {
-                Console.WriteLine(parsePiecePlacement(toParse));
+                Console.WriteLine(ParsePiecePlacement(toParse));
             }
             else if(toParse.Length == 6)
             {
-                parsePieceMovement(toParse);
+                Console.WriteLine(ParsePieceMovement(toParse));
             }
             else if(toParse.Length == 12)
             {
-                parseCastling(toParse);
+                Console.WriteLine(ParseCastling(toParse));
             }
         }
 
-        static string parsePieceMovement(string movement)
+        static string ParsePieceMovement(string movement)
         {
             string output = "";
 
@@ -79,7 +80,7 @@ namespace Chess
             return output;
         }
 
-        static string parsePiecePlacement(string message)
+        static string ParsePiecePlacement(string message)
         {
             string output = "";
             string color = "";
@@ -116,7 +117,7 @@ namespace Chess
             return output += cc.ToString();
         }
 
-        static string parseCastling(string move)
+        static string ParseCastling(string move)
         {
             string output = "";
 

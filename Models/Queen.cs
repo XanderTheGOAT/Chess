@@ -8,5 +8,15 @@ namespace Chess.Models
 {
     class Queen : ChessPiece
     {
+        public void Movement()
+        {
+            //validate movement eventually
+        }
+
+        override
+        public string ToString()
+        {
+            return "Q";
+        }
     }
 }

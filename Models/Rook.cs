@@ -8,6 +8,15 @@ namespace Chess.Models
 {
     class Rook : ChessPiece
     {
+        public void Movement()
+        {
+            //validate movement eventually
+        }
 
+        override
+        public string ToString()
+        {
+            return "R";
+        }
     }
 }
