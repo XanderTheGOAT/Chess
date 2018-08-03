@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chess.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,39 +7,28 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
-using Chess.Models;
 
 namespace Chess
 {
     class Program
     {
-        static ChessCoordinates[,] board = new ChessCoordinates[8, 8];
-
         static void Main(string[] args)
         {
             string fileMessage = "";
             FileRead("Chess.txt", ref fileMessage);
             string[] splitString = SplitString('\n', fileMessage);
-            DrawChessBoard(board);
             foreach (string line in splitString)
             {
                 ParseInput(line);
             }
-<<<<<<< Updated upstream
-=======
             ChessCoordinates[,] board = new ChessCoordinates[8, 8];
             DrawChessBoard(board);
->>>>>>> Stashed changes
         }
 
         #region fileParsing
         static void FileRead(string path, ref string text)
         {
-<<<<<<< Updated upstream
             string fullpath = Path.GetFullPath(path);
-=======
-            string fullpath = Path.GetFullPath(path);
->>>>>>> Stashed changes
             text = File.ReadAllText(fullpath);
         }
 
@@ -46,43 +36,24 @@ namespace Chess
         {
             return textBeingSplit.Split(symbol);
         }
-<<<<<<< Updated upstream
-
-        enum ColumnCoordinates
-        {
-            A,
-            B,
-            C,
-            D,
-            E,
-            F,
-            G,
-            H
-        }
-=======
         #region Parsing Data
         static void ParseInput(string toParse)
         {
->>>>>>> Stashed changes
 
-        static void ParseInput(string toParse)
-        {            
-            
             if (toParse.Length == 5)
             {
-                Console.WriteLine(parsePiecePlacement(toParse));
+                Console.WriteLine(ParsePiecePlacement(toParse));
             }
-            else if(toParse.Length == 6)
+            else if (toParse.Length == 6)
             {
-                parsePieceMovement(toParse);
+                ParsePieceMovement(toParse);
             }
-            else if(toParse.Length == 12)
+            else if (toParse.Length == 12)
             {
-                parseCastling(toParse);
+                ParseCastling(toParse);
             }
         }
-
-        static string parsePieceMovement(string movement)
+        static string ParsePieceMovement(string movement)
         {
             string output = "";
 
@@ -95,7 +66,7 @@ namespace Chess
             return output;
         }
 
-        static string parsePiecePlacement(string message)
+        static string ParsePiecePlacement(string message)
         {
             string output = "";
             string color = "";
@@ -132,7 +103,7 @@ namespace Chess
             return output += cc.ToString();
         }
 
-        static string parseCastling(string move)
+        static string ParseCastling(string move)
         {
             string output = "";
 
@@ -167,11 +138,6 @@ namespace Chess
         {
             char Column;
             int Row;
-<<<<<<< Updated upstream
-            ChessPiece piece;
-
-=======
->>>>>>> Stashed changes
             public ChessCoordinates(char column, int row, ChessPiece piece = null) : this()
             {
                 Column = column;
@@ -190,7 +156,6 @@ namespace Chess
 
         static void DrawChessBoard(ChessCoordinates[,] coordinates)
         {
-<<<<<<< Updated upstream
             for (int i = 0; i < 8; i++)
             {
                 Console.Write($"  {ColumnCoordinates.A + i}");
@@ -230,51 +195,8 @@ namespace Chess
             {
                 Console.Write($"  {ColumnCoordinates.A + i}");
             }
-=======
-            for (int i = 0; i < 8; i++)
-            {
-                Console.Write($"  {ColumnCoordinates.A + i}");
-            }
-            Console.WriteLine();
-            for (int i = 0; i < coordinates.GetLength(0); i++)
-            {
-                Console.Write($"{1 + i}");
-                for (int j = 0; j < coordinates.GetLength(1); j++)
-                {
-                    if (i % 2 == 0)
-                    {
-                        if (coordinates[i, j].Piece == null && j % 2 == 0)
-                        {
-                            Console.Write(" - ");
-                        }
-                        else if (coordinates[i, j].Piece == null && j % 2 == 1)
-                        {
-                            Console.Write(" + ");
-                        }
-                    }
-                    else if (i % 2 == 1)
-                    {
-                        if (coordinates[i, j].Piece == null && j % 2 == 0)
-                        {
-                            Console.Write(" + ");
-                        }
-                        else if (coordinates[i, j].Piece == null && j % 2 == 1)
-                        {
-                            Console.Write(" - ");
-                        }
-                    }
-                }
-                Console.WriteLine($" {1 + i} ");
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                Console.Write($"  {ColumnCoordinates.A + i}");
-            }
->>>>>>> Stashed changes
             Console.WriteLine();
         }
-
-
 
         static ChessCoordinates Coordinates(string movement)
         {
