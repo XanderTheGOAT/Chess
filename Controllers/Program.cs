@@ -236,6 +236,7 @@ namespace Chess
 
         static void PlaceOnBoard(ChessCoordinates currentPlace, ChessCoordinates placeToGo)
         {
+            Console.WriteLine();
             //need a board to do this part but I'm gonna remove the piece from its space on the board and put it at the new space
         }
     }
