@@ -233,5 +233,10 @@ namespace Chess
             return coordinates;
         }
         #endregion
+
+        static void PlaceOnBoard(ChessCoordinates currentPlace, ChessCoordinates placeToGo)
+        {
+            //need a board to do this part but I'm gonna remove the piece from its space on the board and put it at the new space
+        }
     }
 }
