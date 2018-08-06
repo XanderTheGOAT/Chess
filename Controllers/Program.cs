@@ -19,12 +19,16 @@ namespace Chess
             //FileRead(args[0], ref fileMessage);
             //var lines = File.ReadLines($"../../{"MoveTests1.txt"}");
             //string[] splitString = SplitString('\n', fileMessage);
+            InitializeBoard();
+            ParseInput("Qlb3");
+            ParseInput("Kda2");
+            ParseInput("Pla3");
+            ParseInput("Rdh4");
+            ParseInput("b3 a2 a3 h4");
             //foreach (string line in lines)
             //{
             //    ParseInput(line);
             //}
-            ParseInput("Qla1");
-            ParseInput("a1 b2");
             DrawChessBoard();
         }
 
@@ -43,20 +47,32 @@ namespace Chess
 
         static void ParseInput(string toParse)
         {
-
+            char[] acceptableColumns = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
             if (toParse.Length == 4)
             {
-                Console.WriteLine(ParsePiecePlacement(toParse));
+                if (!acceptableColumns.Contains(toParse[2]) || int.Parse(toParse[3].ToString()) < 1 || int.Parse(toParse[3].ToString()) > 8)
+                {
+
+                }
+                else
+                {
+                    Console.WriteLine(ParsePiecePlacement(toParse));
+                }
             }
             else if (toParse.Length == 5)
             {
-                ParsePieceMovement(toParse);
+                if (!acceptableColumns.Contains(toParse[0]) || int.Parse(toParse[1].ToString()) < 1 || int.Parse(toParse[1].ToString()) > 8 || !acceptableColumns.Contains(toParse[3]) || int.Parse(toParse[4].ToString()) < 1 || int.Parse(toParse[4].ToString()) > 8)
+                {
 
-                Console.WriteLine(ParsePieceMovement(toParse));
+                }
+                else
+                {
+                    Console.WriteLine(ParsePieceMovement(toParse));
+                }
             }
             else if (toParse.Length == 11)
             {
-                ParseCastling(toParse);
+                Console.WriteLine(ParseCastling(toParse));
             }
         }
 
@@ -72,8 +88,11 @@ namespace Chess
 
             ColumnCoordinates col2 = GetColumnFromChar(cc2.Column);
 
-            board[(col2.GetHashCode() + 1), (cc2.Row + 1)].Piece = board[(col1.GetHashCode() + 1), (cc1.Row + 1)].Piece;
-            board[(col1.GetHashCode() + 1), (cc1.Row + 1)].Piece = null;
+            if (board[(col1.GetHashCode()), (cc1.Row - 1)].Piece != null)
+            {
+                board[(col2.GetHashCode()), (cc2.Row - 1)].Piece = board[(col1.GetHashCode()), (cc1.Row - 1)].Piece;
+                board[(col1.GetHashCode()), (cc1.Row - 1)].Piece = null;
+            }
 
             output = $"The piece at {cc1.ToString()} has moved to {cc2.ToString()}.";
 
@@ -155,22 +174,22 @@ namespace Chess
             switch (piece)
             {
                 case "Q":
-                    board[(column.GetHashCode() + 1), (coordinates.Row + 1)].Piece = new Queen();
+                    board[(coordinates.Row - 1), (column.GetHashCode())].Piece = new Queen();
                     break;
                 case "K":
-                    board[(column.GetHashCode() + 1), (coordinates.Row + 1)].Piece = new King();
+                    board[(coordinates.Row - 1), (column.GetHashCode())].Piece = new King();
                     break;
                 case "B":
-                    board[(column.GetHashCode() + 1), (coordinates.Row + 1)].Piece = new Bishop();
+                    board[(coordinates.Row - 1), (column.GetHashCode())].Piece = new Bishop();
                     break;
                 case "N":
-                    board[(column.GetHashCode() + 1), (coordinates.Row + 1)].Piece = new Knight();
+                    board[(coordinates.Row - 1), (column.GetHashCode())].Piece = new Knight();
                     break;
                 case "R":
-                    board[(column.GetHashCode() + 1), (coordinates.Row + 1)].Piece = new Rook();
+                    board[(coordinates.Row - 1), (column.GetHashCode())].Piece = new Rook();
                     break;
                 case "P":
-                    board[(column.GetHashCode() + 1), (coordinates.Row + 1)].Piece = new Pawn();
+                    board[(coordinates.Row - 1), (column.GetHashCode())].Piece = new Pawn();
                     break;
             }
         }
@@ -186,9 +205,20 @@ namespace Chess
             ChessCoordinates cc3 = Coordinates(moves[2]);
             ChessCoordinates cc4 = Coordinates(moves[3]);
 
+            CastleMovement(cc1, cc2, cc3, cc4);
+
             output = $"The piece at {cc1.ToString()} moved to {cc2.ToString()} and the piece at {cc3.ToString()} moved to {cc4.ToString()}.";
 
             return output;
+        }
+
+        static void CastleMovement(ChessCoordinates Piece1MoveFrom, ChessCoordinates Piece1MoveTo, ChessCoordinates Piece2MoveFrom, ChessCoordinates Piece2MoveTo)
+        {
+            board[Piece1MoveTo.Row-1, GetColumnFromChar(Piece1MoveTo.Column).GetHashCode()].Piece = board[Piece1MoveFrom.Row-1, GetColumnFromChar(Piece1MoveFrom.Column).GetHashCode()].Piece;
+            board[Piece1MoveFrom.Row-1, GetColumnFromChar(Piece1MoveFrom.Column).GetHashCode()].Piece = null;
+
+            board[Piece2MoveTo.Row-1, GetColumnFromChar(Piece2MoveTo.Column).GetHashCode()].Piece = board[Piece2MoveFrom.Row-1, GetColumnFromChar(Piece2MoveFrom.Column).GetHashCode()].Piece;
+            board[Piece2MoveFrom.Row-1, GetColumnFromChar(Piece2MoveFrom.Column).GetHashCode()].Piece = null;
         }
         #endregion
         #endregion
@@ -210,11 +240,13 @@ namespace Chess
         {
             char column;
             int row;
-            public ChessCoordinates(char column, int row, ChessPiece piece = null) : this()
+            ChessPiece piece;
+
+            public ChessCoordinates(char column, int row, ChessPiece piece1) : this()
             {
                 Column = column;
                 Row = row;
-                Piece = piece;
+                Piece = piece1;
             }
 
             public char Column { get; set; }
@@ -227,6 +259,18 @@ namespace Chess
             public string ToString()
             {
                 return $"Column: {Column}, Row: {Row}";
+            }
+        }
+
+        static void InitializeBoard()
+        {
+            char[] columnLetters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    board[i, j] = new ChessCoordinates(columnLetters[i], j, null);
+                }
             }
         }
 
@@ -285,14 +329,14 @@ namespace Chess
         static ChessCoordinates Coordinates(string movement)
         {
             int.TryParse(movement[1].ToString(), out int number);
-            ChessCoordinates coordinates = new ChessCoordinates(movement[0], number);
+            ChessCoordinates coordinates = new ChessCoordinates(movement[0], number, null);
             return coordinates;
         }
         #endregion
 
         static void PlaceOnBoard(ChessCoordinates currentPlace, ChessCoordinates placeToGo)
         {
-            
+
             //need a board to do this part but I'm gonna remove the piece from its space on the board and put it at the new space
             //actually wtf
         }
