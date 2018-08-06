@@ -352,3 +352,10 @@ ASALocalRun/
 # Local History for Visual Studio
 .localhistory/
 >>>>>>> MoreWorking
+.vs/Chess/v15/.suo
+obj/Debug/Chess.csproj.CoreCompileInputs.cache
+obj/Debug/Chess.csprojResolveAssemblyReference.cache
+obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+.vs/Chess/v15/Server/sqlite3/storage.ide
+.vs/Chess/v15/Server/sqlite3/storage.ide-shm
+.vs/Chess/v15/Server/sqlite3/storage.ide-wal

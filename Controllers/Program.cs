@@ -12,18 +12,20 @@ namespace Chess
 {
     class Program
     {
+        static ChessCoordinates[,] board = new ChessCoordinates[8, 8];
         static void Main(string[] args)
         {
-            string fileMessage = "";
-            FileRead(args[0], ref fileMessage);
-            //var lines = File.ReadLines($"../../{fileName}");
-            string[] splitString = SplitString('\n', fileMessage);
-            foreach (string line in splitString)
-            {
-                ParseInput(line);
-            }
-            ChessCoordinates[,] board = new ChessCoordinates[8, 8];
-            DrawChessBoard(board);
+            //string fileMessage = "";
+            //FileRead(args[0], ref fileMessage);
+            //var lines = File.ReadLines($"../../{"MoveTests1.txt"}");
+            //string[] splitString = SplitString('\n', fileMessage);
+            //foreach (string line in lines)
+            //{
+            //    ParseInput(line);
+            //}
+            ParseInput("Qla1");
+            ParseInput("a1 b2");
+            DrawChessBoard();
         }
 
         #region fileParsing
@@ -37,50 +39,27 @@ namespace Chess
         {
             return textBeingSplit.Split(symbol);
         }
-<<<<<<< HEAD
         #region Parsing Data
-=======
 
-        enum ColumnCoordinates
-        {
-            A,
-            B,
-            C,
-            D,
-            E,
-            F,
-            G,
-            H
-        }
-
->>>>>>> SettingUpBoard
         static void ParseInput(string toParse)
         {
 
-            if (toParse.Length == 5)
+            if (toParse.Length == 4)
             {
                 Console.WriteLine(ParsePiecePlacement(toParse));
             }
-            else if (toParse.Length == 6)
+            else if (toParse.Length == 5)
             {
-<<<<<<< HEAD
                 ParsePieceMovement(toParse);
-=======
+
                 Console.WriteLine(ParsePieceMovement(toParse));
->>>>>>> SettingUpBoard
             }
-            else if (toParse.Length == 12)
+            else if (toParse.Length == 11)
             {
-<<<<<<< HEAD
                 ParseCastling(toParse);
             }
         }
-=======
-                Console.WriteLine(ParseCastling(toParse));
-            }
-        }
 
->>>>>>> SettingUpBoard
         static string ParsePieceMovement(string movement)
         {
             string output = "";
@@ -89,15 +68,47 @@ namespace Chess
 
             ChessCoordinates cc2 = Coordinates(movement.Substring(3));
 
+            ColumnCoordinates col1 = GetColumnFromChar(cc1.Column);
+
+            ColumnCoordinates col2 = GetColumnFromChar(cc2.Column);
+
+            board[(col2.GetHashCode() + 1), (cc2.Row + 1)].Piece = board[(col1.GetHashCode() + 1), (cc1.Row + 1)].Piece;
+            board[(col1.GetHashCode() + 1), (cc1.Row + 1)].Piece = null;
+
             output = $"The piece at {cc1.ToString()} has moved to {cc2.ToString()}.";
 
             return output;
+        }
+
+        static ColumnCoordinates GetColumnFromChar(char column)
+        {
+            switch (char.ToUpper(column))
+            {
+                case 'A':
+                    return ColumnCoordinates.A;
+                case 'B':
+                    return ColumnCoordinates.B;
+                case 'C':
+                    return ColumnCoordinates.C;
+                case 'D':
+                    return ColumnCoordinates.D;
+                case 'E':
+                    return ColumnCoordinates.E;
+                case 'F':
+                    return ColumnCoordinates.F;
+                case 'G':
+                    return ColumnCoordinates.G;
+                case 'H':
+                    return ColumnCoordinates.H;
+            }
+            return ColumnCoordinates.A;
         }
 
         static string ParsePiecePlacement(string message)
         {
             string output = "";
             string color = "";
+            string piece = "";
             if (string.Equals(message[1].ToString(), "l", StringComparison.CurrentCultureIgnoreCase))
             {
                 color = "White";
@@ -109,26 +120,59 @@ namespace Chess
             switch (message[0])
             {
                 case 'Q':
+                    piece = "Q";
                     output += $"Place the {color} Queen at ";
                     break;
                 case 'K':
+                    piece = "K";
                     output += $"Place the {color} King at ";
                     break;
                 case 'B':
+                    piece = "B";
                     output += $"Place the {color} Bishop at ";
                     break;
                 case 'N':
+                    piece = "N";
                     output += $"Place the {color} Knight at ";
                     break;
                 case 'R':
+                    piece = "R";
                     output += $"Place the {color} Rook at ";
                     break;
                 case 'P':
+                    piece = "P";
                     output += $"Place the {color} Pawn at ";
                     break;
             }
             ChessCoordinates cc = Coordinates(message.Substring(2));
+            InitialPlacement(piece, color, cc);
             return output += cc.ToString();
+        }
+
+        static void InitialPlacement(string piece, string color, ChessCoordinates coordinates)
+        {
+            ColumnCoordinates column = GetColumnFromChar(coordinates.Column);
+            switch (piece)
+            {
+                case "Q":
+                    board[(column.GetHashCode() + 1), (coordinates.Row + 1)].Piece = new Queen();
+                    break;
+                case "K":
+                    board[(column.GetHashCode() + 1), (coordinates.Row + 1)].Piece = new King();
+                    break;
+                case "B":
+                    board[(column.GetHashCode() + 1), (coordinates.Row + 1)].Piece = new Bishop();
+                    break;
+                case "N":
+                    board[(column.GetHashCode() + 1), (coordinates.Row + 1)].Piece = new Knight();
+                    break;
+                case "R":
+                    board[(column.GetHashCode() + 1), (coordinates.Row + 1)].Piece = new Rook();
+                    break;
+                case "P":
+                    board[(column.GetHashCode() + 1), (coordinates.Row + 1)].Piece = new Pawn();
+                    break;
+            }
         }
 
         static string ParseCastling(string move)
@@ -164,14 +208,18 @@ namespace Chess
 
         struct ChessCoordinates
         {
-            char Column;
-            int Row;
+            char column;
+            int row;
             public ChessCoordinates(char column, int row, ChessPiece piece = null) : this()
             {
                 Column = column;
                 Row = row;
                 Piece = piece;
             }
+
+            public char Column { get; set; }
+
+            public int Row { get; set; }
 
             public ChessPiece Piece { get; set; }
 
@@ -182,38 +230,46 @@ namespace Chess
             }
         }
 
-        static void DrawChessBoard(ChessCoordinates[,] coordinates)
+        static void DrawChessBoard()
         {
             for (int i = 0; i < 8; i++)
             {
                 Console.Write($"  {ColumnCoordinates.A + i}");
             }
             Console.WriteLine();
-            for (int i = 0; i < coordinates.GetLength(0); i++)
+            for (int i = 0; i < board.GetLength(0); i++)
             {
                 Console.Write($"{1 + i}");
-                for (int j = 0; j < coordinates.GetLength(1); j++)
+                for (int j = 0; j < board.GetLength(1); j++)
                 {
                     if (i % 2 == 0)
                     {
-                        if (coordinates[i, j].Piece == null && j % 2 == 0)
+                        if (board[i, j].Piece == null && j % 2 == 0)
                         {
                             Console.Write(" - ");
                         }
-                        else if (coordinates[i, j].Piece == null && j % 2 == 1)
+                        else if (board[i, j].Piece == null && j % 2 == 1)
                         {
                             Console.Write(" + ");
+                        }
+                        else
+                        {
+                            Console.Write($" {board[i, j].Piece.ToString()} ");
                         }
                     }
                     else if (i % 2 == 1)
                     {
-                        if (coordinates[i, j].Piece == null && j % 2 == 0)
+                        if (board[i, j].Piece == null && j % 2 == 0)
                         {
                             Console.Write(" + ");
                         }
-                        else if (coordinates[i, j].Piece == null && j % 2 == 1)
+                        else if (board[i, j].Piece == null && j % 2 == 1)
                         {
                             Console.Write(" - ");
+                        }
+                        else
+                        {
+                            Console.Write($" {board[i, j].Piece.ToString()} ");
                         }
                     }
                 }
@@ -236,7 +292,7 @@ namespace Chess
 
         static void PlaceOnBoard(ChessCoordinates currentPlace, ChessCoordinates placeToGo)
         {
-            Console.WriteLine();
+            
             //need a board to do this part but I'm gonna remove the piece from its space on the board and put it at the new space
         }
     }
