@@ -8,7 +8,11 @@ namespace Chess.Models
 {
     class King: ChessPiece
     {
-        public void Movement()
+        bool isLight;
+
+        public bool IsLight { get; set; }
+
+        public void Movement(Program.ChessCoordinates startLocation, Program.ChessCoordinates endLocation)
         {
             //validate movement eventually
         }

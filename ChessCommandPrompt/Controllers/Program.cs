@@ -12,7 +12,7 @@ namespace Chess
 {
     class Program
     {
-        static ChessCoordinates[,] board = new ChessCoordinates[8, 8];
+        public static ChessCoordinates[,] board = new ChessCoordinates[8, 8];
         static void Main(string[] args)
         {
             //string fileMessage = "";
@@ -164,6 +164,7 @@ namespace Chess
                     break;
             }
             ChessCoordinates cc = Coordinates(message.Substring(2));
+            cc.Piece.IsLight = (color == "White") ? true : false;
             InitialPlacement(piece, color, cc);
             return output += cc.ToString();
         }
@@ -224,7 +225,7 @@ namespace Chess
         #endregion
 
         #region ChessBoard Logic
-        enum ColumnCoordinates
+        public enum ColumnCoordinates
         {
             A,
             B,
@@ -236,7 +237,7 @@ namespace Chess
             H
         }
 
-        struct ChessCoordinates
+        public struct ChessCoordinates
         {
             char column;
             int row;
