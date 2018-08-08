@@ -6,275 +6,291 @@
         xmlns:local="clr-namespace:ChessWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" >
-    <UniformGrid Rows="10" Columns="10" Background="#FFFF00B9">
+    <UniformGrid Rows="10" Columns="10" Background="#FF640D0D">
 
-        <Label Content="" Background="#FFFD9800"/>
-        <Label Content="A" HorizontalAlignment="Center" Background="#FFFD9800"/>
-        <Label Content="B" HorizontalAlignment="Center" Background="#FFFD9800"/>
-        <Label Content="C" HorizontalAlignment="Center" Background="#FFFD9800"/>
-        <Label Content="D" HorizontalAlignment="Center" Background="#FFFD9800"/>
-        <Label Content="E" HorizontalAlignment="Center" Background="#FFFD9800"/>
-        <Label Content="F" HorizontalAlignment="Center" Background="#FFFD9800"/>
-        <Label Content="G" HorizontalAlignment="Center" Background="#FFFD9800"/>
-        <Label Content="H" HorizontalAlignment="Center" Background="#FFFD9800"/>
-        <Label Content="" Background="#FFFF00B9" HorizontalAlignment="Right" Margin="-0.4,0,0,0.4" Width="80"/>
-        <Label Content="1" HorizontalAlignment="Center" Background="#FFFD9800"/>
+        <Label Content="" Background="#FF640D0D"/>
+        <Label Content="A" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="B" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="C" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="D" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="E" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="F" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="G" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="H" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="" Background="#FF640D0D" HorizontalAlignment="Right" Margin="-0.4,0,0,0.4" Width="80"/>
+        <Label Content="1" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="A1" Fill="#FFF" Stroke="Black"/>
             <Button Margin="183,100,182.6,87.2"></Button>
+            <Image Name="B1Rook" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="B1" Fill="#000" Stroke="Black"/>
+            <Image Name="B1Knight" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80"  MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="C1" Fill="#FFF" Stroke="Black"/>
+            <Image Name="B1Bishop" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80"  MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="D1" Fill="#000" Stroke="Black"/>
+            <Image Name="BKing" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80"  MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="E1" Fill="#FFF" Stroke="Black"/>
+            <Image Name="BQueen" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80"  MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="F1" Fill="#000" Stroke="Black"/>
+            <Image Name="B2Bishop" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80"  MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="G1" Fill="#FFF" Stroke="Black"/>
+            <Image Name="B2Knight" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80"  MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="H1" Fill="#000" Stroke="Black"/>
+            <Image Name="B2Rook" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80"  MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
-        <Label Content="1" Background="#FFFF00B9"/>
-        <Label Content="2" HorizontalAlignment="Center" Background="#FFFD9800"/>
+        <Label Content="1" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="2" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="A2" Fill="#000" Stroke="Black"/>
+            <Image Name="B1Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80"  MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="B2" Fill="#FFF" Stroke="Black"/>
+            <Image Name="B2Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="C2" Fill="#000" Stroke="Black"/>
+            <Image Name="B3Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="D2" Fill="#FFF" Stroke="Black"/>
+            <Image Name="B4Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="E2" Fill="#000" Stroke="Black"/>
+            <Image Name="B5Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="F2" Fill="#FFF" Stroke="Black"/>
+            <Image Name="B6Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="G2" Fill="#000" Stroke="Black"/>
+            <Image Name="B7Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="H2" Fill="#FFF" Stroke="Black"/>
+            <Image Name="B8Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80"/>
         </Grid>
-        <Label Content="2" Background="#FFFF00B9"/>
-        <Label Content="3" HorizontalAlignment="Center" Background="#FFFD9800"/>
+        <Label Content="2" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="3" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="A3" Fill="#FFF" Stroke="Black"/>
         </Grid>
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
-        </Grid>
-
-        <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
-        </Grid>
-        <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="B3" Fill="#000" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="C3" Fill="#FFF" Stroke="Black"/>
         </Grid>
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="D3" Fill="#000" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="E3" Fill="#FFF" Stroke="Black"/>
+        </Grid>
+        <Grid>
+            <Rectangle x:Name="F3" Fill="#000" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
-        </Grid>
-        <Label Content="3" Background="#FFFF00B9"/>
-
-        <Label Content="4" HorizontalAlignment="Center" Background="#FFFD9800"/>
-        <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="G3" Fill="#FFF" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="H3" Fill="#000" Stroke="Black"/>
+        </Grid>
+        <Label Content="3" Background="#FF640D0D" Foreground="White"/>
+
+        <Label Content="4" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+        <Grid>
+            <Rectangle x:Name="A4" Fill="#000" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
-        </Grid>
-        <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
-        </Grid>
-        <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="B4" Fill="#FFF" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="C4" Fill="#000" Stroke="Black"/>
+        </Grid>
+        <Grid>
+            <Rectangle x:Name="D4" Fill="#FFF" Stroke="Black"/>
+        </Grid>
+        <Grid>
+            <Rectangle x:Name="E4" Fill="#000" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
-        </Grid>
-        <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
-        </Grid>
-
-        <Label Content="4" Background="#FFFF00B9"/>
-        <Label Content="5" HorizontalAlignment="Center" Background="#FFFD9800"/>
-        <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
-        </Grid>
-        <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="F4" Fill="#FFF" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="G4" Fill="#000" Stroke="Black"/>
         </Grid>
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="H4" Fill="#FFF" Stroke="Black"/>
+        </Grid>
+
+        <Label Content="4" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="5" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+        <Grid>
+            <Rectangle x:Name="A5" Fill="#FFF" Stroke="Black"/>
+        </Grid>
+        <Grid>
+            <Rectangle x:Name="B5" Fill="#000" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="C5" Fill="#FFF" Stroke="Black"/>
         </Grid>
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="D5" Fill="#000" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="E5" Fill="#FFF" Stroke="Black"/>
         </Grid>
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
-        </Grid>
-        <Label Content="5" Background="#FFFF00B9"/>
-        <Label Content="6" HorizontalAlignment="Center" Background="#FFFD9800"/>
-        <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="F5" Fill="#000" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="G5" Fill="#FFF" Stroke="Black"/>
         </Grid>
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="H5" Fill="#000" Stroke="Black"/>
+        </Grid>
+        <Label Content="5" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="6" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+        <Grid>
+            <Rectangle x:Name="A6" Fill="#000" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="B6" Fill="#FFF" Stroke="Black"/>
         </Grid>
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="C6" Fill="#000" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="D6" Fill="#FFF" Stroke="Black"/>
+        </Grid>
+        <Grid>
+            <Rectangle x:Name="E6" Fill="#000" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="F6" Fill="#FFF" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
-        </Grid>
-
-        <Label Content="6" Background="#FFFF00B9"/>
-        <Label Content="7" HorizontalAlignment="Center" Background="#FFFD9800"/>
-        <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
-        </Grid>
-        <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="G6" Fill="#000" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="H6" Fill="#FFF" Stroke="Black"/>
+        </Grid>
+
+        <Label Content="6" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="7" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+        <Grid>
+            <Rectangle x:Name="A7" Fill="#FFF" Stroke="Black"/>
         </Grid>
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="B7" Fill="#000" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="C7" Fill="#FFF" Stroke="Black"/>
         </Grid>
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="D7" Fill="#000" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="E7" Fill="#FFF" Stroke="Black"/>
         </Grid>
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
-        </Grid>
-        <Label Content="7" Background="#FFFF00B9"/>
-        <Label Content="8" HorizontalAlignment="Center" Background="#FFFD9800"/>
-
-        <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="F7" Fill="#000" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="G7" Fill="#FFF" Stroke="Black"/>
+        </Grid>
+        <Grid>
+            <Rectangle x:Name="H7" Fill="#000" Stroke="Black"/>
+        </Grid>
+        <Label Content="7" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="8" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+
+        <Grid>
+            <Rectangle x:Name="A8" Fill="#000" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="B8" Fill="#FFF" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="C8" Fill="#000" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="D8" Fill="#FFF" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="E8" Fill="#000" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#000" Stroke="Black"/>
+            <Rectangle x:Name="F8" Fill="#FFF" Stroke="Black"/>
         </Grid>
 
         <Grid>
-            <Rectangle Fill="#FFF" Stroke="Black"/>
+            <Rectangle x:Name="G8" Fill="#000" Stroke="Black"/>
         </Grid>
-        <Label Content="8" Background="#FFFF00B9"/>
+
+        <Grid>
+            <Rectangle x:Name="H8" Fill="#FFF" Stroke="Black"/>
+        </Grid>
+        <Label Content="8" Background="#FF640D0D" Foreground="White"/>
 
         <Label Content=""/>
-        <Label Content="A" HorizontalAlignment="Center" Background="#FFFD9800"/>
-        <Label Content="B" HorizontalAlignment="Center" Background="#FFFD9800"/>
-        <Label Content="C" HorizontalAlignment="Center" Background="#FFFD9800"/>
-        <Label Content="D" HorizontalAlignment="Center" Background="#FFFD9800"/>
-        <Label Content="E" HorizontalAlignment="Center" Background="#FFFD9800"/>
-        <Label Content="F" HorizontalAlignment="Center" Background="#FFFD9800"/>
-        <Label Content="G" HorizontalAlignment="Center" Background="#FFFD9800"/>
-        <Label Content="H" HorizontalAlignment="Center" Background="#FFFD9800"/>
+        <Label Content="A" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="B" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="C" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="D" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="E" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="F" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="G" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+        <Label Content="H" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
 
     </UniformGrid>
 </Window>

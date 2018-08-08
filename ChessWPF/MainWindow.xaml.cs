@@ -24,9 +24,25 @@ namespace ChessWPF
         {
             InitializeComponent();
         }
-        public static void DoesSomethingNOtReally()
+
+        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //krappa
+            Image image = (Image)sender;
+            Border border = (Border)image.Parent;
+
+            image.CaptureMouse();
+            isMouseCapture = true;
+            MouseXOffset
+        }
+
+        private void Image_MouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 
