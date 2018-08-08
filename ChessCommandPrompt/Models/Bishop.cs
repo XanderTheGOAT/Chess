@@ -8,6 +8,10 @@ namespace Chess.Models
 {
     class Bishop: ChessPiece
     {
+        bool isLight;
+
+        public bool IsLight { get; set; }
+
         public void Movement()
         {
             //validate movement eventually

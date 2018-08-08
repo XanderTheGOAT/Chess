@@ -9,7 +9,11 @@ namespace Chess.Models
 {
     abstract class ChessPiece : IChessPiece
     {
-        public void Movement()
+        bool isLight;
+    
+        public bool IsLight { get; set; }
+
+        public void Movement(Program.ChessCoordinates startLocation, Program.ChessCoordinates endLocation)
         {
 
         }
