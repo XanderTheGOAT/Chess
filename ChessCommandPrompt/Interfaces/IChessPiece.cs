@@ -8,7 +8,7 @@ namespace Chess.Interfaces
 {
     interface IChessPiece
     {
-        void Movement();
+        void Movement(Program.ChessCoordinates startLocation, Program.ChessCoordinates endLocation);
 
         string ToString();
     }
