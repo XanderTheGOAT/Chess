@@ -13,9 +13,9 @@ namespace Chess.Models
     
         public bool IsLight { get; set; }
 
-        public void Movement(Program.ChessCoordinates startLocation, Program.ChessCoordinates endLocation)
+        public virtual bool ValidMovement(Program.ChessCoordinates startLocation, Program.ChessCoordinates endLocation)
         {
-
+            return true;
         }
 
         override

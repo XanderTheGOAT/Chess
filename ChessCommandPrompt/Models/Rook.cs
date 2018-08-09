@@ -8,13 +8,14 @@ namespace Chess.Models
 {
     class Rook : ChessPiece
     {
-        bool isLight;
+        bool isLight = true;
 
         public bool IsLight { get; set; }
-
-        public void Movement()
+        
+        public bool ValidMovement()
         {
             //validate movement eventually
+            return true;
         }
 
         override
