@@ -4,14 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\Mania\Chess Repo\Chess\ChessWPF\obj\Debug\
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\
 ChessWPF
 none
 false
 DEBUG;TRACE
-C:\Users\Mania\Chess Repo\Chess\ChessWPF\App.xaml
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\App.xaml
 11151548125
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< Updated upstream
 9-1999453283
@@ -21,8 +22,11 @@ C:\Users\Mania\Chess Repo\Chess\ChessWPF\App.xaml
 =======
 5-2017746502
 >>>>>>> Working
+=======
+5-2017746502
+>>>>>>> MyHouse
 13-1505183044
 MainWindow.xaml;
 
-False
+True
 
