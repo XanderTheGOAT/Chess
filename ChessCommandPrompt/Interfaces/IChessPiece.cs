@@ -8,7 +8,7 @@ namespace Chess.Interfaces
 {
     interface IChessPiece
     {
-        void Movement(Program.ChessCoordinates startLocation, Program.ChessCoordinates endLocation);
+        bool ValidMovement(Program.ChessCoordinates startLocation, Program.ChessCoordinates endLocation);
 
         string ToString();
     }

@@ -13,3 +13,18 @@ C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\ChessWPF\obj\Debug\
 C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\ChessWPF\obj\Debug\ChessWPF.exe
 C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\ChessWPF\obj\Debug\ChessWPF.pdb
 C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\ChessWPF\obj\Debug\ChessWPF.csprojAssemblyReference.cache
+C:\Users\Mania\Chess Repo\Chess\ChessWPF\bin\Debug\ChessWPF.exe.config
+C:\Users\Mania\Chess Repo\Chess\ChessWPF\bin\Debug\ChessWPF.exe
+C:\Users\Mania\Chess Repo\Chess\ChessWPF\bin\Debug\ChessWPF.pdb
+C:\Users\Mania\Chess Repo\Chess\ChessWPF\obj\Debug\ChessWPF.csprojResolveAssemblyReference.cache
+C:\Users\Mania\Chess Repo\Chess\ChessWPF\obj\Debug\MainWindow.g.cs
+C:\Users\Mania\Chess Repo\Chess\ChessWPF\obj\Debug\App.g.cs
+C:\Users\Mania\Chess Repo\Chess\ChessWPF\obj\Debug\ChessWPF_MarkupCompile.cache
+C:\Users\Mania\Chess Repo\Chess\ChessWPF\obj\Debug\ChessWPF_MarkupCompile.lref
+C:\Users\Mania\Chess Repo\Chess\ChessWPF\obj\Debug\MainWindow.baml
+C:\Users\Mania\Chess Repo\Chess\ChessWPF\obj\Debug\ChessWPF.g.resources
+C:\Users\Mania\Chess Repo\Chess\ChessWPF\obj\Debug\ChessWPF.Properties.Resources.resources
+C:\Users\Mania\Chess Repo\Chess\ChessWPF\obj\Debug\ChessWPF.csproj.GenerateResource.cache
+C:\Users\Mania\Chess Repo\Chess\ChessWPF\obj\Debug\ChessWPF.csproj.CoreCompileInputs.cache
+C:\Users\Mania\Chess Repo\Chess\ChessWPF\obj\Debug\ChessWPF.exe
+C:\Users\Mania\Chess Repo\Chess\ChessWPF\obj\Debug\ChessWPF.pdb

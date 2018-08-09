@@ -20,11 +20,14 @@ namespace Chess
             //var lines = File.ReadLines($"../../{"MoveTests1.txt"}");
             //string[] splitString = SplitString('\n', fileMessage);
             InitializeBoard();
-            ParseInput("Qlb3");
-            ParseInput("Kda2");
-            ParseInput("Pla3");
-            ParseInput("Rdh4");
-            ParseInput("b3 a2 a3 h4");
+            ParseInput("Kdc5");
+            ParseInput("Klb4");
+            ParseInput("Klh1");
+
+            ParseInput("c5 c6");
+            ParseInput("h1 h2");
+
+            //ParseInput("b2 a2");
             //foreach (string line in lines)
             //{
             //    ParseInput(line);
@@ -88,18 +91,53 @@ namespace Chess
 
             ColumnCoordinates col2 = GetColumnFromChar(cc2.Column);
 
-            if (board[(col1.GetHashCode()), (cc1.Row - 1)].Piece != null)
+            if (board[cc1.Row - 1, col1.GetHashCode()].Piece != null)
             {
-                board[(col2.GetHashCode()), (cc2.Row - 1)].Piece = board[(col1.GetHashCode()), (cc1.Row - 1)].Piece;
-                board[(col1.GetHashCode()), (cc1.Row - 1)].Piece = null;
+                if (board[cc1.Row - 1, col1.GetHashCode()].Piece.ValidMovement(cc1, cc2))
+                {
+                    board[cc2.Row - 1, col2.GetHashCode()].Piece = board[cc1.Row - 1, col1.GetHashCode()].Piece;
+                    board[cc1.Row - 1, col1.GetHashCode()].Piece = null;
+                    output = $"The piece at {cc1.ToString()} has moved to {cc2.ToString()}.";
+                }
+                else
+                {
+                    output = "Fuck you it didn't work";
+                }
+            }
+            else
+            {
+                output = $"I'm not seeing a piece at {cc1.ToString()}";
             }
 
-            output = $"The piece at {cc1.ToString()} has moved to {cc2.ToString()}.";
 
             return output;
         }
 
-        static ColumnCoordinates GetColumnFromChar(char column)
+        public static char GetCharFromColumn(ColumnCoordinates column)
+        {
+            switch (column)
+            {
+                case ColumnCoordinates.A:
+                    return 'a';
+                case ColumnCoordinates.B:
+                    return 'b';
+                case ColumnCoordinates.C:
+                    return 'c';
+                case ColumnCoordinates.D:
+                    return 'd';
+                case ColumnCoordinates.E:
+                    return 'e';
+                case ColumnCoordinates.F:
+                    return 'f';
+                case ColumnCoordinates.G:
+                    return 'g';
+                case ColumnCoordinates.H:
+                    return 'h';
+            }
+            return 'a';
+        }
+
+        public static ColumnCoordinates GetColumnFromChar(char column)
         {
             switch (char.ToUpper(column))
             {
@@ -164,7 +202,6 @@ namespace Chess
                     break;
             }
             ChessCoordinates cc = Coordinates(message.Substring(2));
-            cc.Piece.IsLight = (color == "White") ? true : false;
             InitialPlacement(piece, color, cc);
             return output += cc.ToString();
         }
@@ -193,6 +230,8 @@ namespace Chess
                     board[(coordinates.Row - 1), (column.GetHashCode())].Piece = new Pawn();
                     break;
             }
+            board[(coordinates.Row - 1), (column.GetHashCode())].Piece.IsLight = (color == "White") ? true : false;
+            Console.WriteLine("Yeet" + board[(coordinates.Row - 1), (column.GetHashCode())]);
         }
 
         static string ParseCastling(string move)
@@ -215,14 +254,26 @@ namespace Chess
 
         static void CastleMovement(ChessCoordinates Piece1MoveFrom, ChessCoordinates Piece1MoveTo, ChessCoordinates Piece2MoveFrom, ChessCoordinates Piece2MoveTo)
         {
-            board[Piece1MoveTo.Row-1, GetColumnFromChar(Piece1MoveTo.Column).GetHashCode()].Piece = board[Piece1MoveFrom.Row-1, GetColumnFromChar(Piece1MoveFrom.Column).GetHashCode()].Piece;
-            board[Piece1MoveFrom.Row-1, GetColumnFromChar(Piece1MoveFrom.Column).GetHashCode()].Piece = null;
+            board[Piece1MoveTo.Row - 1, GetColumnFromChar(Piece1MoveTo.Column).GetHashCode()].Piece = board[Piece1MoveFrom.Row - 1, GetColumnFromChar(Piece1MoveFrom.Column).GetHashCode()].Piece;
+            board[Piece1MoveFrom.Row - 1, GetColumnFromChar(Piece1MoveFrom.Column).GetHashCode()].Piece = null;
 
-            board[Piece2MoveTo.Row-1, GetColumnFromChar(Piece2MoveTo.Column).GetHashCode()].Piece = board[Piece2MoveFrom.Row-1, GetColumnFromChar(Piece2MoveFrom.Column).GetHashCode()].Piece;
-            board[Piece2MoveFrom.Row-1, GetColumnFromChar(Piece2MoveFrom.Column).GetHashCode()].Piece = null;
+            board[Piece2MoveTo.Row - 1, GetColumnFromChar(Piece2MoveTo.Column).GetHashCode()].Piece = board[Piece2MoveFrom.Row - 1, GetColumnFromChar(Piece2MoveFrom.Column).GetHashCode()].Piece;
+            board[Piece2MoveFrom.Row - 1, GetColumnFromChar(Piece2MoveFrom.Column).GetHashCode()].Piece = null;
         }
         #endregion
         #endregion
+
+        public List<ColumnCoordinates> coordinates = new List<ColumnCoordinates>
+        {
+            ColumnCoordinates.A,
+            ColumnCoordinates.B,
+            ColumnCoordinates.C,
+            ColumnCoordinates.D,
+            ColumnCoordinates.E,
+            ColumnCoordinates.F,
+            ColumnCoordinates.G,
+            ColumnCoordinates.H
+        };
 
         #region ChessBoard Logic
         public enum ColumnCoordinates
@@ -261,11 +312,21 @@ namespace Chess
             {
                 return $"Column: {Column}, Row: {Row}";
             }
+
+            public static bool operator== (ChessCoordinates cc1, ChessCoordinates cc2)
+            {
+                return (cc1.Column == cc2.Column && cc1.Row == cc2.Row);
+            }
+
+            public static bool operator!= (ChessCoordinates cc1, ChessCoordinates cc2)
+            {
+                return (cc1.Column == cc2.Column && cc1.Row == cc2.Row);
+            }
         }
 
         static void InitializeBoard()
         {
-            char[] columnLetters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
+            char[] columnLetters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)
