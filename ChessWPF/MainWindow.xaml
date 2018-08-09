@@ -24,6 +24,7 @@
             <Button Margin="183,100,182.6,87.2"></Button>
             <Image Name="B1Rook" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
+        
         <Grid>
             <Rectangle x:Name="B1" Fill="#000" Stroke="Black"/>
             <Image Name="B1Knight" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80"  MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
@@ -33,6 +34,7 @@
             <Rectangle x:Name="C1" Fill="#FFF" Stroke="Black"/>
             <Image Name="B1Bishop" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80"  MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
+        
         <Grid>
             <Rectangle x:Name="D1" Fill="#000" Stroke="Black"/>
             <Image Name="BKing" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80"  MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
@@ -42,6 +44,7 @@
             <Rectangle x:Name="E1" Fill="#FFF" Stroke="Black"/>
             <Image Name="BQueen" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80"  MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
+        
         <Grid>
             <Rectangle x:Name="F1" Fill="#000" Stroke="Black"/>
             <Image Name="B2Bishop" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80"  MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
@@ -51,12 +54,15 @@
             <Rectangle x:Name="G1" Fill="#FFF" Stroke="Black"/>
             <Image Name="B2Knight" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80"  MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
+        
         <Grid>
             <Rectangle x:Name="H1" Fill="#000" Stroke="Black"/>
             <Image Name="B2Rook" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80"  MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
+        
         <Label Content="1" Background="#FF640D0D" Foreground="White"/>
         <Label Content="2" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+
         <Grid>
             <Rectangle x:Name="A2" Fill="#000" Stroke="Black"/>
             <Image Name="B1Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80"  MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
@@ -66,6 +72,7 @@
             <Rectangle x:Name="B2" Fill="#FFF" Stroke="Black"/>
             <Image Name="B2Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
+        
         <Grid>
             <Rectangle x:Name="C2" Fill="#000" Stroke="Black"/>
             <Image Name="B3Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
@@ -80,10 +87,12 @@
             <Rectangle x:Name="E2" Fill="#000" Stroke="Black"/>
             <Image Name="B5Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
+        
         <Grid>
             <Rectangle x:Name="F2" Fill="#FFF" Stroke="Black"/>
             <Image Name="B6Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
+        
         <Grid>
             <Rectangle x:Name="G2" Fill="#000" Stroke="Black"/>
             <Image Name="B7Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
@@ -91,14 +100,16 @@
 
         <Grid>
             <Rectangle x:Name="H2" Fill="#FFF" Stroke="Black"/>
-            <Image Name="B8Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80"/>
+            <Image Name="B8Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
+        
         <Label Content="2" Background="#FF640D0D" Foreground="White"/>
         <Label Content="3" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
-
+        
         <Grid>
             <Rectangle x:Name="A3" Fill="#FFF" Stroke="Black"/>
         </Grid>
+        
         <Grid>
             <Rectangle x:Name="B3" Fill="#000" Stroke="Black"/>
         </Grid>
@@ -164,7 +175,6 @@
         <Grid>
             <Rectangle x:Name="B5" Fill="#000" Stroke="Black"/>
         </Grid>
-
         <Grid>
             <Rectangle x:Name="C5" Fill="#FFF" Stroke="Black"/>
         </Grid>
@@ -219,69 +229,91 @@
 
         <Label Content="6" Background="#FF640D0D" Foreground="White"/>
         <Label Content="7" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
+        
         <Grid>
             <Rectangle x:Name="A7" Fill="#FFF" Stroke="Black"/>
+            <Image Name="W1Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
+        
         <Grid>
             <Rectangle x:Name="B7" Fill="#000" Stroke="Black"/>
+            <Image Name="W2Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
 
         <Grid>
             <Rectangle x:Name="C7" Fill="#FFF" Stroke="Black"/>
+            <Image Name="W3Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
         <Grid>
             <Rectangle x:Name="D7" Fill="#000" Stroke="Black"/>
+            <Image Name="W4Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
 
         <Grid>
             <Rectangle x:Name="E7" Fill="#FFF" Stroke="Black"/>
+            <Image Name="W5Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
+        
         <Grid>
             <Rectangle x:Name="F7" Fill="#000" Stroke="Black"/>
+            <Image Name="W6Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
 
         <Grid>
             <Rectangle x:Name="G7" Fill="#FFF" Stroke="Black"/>
+            <Image Name="W7Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
+        
         <Grid>
             <Rectangle x:Name="H7" Fill="#000" Stroke="Black"/>
+            <Image Name="W8Pawn" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
+        
         <Label Content="7" Background="#FF640D0D" Foreground="White"/>
         <Label Content="8" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
 
         <Grid>
             <Rectangle x:Name="A8" Fill="#000" Stroke="Black"/>
+            <Image Name="W1Rook" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
 
         <Grid>
             <Rectangle x:Name="B8" Fill="#FFF" Stroke="Black"/>
+            <Image Name="W1Knight" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
 
         <Grid>
             <Rectangle x:Name="C8" Fill="#000" Stroke="Black"/>
+            <Image Name="W1Bishop" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
 
         <Grid>
             <Rectangle x:Name="D8" Fill="#FFF" Stroke="Black"/>
+            <Image Name="WKing" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
 
         <Grid>
             <Rectangle x:Name="E8" Fill="#000" Stroke="Black"/>
+            <Image Name="WQueen" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
 
         <Grid>
             <Rectangle x:Name="F8" Fill="#FFF" Stroke="Black"/>
+            <Image Name="W2Bishop" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
 
         <Grid>
             <Rectangle x:Name="G8" Fill="#000" Stroke="Black"/>
+            <Image Name="W2Knight" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
 
         <Grid>
             <Rectangle x:Name="H8" Fill="#FFF" Stroke="Black"/>
+            <Image Name="W2Rook" HorizontalAlignment="Left" Height="42" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
         </Grid>
+        
         <Label Content="8" Background="#FF640D0D" Foreground="White"/>
-
+        
         <Label Content=""/>
         <Label Content="A" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>
         <Label Content="B" HorizontalAlignment="Center" Background="#FF640D0D" Foreground="White"/>

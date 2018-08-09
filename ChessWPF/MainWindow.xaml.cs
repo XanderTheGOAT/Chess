@@ -25,6 +25,9 @@ namespace ChessWPF
             InitializeComponent();
         }
 
+        bool isMouseCapture = false;
+
+
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Image image = (Image)sender;
@@ -32,7 +35,7 @@ namespace ChessWPF
 
             image.CaptureMouse();
             isMouseCapture = true;
-            MouseXOffset
+
         }
 
         private void Image_MouseMove(object sender, MouseEventArgs e)
