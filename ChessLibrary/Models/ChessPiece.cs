@@ -1,4 +1,5 @@
-﻿using Chess.Interfaces;
+﻿using ChessLibrary.Controllers;
+using ChessLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,9 @@ namespace Chess.Models
     
         public bool IsLight { get; set; }
 
-        public void Movement(Program.ChessCoordinates startLocation, Program.ChessCoordinates endLocation)
+        public virtual bool ValidMovement(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)
         {
-
+            return false;
         }
 
         override

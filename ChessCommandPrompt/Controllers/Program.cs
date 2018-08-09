@@ -24,8 +24,12 @@ namespace Chess
             ParseInput("Klb4");
             ParseInput("Klh1");
 
-            ParseInput("c5 c6");
-            ParseInput("h1 h2");
+            ParseInput("c5 c4");
+            ParseInput("c4 b4");
+            ParseInput("b4 b3");
+            ParseInput("b3 b2");
+            ParseInput("b2 a2");
+            ParseInput("a2 a1");
 
             //ParseInput("b2 a2");
             //foreach (string line in lines)
@@ -401,6 +405,30 @@ namespace Chess
 
             //need a board to do this part but I'm gonna remove the piece from its space on the board and put it at the new space
             //actually wtf
+        }
+
+        public static char GetCharFromNumber(int i)
+        {
+            switch (i)
+            {
+                case 0:
+                    return 'a';
+                case 1:
+                    return 'b';
+                case 2:
+                    return 'c';
+                case 3:
+                    return 'd';
+                case 4:
+                    return 'e';
+                case 5:
+                    return 'f';
+                case 6:
+                    return 'g';
+                case 7:
+                    return 'h';
+            }
+            return 'a';
         }
     }
 }

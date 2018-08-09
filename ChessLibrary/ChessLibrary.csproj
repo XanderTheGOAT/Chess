@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BoardLogic.cs" />
+    <Compile Include="Controllers\FileLogic.cs" />
+    <Compile Include="Controllers\Program.cs" />
     <Compile Include="FileParsing.cs" />
     <Compile Include="Models\Bishop.cs" />
     <Compile Include="Models\ChessPiece.cs" />
@@ -49,6 +52,9 @@
     <Compile Include="Models\Queen.cs" />
     <Compile Include="Models\Rook.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -69,8 +69,8 @@ namespace Chess.Models
                     validMoves.Add(Program.board[row, column + 1]);
                 }
             }
-
-            Program.ChessCoordinates lookingFor = new Program.ChessCoordinates(endLocation.Column, Program.GetColumnFromChar(endLocation.Column).GetHashCode(), null);
+            
+            Program.ChessCoordinates lookingFor = new Program.ChessCoordinates(Program.GetCharFromNumber(endLocation.Row-1), Program.GetColumnFromChar(endLocation.Column).GetHashCode(), null);
             Console.WriteLine("Looking for: " + lookingFor);
             foreach (var space in validMoves)
             {
