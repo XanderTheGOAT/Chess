@@ -38,9 +38,9 @@ namespace ChessLibrary.Controllers
         {
             char column;
             int row;
-            ChessPiece piece;
+            Chess.Models.ChessPiece piece;
 
-            public ChessCoordinates(char column, int row, ChessPiece piece1) : this()
+            public ChessCoordinates(char column, int row, Chess.Models.ChessPiece piece1) : this()
             {
                 Column = column;
                 Row = row;
@@ -51,7 +51,7 @@ namespace ChessLibrary.Controllers
 
             public int Row { get; set; }
 
-            public ChessPiece Piece { get; set; }
+            public Chess.Models.ChessPiece Piece { get; set; }
 
             override
             public string ToString()
@@ -147,6 +147,30 @@ namespace ChessLibrary.Controllers
 
             //need a board to do this part but I'm gonna remove the piece from its space on the board and put it at the new space
             //actually wtf
+        }
+
+        public static char GetCharFromNumber(int i)
+        {
+            switch (i)
+            {
+                case 0:
+                    return 'a';
+                case 1:
+                    return 'b';
+                case 2:
+                    return 'c';
+                case 3:
+                    return 'd';
+                case 4:
+                    return 'e';
+                case 5:
+                    return 'f';
+                case 6:
+                    return 'g';
+                case 7:
+                    return 'h';
+            }
+            return 'a';
         }
     }
 }
