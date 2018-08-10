@@ -44,6 +44,7 @@
     <Compile Include="Controllers\FileLogic.cs" />
     <Compile Include="Controllers\Program.cs" />
     <Compile Include="FileParsing.cs" />
+    <Compile Include="Interfaces\IChessPiece.cs" />
     <Compile Include="Models\Bishop.cs" />
     <Compile Include="Models\ChessPiece.cs" />
     <Compile Include="Models\King.cs" />
@@ -53,8 +54,6 @@
     <Compile Include="Models\Rook.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
