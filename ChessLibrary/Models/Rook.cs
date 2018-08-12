@@ -118,11 +118,10 @@ namespace Chess.Models
                 }
             }
             BoardLogic.ChessCoordinates lookingFor = new BoardLogic.ChessCoordinates(BoardLogic.GetCharFromNumber(FileLogic.GetColumnFromChar(endLocation.Column).GetHashCode()), endLocation.Row - 1, null);
-            BoardLogic.ChessCoordinates lookingFor2 = new BoardLogic.ChessCoordinates(BoardLogic.GetCharFromNumber(endLocation.Row - 1), FileLogic.GetColumnFromChar(endLocation.Column).GetHashCode(), null);
-
+            
             foreach (var space in validMoves)
             {
-                if (space == lookingFor || space == lookingFor2)
+                if (space == lookingFor)
                 {
                     return true;
                 }

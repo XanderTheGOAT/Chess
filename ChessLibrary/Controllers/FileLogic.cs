@@ -33,7 +33,7 @@ namespace ChessLibrary.Controllers
                 }
                 else
                 {
-                    Console.WriteLine(ParsePiecePlacement(toParse));
+                    ParsePiecePlacement(toParse);
                 }
             }
             else if (toParse.Length == 5)
@@ -44,12 +44,12 @@ namespace ChessLibrary.Controllers
                 }
                 else
                 {
-                    Console.WriteLine(ParsePieceMovement(toParse));
+                    ParsePieceMovement(toParse);
                 }
             }
             else if (toParse.Length == 11)
             {
-                Console.WriteLine(ParseCastling(toParse));
+                ParseCastling(toParse);
             }
         }
 
@@ -205,7 +205,6 @@ namespace ChessLibrary.Controllers
                     break;
             }
             Program.board[(coordinates.Row - 1), (column.GetHashCode())].Piece.IsLight = (color == "White") ? true : false;
-            Console.WriteLine("Yeet" + Program.board[(coordinates.Row - 1), (column.GetHashCode())]);
         }
 
         static string ParseCastling(string move)

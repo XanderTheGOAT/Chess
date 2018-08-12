@@ -121,11 +121,11 @@ namespace Chess.Models
                 }
             }
             Program.ChessCoordinates lookingFor = new Program.ChessCoordinates(Program.GetCharFromNumber(Program.GetColumnFromChar(endLocation.Column).GetHashCode()), endLocation.Row - 1, null);
-            Program.ChessCoordinates lookingFor2 = new Program.ChessCoordinates(Program.GetCharFromNumber(endLocation.Row - 1), Program.GetColumnFromChar(endLocation.Column).GetHashCode(), null);
+            //Program.ChessCoordinates lookingFor2 = new Program.ChessCoordinates(Program.GetCharFromNumber(endLocation.Row - 1), Program.GetColumnFromChar(endLocation.Column).GetHashCode(), null);
 
             foreach (var space in validMoves)
             {
-                if (space == lookingFor || space == lookingFor2)
+                if (space == lookingFor)
                 {
                     return true;
                 }
