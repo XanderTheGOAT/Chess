@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chess.Models
+namespace ChessLibrary.Models
 {
-    abstract class ChessPiece : IChessPiece
+    public abstract class ChessPiece : IChessPiece
     {
         bool isLight;
     
