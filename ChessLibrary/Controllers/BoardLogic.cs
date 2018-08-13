@@ -1,4 +1,4 @@
-﻿using Chess;
+﻿using ChessLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ChessLibrary.Controllers
 {
-    class BoardLogic
+    public class BoardLogic
     {
         public List<ColumnCoordinates> coordinates = new List<ColumnCoordinates>
         {
@@ -38,9 +38,9 @@ namespace ChessLibrary.Controllers
         {
             char column;
             int row;
-            Chess.Models.ChessPiece piece;
+            ChessPiece piece;
 
-            public ChessCoordinates(char column, int row, Chess.Models.ChessPiece piece1) : this()
+            public ChessCoordinates(char column, int row, ChessPiece piece1) : this()
             {
                 Column = column;
                 Row = row;
@@ -51,7 +51,35 @@ namespace ChessLibrary.Controllers
 
             public int Row { get; set; }
 
-            public Chess.Models.ChessPiece Piece { get; set; }
+            public ChessPiece Piece { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                if (!(obj is ChessCoordinates))
+                {
+                    return false;
+                }
+
+                var coordinates = (ChessCoordinates)obj;
+                return column == coordinates.column &&
+                       row == coordinates.row &&
+                       EqualityComparer<ChessPiece>.Default.Equals(piece, coordinates.piece) &&
+                       Column == coordinates.Column &&
+                       Row == coordinates.Row &&
+                       EqualityComparer<ChessPiece>.Default.Equals(Piece, coordinates.Piece);
+            }
+
+            public override int GetHashCode()
+            {
+                var hashCode = 1875234118;
+                hashCode = hashCode * -1521134295 + column.GetHashCode();
+                hashCode = hashCode * -1521134295 + row.GetHashCode();
+                hashCode = hashCode * -1521134295 + EqualityComparer<ChessPiece>.Default.GetHashCode(piece);
+                hashCode = hashCode * -1521134295 + Column.GetHashCode();
+                hashCode = hashCode * -1521134295 + Row.GetHashCode();
+                hashCode = hashCode * -1521134295 + EqualityComparer<ChessPiece>.Default.GetHashCode(Piece);
+                return hashCode;
+            }
 
             override
             public string ToString()

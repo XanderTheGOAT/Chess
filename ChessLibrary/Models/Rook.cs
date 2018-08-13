@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ChessLibrary.Controllers;
 
-namespace Chess.Models
+namespace ChessLibrary.Models
 {
-    class Rook : ChessPiece
+    public class Rook : ChessPiece
     {
         bool isLight;
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ChessLibrary.Controllers
 {
-    class FileLogic
+    public class FileLogic
     {
         #region fileParsing
         static void FileRead(string path, ref string text)
