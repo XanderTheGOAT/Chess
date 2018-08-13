@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chess.Models
+namespace ChessLibrary.Models
 {
-    class Queen : ChessPiece
+    public class Queen : ChessPiece
     {
         bool isLight;
 
