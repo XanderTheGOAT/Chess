@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chess.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ChessLibrary.Controllers
 {
-    public class Program
+    class Program
     {
         public static BoardLogic.ChessCoordinates[,] board = new BoardLogic.ChessCoordinates[8, 8];
     }
