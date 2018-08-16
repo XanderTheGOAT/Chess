@@ -19,7 +19,7 @@ namespace Chess.Models
 
             //validate movement eventually
             int column = Program.GetColumnFromChar(startLocation.Column).GetHashCode();
-            int row = startLocation.Row-1;
+            int row = startLocation.Row;
             Console.WriteLine(startLocation);
             Console.WriteLine(endLocation);
             Console.WriteLine(row);
