@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessLibrary.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ChessLibrary.Models
 {
-    public class Knight: ChessPiece
+    public class Knight : ChessPiece
     {
         public Knight()
         {
@@ -14,11 +15,126 @@ namespace ChessLibrary.Models
         }
         bool isLight;
 
-        public bool IsLight { get; set; }
+        public new bool IsLight { get; set; }
 
-        public void Movement()
+        public override bool ValidMovement(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)
         {
             //validate movement eventually
+            List<BoardLogic.ChessCoordinates> validMoves = new List<BoardLogic.ChessCoordinates>();
+
+            //validate movement eventually
+            int column = FileLogic.GetColumnFromChar(startLocation.Column).GetHashCode();
+            int row = startLocation.Row;
+
+            if (row - 2 >= 0)
+            {
+                if (column - 1 >= 0)
+                {
+                    if (Program.board[row - 2, column - 1].Piece == null)
+                    {
+                        validMoves.Add(Program.board[row - 2, column - 1]);
+                    }
+                    else if (Program.board[row - 2, column - 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                    {
+                        validMoves.Add(Program.board[row - 2, column - 1]);
+                    }
+                }
+                if (column + 1 <= 7)
+                {
+                    if (Program.board[row - 2, column + 1].Piece == null)
+                    {
+                        validMoves.Add(Program.board[row - 2, column + 1]);
+                    }
+                    else if (Program.board[row - 2, column + 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                    {
+                        validMoves.Add(Program.board[row - 2, column + 1]);
+                    }
+                }
+            }
+            if (row + 2 <= 7)
+            {
+                if (column - 1 >= 0)
+                {
+                    if (Program.board[row + 2, column - 1].Piece == null)
+                    {
+                        validMoves.Add(Program.board[row + 2, column - 1]);
+                    }
+                    else if (Program.board[row + 2, column - 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                    {
+                        validMoves.Add(Program.board[row + 2, column - 1]);
+                    }
+                }
+                if (column + 1 <= 7)
+                {
+                    if (Program.board[row + 2, column + 1].Piece == null)
+                    {
+                        validMoves.Add(Program.board[row + 2, column + 1]);
+                    }
+                    else if (Program.board[row + 2, column + 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                    {
+                        validMoves.Add(Program.board[row + 2, column + 1]);
+                    }
+                }
+            }
+            if (column - 2 >= 0)
+            {
+                if (row - 1 >= 0)
+                {
+                    if (Program.board[row - 1, column - 2].Piece == null)
+                    {
+                        validMoves.Add(Program.board[row - 1, column - 2]);
+                    }
+                    else if (Program.board[row - 1, column - 2].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                    {
+                        validMoves.Add(Program.board[row - 1, column - 2]);
+                    }
+                }
+                if (row + 1 <= 7)
+                {
+                    if (Program.board[row - 1, column + 2].Piece == null)
+                    {
+                        validMoves.Add(Program.board[row - 1, column + 2]);
+                    }
+                    else if (Program.board[row - 1, column + 2].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                    {
+                        validMoves.Add(Program.board[row - 1, column + 2]);
+                    }
+                }
+            }
+            if (column + 2 <= 7)
+            {
+                if (row - 1 >= 0)
+                {
+                    if (Program.board[row - 1, column + 2].Piece == null)
+                    {
+                        validMoves.Add(Program.board[row - 1, column + 2]);
+                    }
+                    else if (Program.board[row - 1, column + 2].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                    {
+                        validMoves.Add(Program.board[row - 1, column + 2]);
+                    }
+                }
+                if (row + 1 <= 7)
+                {
+                    if (Program.board[row + 1, column + 2].Piece == null)
+                    {
+                        validMoves.Add(Program.board[row + 1, column + 2]);
+                    }
+                    else if (Program.board[row + 1, column + 2].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                    {
+                        validMoves.Add(Program.board[row + 1, column + 2]);
+                    }
+                }
+            }
+            BoardLogic.ChessCoordinates lookingFor = new BoardLogic.ChessCoordinates(BoardLogic.GetCharFromNumber(endLocation.Row - 1), FileLogic.GetColumnFromChar(endLocation.Column).GetHashCode(), null);
+            foreach (var space in validMoves)
+            {
+                if (space == lookingFor)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         override
