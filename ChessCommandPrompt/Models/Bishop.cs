@@ -31,7 +31,11 @@ namespace Chess.Models
                 {
                     if (goingDown - 1 >= 0 && goingLeft - 1 >= 0)
                     {
+<<<<<<< HEAD
                         Program.ChessCoordinates maybeGood = CheckSpaces(Program.board[goingDown - 1, column - 1], startLocation);
+=======
+                        Program.ChessCoordinates maybeGood = CheckSpaces(Program.board[goingDown - 1, goingLeft - 1], startLocation);
+>>>>>>> master
                         Console.WriteLine(maybeGood);
                         if (maybeGood == new Program.ChessCoordinates('0', -1, null))
                         {
@@ -58,7 +62,11 @@ namespace Chess.Models
                 {
                     if (goingUp + 1 <= 7)
                     {
+<<<<<<< HEAD
                         Program.ChessCoordinates maybeGood = CheckSpaces(Program.board[goingUp + 1, column + 1], startLocation);
+=======
+                        Program.ChessCoordinates maybeGood = CheckSpaces(Program.board[goingUp + 1, goingRight + 1], startLocation);
+>>>>>>> master
                         Console.WriteLine(maybeGood);
                         if (maybeGood == new Program.ChessCoordinates('0', -1, null))
                         {
@@ -85,7 +93,11 @@ namespace Chess.Models
                 {
                     if (goingLeft - 1 >= 0 && goingUp + 1 <= 7)
                     {
+<<<<<<< HEAD
                         Program.ChessCoordinates maybeGood = CheckSpaces(Program.board[row + 1, goingLeft - 1], startLocation);
+=======
+                        Program.ChessCoordinates maybeGood = CheckSpaces(Program.board[goingUp + 1, goingLeft - 1], startLocation);
+>>>>>>> master
                         if (maybeGood == new Program.ChessCoordinates('0', -1, null))
                         {
                             break;
@@ -111,7 +123,11 @@ namespace Chess.Models
                 {
                     if (goingRight + 1 <= 7 && goingDown - 1 >= 0)
                     {
+<<<<<<< HEAD
                         Program.ChessCoordinates maybeGood = CheckSpaces(Program.board[row - 1, goingRight + 1], startLocation);
+=======
+                        Program.ChessCoordinates maybeGood = CheckSpaces(Program.board[goingDown - 1, goingRight + 1], startLocation);
+>>>>>>> master
                         if (maybeGood == new Program.ChessCoordinates('0', -1, null))
                         {
                             break;
