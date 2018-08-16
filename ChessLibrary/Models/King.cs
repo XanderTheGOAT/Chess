@@ -35,17 +35,6 @@ namespace ChessLibrary.Models
                 {
                     validMoves.Add(Program.board[row - 1, column]);
                 }
-                if (column + 1 <= 7)
-                {
-                    if (Program.board[row - 1, column + 1].Piece == null || Program.board[row - 1, column + 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
-                    {
-                        validMoves.Add(Program.board[row - 1, column + 1]);
-                    }
-                    else if (Program.board[row - 1, column + 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
-                    {
-                        validMoves.Add(Program.board[row - 1, column + 1]);
-                    }
-                }
             }
             if (row + 1 <= 7)
             {
@@ -56,17 +45,6 @@ namespace ChessLibrary.Models
                 else if (Program.board[row + 1, column].Piece.IsLight != Program.board[row, column].Piece.IsLight)
                 {
                     validMoves.Add(Program.board[row + 1, column]);
-                }
-                if (column - 1 >= 0)
-                {
-                    if (Program.board[row + 1, column - 1].Piece == null || Program.board[row + 1, column - 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
-                    {
-                        validMoves.Add(Program.board[row + 1, column + 1]);
-                    }
-                    else if (Program.board[row + 1, column - 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
-                    {
-                        validMoves.Add(Program.board[row + 1, column + 1]);
-                    }
                 }
             }
             if (column - 1 >= 0)
@@ -79,17 +57,6 @@ namespace ChessLibrary.Models
                 {
                     validMoves.Add(Program.board[row, column - 1]);
                 }
-                if (row - 1 >= 7)
-                {
-                    if (Program.board[row - 1, column - 1].Piece == null || Program.board[row - 1, column - 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
-                    {
-                        validMoves.Add(Program.board[row - 1, column + 1]);
-                    }
-                    else if (Program.board[row - 1, column - 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
-                    {
-                        validMoves.Add(Program.board[row - 1, column + 1]);
-                    }
-                }
             }
             if (column + 1 <= 7)
             {
@@ -100,17 +67,6 @@ namespace ChessLibrary.Models
                 else if (Program.board[row, column + 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
                 {
                     validMoves.Add(Program.board[row, column + 1]);
-                }
-                if (row + 1 <= 7)
-                {
-                    if (Program.board[row + 1, column + 1].Piece == null || Program.board[row + 1, column + 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
-                    {
-                        validMoves.Add(Program.board[row + 1, column + 1]);
-                    }
-                    else if (Program.board[row + 1, column + 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
-                    {
-                        validMoves.Add(Program.board[row + 1, column + 1]);
-                    }
                 }
             }
 

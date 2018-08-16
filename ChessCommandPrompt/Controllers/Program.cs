@@ -20,20 +20,11 @@ namespace Chess
             //var lines = File.ReadLines($"../../{"MoveTests1.txt"}");
             //string[] splitString = SplitString('\n', fileMessage);
             InitializeBoard();
-<<<<<<< HEAD
             ParseInput("Bdc5");
             ParseInput("Klc7");
 
             ParseInput("c5 b6");
             ParseInput("b6 c7");
-=======
-            ParseInput("Qdc5");
-            ParseInput("Klc7");
-
-            ParseInput("c5 e3");
-            ParseInput("e3 c5");
-            ParseInput("c5 c7");
->>>>>>> master
 
             //ParseInput("b2 a2");
             //foreach (string line in lines)
