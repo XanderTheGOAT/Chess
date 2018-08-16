@@ -9,10 +9,7 @@ namespace ChessLibrary.Models
     public class Queen : ChessPiece
     {
         bool isLight;
-        public Queen()
-        {
 
-        }
         public bool IsLight { get; set; }
 
         public void Movement()

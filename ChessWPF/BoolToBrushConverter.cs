@@ -18,7 +18,7 @@ namespace ChessWPF
 
             if (targetType == typeof(Brush))
             {
-                result = ((bool)value) ? Brushes.OrangeRed : Brushes.Pink;
+                result = ((bool)value) ? Brushes.Black : Brushes.White;
             }
             return result;
         }

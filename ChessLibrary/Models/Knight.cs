@@ -8,10 +8,6 @@ namespace ChessLibrary.Models
 {
     public class Knight: ChessPiece
     {
-        public Knight()
-        {
-
-        }
         bool isLight;
 
         public bool IsLight { get; set; }

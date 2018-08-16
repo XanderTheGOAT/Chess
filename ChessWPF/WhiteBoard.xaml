@@ -10,10 +10,10 @@
         <Grid.Resources>
             <local:BoolToBrushConverter x:Key="btbc"></local:BoolToBrushConverter>
         </Grid.Resources>
-        <Rectangle  Name="background" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"
+        <Rectangle  HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"
                Fill="{Binding ElementName=cbxIsBlack, Path=IsChecked, Converter={StaticResource btbc}}"
-               Width="800" Height="450" Stroke="Black" Panel.ZIndex="-1"/>
-        <CheckBox Name="cbxIsBlack" HorizontalAlignment="Left" Margin="384,107,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <Image Name="imgChessPiece" Source="C:/Neumont Apps/Visual Studio/Project Course/ChessRepo/Chess/Chess/ChessWPF/Images/BlackPieces/BlackKing.png" HorizontalAlignment="Left" Height="36" VerticalAlignment="Top" Width="31" Margin="20,0,0,0"/>
+               Width="800" Height="450" Stroke="Black"/>
+        <CheckBox Name="cbxIsBlack" Content="" HorizontalAlignment="Left" Margin="384,107,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Image Name="imgChessPiece" HorizontalAlignment="Left" Height="333" Margin="255,68,0,0" VerticalAlignment="Top" Width="278"/>
     </Grid>
 </UserControl>

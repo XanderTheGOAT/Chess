@@ -13,11 +13,6 @@ namespace ChessLibrary.Models
 
         public bool IsLight { get; set; }
 
-        public King()
-        {
-
-        }
-
         public override bool ValidMovement(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)
         {
             List<BoardLogic.ChessCoordinates> validMoves = new List<BoardLogic.ChessCoordinates>();

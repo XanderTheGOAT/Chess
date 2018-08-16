@@ -10,10 +10,7 @@ namespace ChessLibrary.Models
     public class Rook : ChessPiece
     {
         bool isLight;
-        public Rook()
-        {
 
-        }
         public new bool IsLight { get; set; }
 
         public new bool ValidMovement(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)

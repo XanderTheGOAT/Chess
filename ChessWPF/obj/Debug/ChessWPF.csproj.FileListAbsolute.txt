@@ -1,5 +1,6 @@
 C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\bin\Debug\ChessWPF.exe.config
 C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\bin\Debug\ChessWPF.exe
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\bin\Debug\ChessWPF.pdb
 C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\bin\Debug\Chess.exe
 C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\bin\Debug\ChessLibrary.dll
 C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\bin\Debug\Chess.pdb
@@ -20,4 +21,4 @@ C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\
 C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\ChessWPF.csproj.CopyComplete
 C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\ChessWPF.exe
 C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\ChessWPF.pdb
-C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\bin\Debug\ChessWPF.pdb
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\ChessWPF.csprojAssemblyReference.cache

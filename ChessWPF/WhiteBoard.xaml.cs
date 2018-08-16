@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,30 +15,14 @@ using System.Windows.Shapes;
 
 namespace ChessWPF
 {
-
-    public partial class Board : UserControl, INotifyPropertyChanged
+    /// <summary>
+    /// Interaction logic for UserControl1.xaml
+    /// </summary>
+    public partial class Board : UserControl
     {
         public Board()
         {
             InitializeComponent();
-            Binding b = new Binding();
-            b.Source = this;
-            b.Path = new PropertyPath("DisplayedImage");
-            imgChessPiece.SetBinding(Image.SourceProperty, b);
-        }
-
-        public ImageSource displayedImage;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public ImageSource DisplayedImage
-        {
-            get { return displayedImage; }
-            set
-            {
-                displayedImage = value;
-                new PropertyChangedEventArgs("DisplayedImage");
-            }
         }
     }
 }

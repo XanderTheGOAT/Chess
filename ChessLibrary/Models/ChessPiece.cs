@@ -11,11 +11,7 @@ namespace ChessLibrary.Models
     public abstract class ChessPiece : IChessPiece
     {
         bool isLight;
-
-        public ChessPiece()
-        {
-
-        }
+    
         public bool IsLight { get; set; }
 
         public virtual bool ValidMovement(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)
