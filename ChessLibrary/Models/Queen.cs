@@ -11,7 +11,14 @@ namespace ChessLibrary.Models
     {
         bool isLight;
 
+<<<<<<< HEAD
+        public bool IsLight { get; set; }
         public new bool IsLight { get; set; }
+        }
+        public bool IsLight { get; set; }
+=======
+        public new bool IsLight { get; set; }
+>>>>>>> 40dac68352106bb102dd9fe78e41e115fcff742b
 
 
         public override bool ValidMovement(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)

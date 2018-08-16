@@ -12,8 +12,13 @@ DEBUG;TRACE
 C:\Users\Mania\Chess Repo\Chess\ChessWPF\App.xaml
 2-1876393703
 
+<<<<<<< HEAD
+11936874821
+15-1592981524
+=======
 11-730200309
 152108345731
+>>>>>>> 40dac68352106bb102dd9fe78e41e115fcff742b
 MainWindow.xaml;WhiteBoard.xaml;
 
 True

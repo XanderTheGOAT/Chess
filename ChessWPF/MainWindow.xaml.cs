@@ -336,7 +336,6 @@ namespace ChessWPF
                                 }
                                 else if(savedLocation.imgChessPiece.Source.ToString().Contains("Queen"))
                                 {
-
                                     Queen queen = new Queen();
                                     if(queen.ValidMovement(Program.board[row,column], Program.board[i,j]))
                                         GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
