@@ -6,7 +6,5 @@
         xmlns:local="clr-namespace:ChessWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
-    <UniformGrid Name="ugChessBoard" Rows="10" Columns="10" Background="#FF640D0D">
-        
-    </UniformGrid>
+    <UniformGrid Name="ugChessBoard" Rows="10" Columns="10" Background="#FF640D0D"/>
 </Window>

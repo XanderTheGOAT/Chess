@@ -10,6 +10,10 @@ namespace ChessLibrary.Models
     {
         bool isLight;
 
+        public Pawn()
+        {
+
+        }
         public bool IsLight { get; set; }
 
         public void Movement()

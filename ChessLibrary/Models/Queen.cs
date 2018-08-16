@@ -10,8 +10,15 @@ namespace ChessLibrary.Models
     public class Queen : ChessPiece
     {
         bool isLight;
+        public Queen()
+        {
 
+<<<<<<< HEAD
         public new bool IsLight { get; set; }
+=======
+        }
+        public bool IsLight { get; set; }
+>>>>>>> parent of c702ba9... Made more gui work :)
 
         public override bool ValidMovement(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)
         {
