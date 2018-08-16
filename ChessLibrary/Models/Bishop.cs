@@ -9,6 +9,10 @@ namespace ChessLibrary.Models
     public class Bishop: ChessPiece
     {
         bool isLight;
+        public Bishop()
+        {
+
+        }
 
         public bool IsLight { get; set; }
 

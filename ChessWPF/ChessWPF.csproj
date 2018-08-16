@@ -111,5 +111,43 @@
       <Name>Chess</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BlackPieces\BlackBishop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BlackPieces\BlackKing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BlackPieces\BlackKnight.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BlackPieces\BlackPawn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BlackPieces\BlackQueen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BlackPieces\BlackRook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\WhitePieces\WhiteBishop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\WhitePieces\WhiteKing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\WhitePieces\WhiteKnight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\WhitePieces\WhitePawn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\WhitePieces\WhiteQueen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\WhitePieces\WhiteRook.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

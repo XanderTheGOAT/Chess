@@ -186,22 +186,22 @@ namespace ChessLibrary.Controllers
             switch (piece)
             {
                 case "Q":
-                    Program.board[(coordinates.Row - 1), (column.GetHashCode())].Piece = new Chess.Models.Queen();
+                    Program.board[(coordinates.Row - 1), (column.GetHashCode())].Piece = new Models.Queen();
                     break;
                 case "K":
-                    Program.board[(coordinates.Row - 1), (column.GetHashCode())].Piece = new Chess.Models.King();
+                    Program.board[(coordinates.Row - 1), (column.GetHashCode())].Piece = new Models.King();
                     break;
                 case "B":
-                    Program.board[(coordinates.Row - 1), (column.GetHashCode())].Piece = new Chess.Models.Bishop();
+                    Program.board[(coordinates.Row - 1), (column.GetHashCode())].Piece = new Models.Bishop();
                     break;
                 case "N":
-                    Program.board[(coordinates.Row - 1), (column.GetHashCode())].Piece = new Chess.Models.Knight();
+                    Program.board[(coordinates.Row - 1), (column.GetHashCode())].Piece = new Models.Knight();
                     break;
                 case "R":
-                    Program.board[(coordinates.Row - 1), (column.GetHashCode())].Piece = new Chess.Models.Rook();
+                    Program.board[(coordinates.Row - 1), (column.GetHashCode())].Piece = new Models.Rook();
                     break;
                 case "P":
-                    Program.board[(coordinates.Row - 1), (column.GetHashCode())].Piece = new Chess.Models.Pawn();
+                    Program.board[(coordinates.Row - 1), (column.GetHashCode())].Piece = new Models.Pawn();
                     break;
             }
             Program.board[(coordinates.Row - 1), (column.GetHashCode())].Piece.IsLight = (color == "White") ? true : false;
