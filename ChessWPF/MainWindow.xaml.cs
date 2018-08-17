@@ -28,11 +28,12 @@ namespace ChessWPF
         }
 
         List<List<Board>> GUIBoard = new List<List<Board>>();
-        bool isBlackTurn = false;
+        Random r = new Random();
+        bool isBlackTurn = true;
+        Label emptySpot2 = new Label();
         ComboBox promotionStatus = new ComboBox();
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
             #region Assigns the board
             Program.board.Initialize();
             for (int i = 0; i < 8; i++)
@@ -68,6 +69,16 @@ namespace ChessWPF
                 GUIBoard.Add(boardRow);
                 #endregion
             }
+            int firstPlayer = r.Next(0,2);
+
+            if(firstPlayer == 0)
+            {
+                isBlackTurn = false;
+            }
+            else if(firstPlayer == 1)
+            {
+                isBlackTurn = true;
+            }
             BoardLogic.InitializeBoard();
             BasicChessBoard();
             DrawBoard();
@@ -82,6 +93,9 @@ namespace ChessWPF
             promotionStatus.ItemsSource = promotionTypes;
             promotionStatus.SelectedIndex = 0;
             ugChessBoard.Children.Add(promotionStatus);
+
+            promotionStatus.VerticalContentAlignment = VerticalAlignment.Center;
+            promotionStatus.HorizontalContentAlignment = HorizontalAlignment.Center;
             for (int i = 0; i < 8; i++)
             {
                 Label column = new Label();
@@ -90,7 +104,17 @@ namespace ChessWPF
                 column.Content = Columns[i].ToString();
                 ugChessBoard.Children.Add(column);
             }
-            Label emptySpot2 = new Label();
+            if(isBlackTurn)
+            {
+                emptySpot2.Content = "Black Turn";
+            }
+            else
+            {
+                emptySpot2.Content = "White Turn";
+            }
+            emptySpot2.VerticalContentAlignment = VerticalAlignment.Center;
+            emptySpot2.HorizontalContentAlignment = HorizontalAlignment.Center;
+            emptySpot2.Foreground = Brushes.White;
             ugChessBoard.Children.Add(emptySpot2);
 
             for (int i = 0; i < 8; i++)
@@ -242,17 +266,6 @@ namespace ChessWPF
             {
                 Program.board[1, i].Piece = new Pawn();
             }
-
-
-        }
-
-        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Image image = (Image)sender;
-            Border border = (Border)image.Parent;
-
-            image.CaptureMouse();
-
         }
 
         Board clickedLocation = new Board();
@@ -330,7 +343,7 @@ namespace ChessWPF
                                 {
                                     GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
                                     Program.board[i, j].Piece = Program.board[column, row].Piece;
-                                    if (GUIBoard[i][j] == GUIBoard[7][j])
+                                    if (GUIBoard[i][j] == GUIBoard[0][j])
                                     {
                                         GUIBoard[i][j] = PromotionValidation(GUIBoard[i][j]);
                                     }
@@ -494,30 +507,27 @@ namespace ChessWPF
             }
             #endregion
             #region if same color is clicked
-            else if ((clickedLocation.imgChessPiece.Source != null && savedLocation.imgChessPiece.Source != null))
+            else if ((clickedLocation.imgChessPiece.Source != null && savedLocation.imgChessPiece.Source != null) && (savedLocation.imgChessPiece.Source.ToString().Contains("WhitePiece") && clickedLocation.imgChessPiece.Source.ToString().Contains("WhitePiece") || savedLocation.imgChessPiece.Source.ToString().Contains("BlackPiece") && clickedLocation.imgChessPiece.Source.ToString().Contains("BlackPiece")))
             {
-                if ((savedLocation.imgChessPiece.Source.ToString().Contains("WhitePiece") && clickedLocation.imgChessPiece.Source.ToString().Contains("WhitePiece")) || (savedLocation.imgChessPiece.Source.ToString().Contains("BlackPiece") && clickedLocation.imgChessPiece.Source.ToString().Contains("BlackPiece")))
+                if (!(bool)savedLocation.cbxIsBlack.IsChecked)
                 {
-                    if (!(bool)savedLocation.cbxIsBlack.IsChecked)
+                    savedLocation.background.Fill = Brushes.Pink;
+                }
+                else if ((bool)savedLocation.cbxIsBlack.IsChecked)
+                {
+                    savedLocation.background.Fill = Brushes.OrangeRed;
+                }
+                savedLocation = new Board();
+                clickedLocation.background.Fill = Brushes.LightBlue;
+                savedLocation = clickedLocation;
+                for (int i = 0; i < 8; i++)
+                {
+                    for (int j = 0; j < 8; j++)
                     {
-                        savedLocation.background.Fill = Brushes.Pink;
-                    }
-                    else if ((bool)savedLocation.cbxIsBlack.IsChecked)
-                    {
-                        savedLocation.background.Fill = Brushes.OrangeRed;
-                    }
-                    savedLocation = new Board();
-                    clickedLocation.background.Fill = Brushes.LightBlue;
-                    savedLocation = clickedLocation;
-                    for (int i = 0; i < 8; i++)
-                    {
-                        for (int j = 0; j < 8; j++)
+                        if (GUIBoard[i][j] == savedLocation)
                         {
-                            if (GUIBoard[i][j] == savedLocation)
-                            {
-                                column = i;
-                                row = j;
-                            }
+                            column = i;
+                            row = j;
                         }
                     }
                 }
@@ -527,6 +537,16 @@ namespace ChessWPF
             {
                 ValidateMovement();
             }
+            if (isBlackTurn)
+            {
+                emptySpot2.Content = "Black Turn";
+                emptySpot2.Foreground = Brushes.White;
+            }
+            else
+            {
+                emptySpot2.Content = "White Turn";
+            }
+
         }
 
 

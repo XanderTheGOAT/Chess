@@ -4,9 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ChessWPF"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" Height="auto" Width="auto">
     <Grid>
+        <Grid.RowDefinitions>
+            
+        </Grid.RowDefinitions>
         <Grid.Resources>
             <local:BoolToBrushConverter x:Key="btbc"></local:BoolToBrushConverter>
         </Grid.Resources>
@@ -14,6 +16,6 @@
                Fill="{Binding ElementName=cbxIsBlack, Path=IsChecked, Converter={StaticResource btbc}}"
                Width="800" Height="450" Stroke="Black" Panel.ZIndex="-1"/>
         <CheckBox Name="cbxIsBlack" HorizontalAlignment="Left" Margin="384,107,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <Image Name="imgChessPiece" Source="C:/Neumont Apps/Visual Studio/Project Course/ChessRepo/Chess/Chess/ChessWPF/Images/BlackPieces/BlackKing.png" HorizontalAlignment="Left" Height="36" VerticalAlignment="Top" Width="31" Margin="20,0,0,0"/>
+        <Image Name="imgChessPiece" Source="C:/Neumont Apps/Visual Studio/Project Course/ChessRepo/Chess/Chess/ChessWPF/Images/BlackPieces/BlackKing.png" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Top" Width="auto" Margin="0,0,0,0"/>
     </Grid>
 </UserControl>
