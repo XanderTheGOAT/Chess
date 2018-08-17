@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ChessLibrary.Models
 {
-    public class Bishop: ChessPiece
+    public class Bishop : ChessPiece
     {
         bool isLight;
         public Bishop()
