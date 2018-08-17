@@ -22,3 +22,27 @@ C:\Users\Mania\Chess Repo\Chess\ChessWPF\obj\Debug\ChessWPF.csproj.CoreCompileIn
 C:\Users\Mania\Chess Repo\Chess\ChessWPF\obj\Debug\ChessWPF.csproj.CopyComplete
 C:\Users\Mania\Chess Repo\Chess\ChessWPF\obj\Debug\ChessWPF.exe
 C:\Users\Mania\Chess Repo\Chess\ChessWPF\obj\Debug\ChessWPF.pdb
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\ChessWPF.csprojAssemblyReference.cache
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\MainWindow.g.cs
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\WhiteBoard.g.cs
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\App.g.cs
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\ChessWPF_MarkupCompile.cache
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\ChessWPF_MarkupCompile.lref
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\ChessWPF.exe
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\ChessWPF.pdb
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\bin\Debug\ChessWPF.exe.config
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\bin\Debug\ChessWPF.exe
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\bin\Debug\ChessWPF.pdb
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\bin\Debug\Chess.exe
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\bin\Debug\ChessLibrary.dll
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\bin\Debug\Chess.pdb
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\bin\Debug\Chess.exe.config
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\bin\Debug\ChessLibrary.pdb
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\MainWindow.baml
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\WhiteBoard.baml
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\ChessWPF.g.resources
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\ChessWPF.Properties.Resources.resources
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\ChessWPF.csproj.GenerateResource.cache
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\ChessWPF.csproj.CoreCompileInputs.cache
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\ChessWPF.csproj.CopyComplete
