@@ -687,4 +687,9 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+<<<<<<< HEAD
+ChessWPF/bin/Debug/ChessWPF.exe
+=======
+>>>>>>> 004cb063e2ce34d9f5a9b4600e2682294430f99a
+.vs/Chess/v15/.suo
 .vs/Chess/v15/.suo
