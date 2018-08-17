@@ -28,7 +28,8 @@ namespace ChessWPF
         }
 
         List<List<Board>> GUIBoard = new List<List<Board>>();
-
+        bool isBlackTurn = false;
+        ComboBox promotionStatus = new ComboBox();
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -76,9 +77,8 @@ namespace ChessWPF
         private void DrawBoard()
         {
             char[] Columns = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
-            #region Assigns the board
-            ComboBox promotionStatus = new ComboBox();
             string[] promotionTypes = { "Queen", "Bishop", "Rook", "Knight" };
+            #region Assigns the board
             promotionStatus.ItemsSource = promotionTypes;
             promotionStatus.SelectedIndex = 0;
             ugChessBoard.Children.Add(promotionStatus);
@@ -255,17 +255,6 @@ namespace ChessWPF
 
         }
 
-        private void Image_MouseMove(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-
         Board clickedLocation = new Board();
         Board savedLocation = new Board();
         int column = 0;
@@ -326,6 +315,10 @@ namespace ChessWPF
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Pawn"))
                                 {
                                     GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
+                                    if (GUIBoard[i][j] == GUIBoard[0][j])
+                                    {
+                                        GUIBoard[i][j]= PromotionValidation(GUIBoard[i][j]);
+                                    }
                                 }
                             }
                         }
@@ -339,7 +332,11 @@ namespace ChessWPF
                         savedLocation.background.Fill = Brushes.OrangeRed;
 
                     }
-                    savedLocation.imgChessPiece.Source = null;
+                    if (validMove)
+                    {
+                        savedLocation.imgChessPiece.Source = null;
+                        isBlackTurn = isBlackTurn ? false : true;
+                    }
                     savedLocation = new Board();
                 }
             }
@@ -404,14 +401,24 @@ namespace ChessWPF
                                     if (validMove)
                                     {
                                         GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
+<<<<<<< HEAD
                                         Program.board[i, j].Piece = Program.board[column, row].Piece;
                                     }
 
+=======
+>>>>>>> 90995750e13030083ecc3714b944a8c985030336
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Pawn"))
                                 {
                                     GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
+<<<<<<< HEAD
                                     Program.board[i, j].Piece = Program.board[column, row].Piece;
+=======
+                                    if(GUIBoard[i][j] == GUIBoard[7][j])
+                                    {
+                                        GUIBoard[i][j] = PromotionValidation(GUIBoard[i][j]);
+                                    }
+>>>>>>> 90995750e13030083ecc3714b944a8c985030336
                                 }
                                 if (!(bool)savedLocation.cbxIsBlack.IsChecked)
                                 {
@@ -424,7 +431,11 @@ namespace ChessWPF
                                 if (validMove)
                                 {
                                     savedLocation.imgChessPiece.Source = null;
+<<<<<<< HEAD
                                     Program.board[column, row].Piece = null;
+=======
+                                    isBlackTurn = isBlackTurn ? false : true;
+>>>>>>> 90995750e13030083ecc3714b944a8c985030336
                                 }
                                 savedLocation = new Board();
                             }
@@ -444,16 +455,19 @@ namespace ChessWPF
             {
                 if (clickedLocation.imgChessPiece.Source != null)
                 {
-                    clickedLocation.background.Fill = Brushes.LightBlue;
-                    savedLocation = clickedLocation;
-                    for (int i = 0; i < 8; i++)
+                    if ((clickedLocation.imgChessPiece.Source.ToString().Contains("WhitePiece") && !isBlackTurn) || (clickedLocation.imgChessPiece.Source.ToString().Contains("BlackPiece") && isBlackTurn))
                     {
-                        for (int j = 0; j < 8; j++)
+                        clickedLocation.background.Fill = Brushes.LightBlue;
+                        savedLocation = clickedLocation;
+                        for (int i = 0; i < 8; i++)
                         {
-                            if (GUIBoard[i][j] == savedLocation)
+                            for (int j = 0; j < 8; j++)
                             {
-                                column = i;
-                                row = j;
+                                if (GUIBoard[i][j] == savedLocation)
+                                {
+                                    column = i;
+                                    row = j;
+                                }
                             }
                         }
                     }
@@ -481,15 +495,31 @@ namespace ChessWPF
         }
 
 
-        private void PromotionValidation()
+        private Board PromotionValidation(Board pawn)
         {
+<<<<<<< HEAD
             if (ugChessBoard.Children[0].ToString().Contains("Queen"))
             {
 
             }
             else if (ugChessBoard.Children[0].ToString().Contains("Bishop"))
+=======
+            string packUri = "";
+            ChessPiece piece = new Pawn();
+            for (int i = 0; i < 8; i++)
+>>>>>>> 90995750e13030083ecc3714b944a8c985030336
             {
+                if (pawn.imgChessPiece.Source.ToString().Contains("WhitePiece"))
+                {
+                    if (promotionStatus.Text.ToString().Contains("Queen"))
+                    {
+                        packUri = "pack://application:,,,/ChessWPF;component/Images/WhitePieces/WhiteQueen.png";
+                    }
+                    else if (promotionStatus.Text.ToString().Contains("Bishop"))
+                    {
+                        packUri = "pack://application:,,,/ChessWPF;component/Images/WhitePieces/WhiteBishop.png";
 
+<<<<<<< HEAD
             }
             else if (ugChessBoard.Children[0].ToString().Contains("Rook"))
             {
@@ -497,9 +527,43 @@ namespace ChessWPF
             }
             else if (ugChessBoard.Children[0].ToString().Contains("Knight"))
             {
+=======
+                    }
+                    else if (promotionStatus.Text.ToString().Contains("Rook"))
+                    {
+                        packUri = "pack://application:,,,/ChessWPF;component/Images/WhitePieces/WhiteRook.png";
 
+                    }
+                    else if (promotionStatus.Text.ToString().Contains("Knight"))
+                    {
+                        packUri = "pack://application:,,,/ChessWPF;component/Images/WhitePieces/WhiteKnight.png";
+>>>>>>> 90995750e13030083ecc3714b944a8c985030336
+
+                    }
+                    pawn.imgChessPiece.Source = new ImageSourceConverter().ConvertFromString(packUri) as ImageSource;
+                }
+                else if (pawn.imgChessPiece.Source.ToString().Contains("BlackPiece"))
+                {
+                    if (promotionStatus.Text.ToString().Contains("Queen"))
+                    {
+                        packUri = "pack://application:,,,/ChessWPF;component/Images/BlackPieces/BlackQueen.png";
+                    }
+                    else if (promotionStatus.Text.ToString().Contains("Bishop"))
+                    {
+                        packUri = "pack://application:,,,/ChessWPF;component/Images/BlackPieces/BlackBishop.png";
+                    }
+                    else if (promotionStatus.Text.ToString().Contains("Rook"))
+                    {
+                        packUri = "pack://application:,,,/ChessWPF;component/Images/BlackPieces/BlackRook.png";
+                    }
+                    else if (promotionStatus.Text.ToString().Contains("Knight"))
+                    {
+                        packUri = "pack://application:,,,/ChessWPF;component/Images/BlackPieces/BlackKnight.png";
+                    }
+                    pawn.imgChessPiece.Source = new ImageSourceConverter().ConvertFromString(packUri) as ImageSource;
+                }
             }
-
+            return pawn;
         }
     }
 }
