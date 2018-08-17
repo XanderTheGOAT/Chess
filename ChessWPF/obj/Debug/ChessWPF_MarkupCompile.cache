@@ -4,20 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Mania\Chess Repo\Chess\ChessWPF\obj\Debug\
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\
 ChessWPF
 none
 false
 DEBUG;TRACE
-C:\Users\Mania\Chess Repo\Chess\ChessWPF\App.xaml
+C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\App.xaml
 2-1876393703
 
 7-748493528
-<<<<<<< HEAD
-152108345731
-=======
 15-1592981524
->>>>>>> 90995750e13030083ecc3714b944a8c985030336
 MainWindow.xaml;WhiteBoard.xaml;
 
 False
