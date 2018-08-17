@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ChessLibrary.Controllers
 {
-    public class Program
+    public static class Program
     {
         public static BoardLogic.ChessCoordinates[,] board = new BoardLogic.ChessCoordinates[8, 8];
     }

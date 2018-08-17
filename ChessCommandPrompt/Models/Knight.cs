@@ -10,7 +10,7 @@ namespace Chess.Models
     {
         bool isLight = true;
 
-        public bool IsLight { get; set; }
+        public new bool IsLight { get; set; }
 
         public bool ValidMovement()
         {

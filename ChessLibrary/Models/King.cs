@@ -28,94 +28,94 @@ namespace ChessLibrary.Models
 
             if (row - 1 >= 0)
             {
-                if (Program.board[row - 1, column].Piece == null)
+                if (Program.board[column, row - 1].Piece == null)
                 {
-                    validMoves.Add(Program.board[row - 1, column]);
+                    validMoves.Add(Program.board[column, row - 1]);
                 }
-                else if (Program.board[row - 1, column].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                else if (Program.board[column, row - 1].Piece.IsLight != Program.board[column, row].Piece.IsLight)
                 {
-                    validMoves.Add(Program.board[row - 1, column]);
+                    validMoves.Add(Program.board[column, row - 1]);
                 }
                 if (column + 1 <= 7)
                 {
-                    if (Program.board[row - 1, column + 1].Piece == null || Program.board[row - 1, column + 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                    if (Program.board[column + 1, row - 1].Piece == null)
                     {
-                        validMoves.Add(Program.board[row - 1, column + 1]);
+                        validMoves.Add(Program.board[column + 1, row - 1]);
                     }
-                    else if (Program.board[row - 1, column + 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                    else if (Program.board[column + 1, row - 1].Piece.IsLight != Program.board[column, row].Piece.IsLight)
                     {
-                        validMoves.Add(Program.board[row - 1, column + 1]);
+                        validMoves.Add(Program.board[column + 1, row - 1]);
                     }
                 }
             }
             if (row + 1 <= 7)
             {
-                if (Program.board[row + 1, column].Piece == null)
+                if (Program.board[column, row + 1].Piece == null)
                 {
-                    validMoves.Add(Program.board[row + 1, column]);
+                    validMoves.Add(Program.board[column, row + 1]);
                 }
-                else if (Program.board[row + 1, column].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                else if (Program.board[column, row + 1].Piece.IsLight != Program.board[column, row].Piece.IsLight)
                 {
-                    validMoves.Add(Program.board[row + 1, column]);
+                    validMoves.Add(Program.board[column, row + 1]);
                 }
                 if (column - 1 >= 0)
                 {
-                    if (Program.board[row + 1, column - 1].Piece == null || Program.board[row + 1, column - 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                    if (Program.board[column - 1, row + 1].Piece == null)
                     {
-                        validMoves.Add(Program.board[row + 1, column + 1]);
+                        validMoves.Add(Program.board[column - 1, row + 1]);
                     }
-                    else if (Program.board[row + 1, column - 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                    else if (Program.board[column - 1, row + 1].Piece.IsLight != Program.board[column, row].Piece.IsLight)
                     {
-                        validMoves.Add(Program.board[row + 1, column + 1]);
+                        validMoves.Add(Program.board[column - 1, row + 1]);
                     }
                 }
             }
             if (column - 1 >= 0)
             {
-                if (Program.board[row, column - 1].Piece == null || Program.board[row, column - 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                if (Program.board[column - 1, row].Piece == null)
                 {
-                    validMoves.Add(Program.board[row, column - 1]);
+                    validMoves.Add(Program.board[column - 1, row]);
                 }
-                else if (Program.board[row, column - 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                else if (Program.board[column - 1, row].Piece.IsLight != Program.board[column, row].Piece.IsLight)
                 {
-                    validMoves.Add(Program.board[row, column - 1]);
+                    validMoves.Add(Program.board[column - 1, row]);
                 }
                 if (row - 1 >= 7)
                 {
-                    if (Program.board[row - 1, column - 1].Piece == null || Program.board[row - 1, column - 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                    if (Program.board[column - 1, row - 1].Piece == null)
                     {
-                        validMoves.Add(Program.board[row - 1, column + 1]);
+                        validMoves.Add(Program.board[column - 1, row - 1]);
                     }
-                    else if (Program.board[row - 1, column - 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                    else if (Program.board[column - 1, row - 1].Piece.IsLight != Program.board[column, row].Piece.IsLight)
                     {
-                        validMoves.Add(Program.board[row - 1, column + 1]);
+                        validMoves.Add(Program.board[column - 1, row - 1]);
                     }
                 }
             }
             if (column + 1 <= 7)
             {
-                if (Program.board[row, column + 1].Piece == null || Program.board[row, column + 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                if (Program.board[column + 1, row].Piece == null)
                 {
-                    validMoves.Add(Program.board[row, column + 1]);
+                    validMoves.Add(Program.board[column + 1, row]);
                 }
-                else if (Program.board[row, column + 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                else if (Program.board[column + 1, row].Piece.IsLight != Program.board[column, row].Piece.IsLight)
                 {
-                    validMoves.Add(Program.board[row, column + 1]);
+                    validMoves.Add(Program.board[column + 1, row]);
                 }
                 if (row + 1 <= 7)
                 {
-                    if (Program.board[row + 1, column + 1].Piece == null || Program.board[row + 1, column + 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                    if (Program.board[column + 1, row + 1].Piece == null)
                     {
-                        validMoves.Add(Program.board[row + 1, column + 1]);
+                        validMoves.Add(Program.board[column + 1, row + 1]);
                     }
-                    else if (Program.board[row + 1, column + 1].Piece.IsLight != Program.board[row, column].Piece.IsLight)
+                    else if (Program.board[column + 1, row + 1].Piece.IsLight != Program.board[column, row].Piece.IsLight)
                     {
-                        validMoves.Add(Program.board[row + 1, column + 1]);
+                        validMoves.Add(Program.board[column + 1, row + 1]);
                     }
                 }
             }
 
-            BoardLogic.ChessCoordinates lookingFor = new BoardLogic.ChessCoordinates(BoardLogic.GetCharFromNumber(endLocation.Row - 1), FileLogic.GetColumnFromChar(endLocation.Column).GetHashCode(), null);
+            BoardLogic.ChessCoordinates lookingFor = new BoardLogic.ChessCoordinates(BoardLogic.GetCharFromNumber(FileLogic.GetColumnFromChar(endLocation.Column).GetHashCode()), endLocation.Row, null);
             foreach (var space in validMoves)
             {
                 if (space == lookingFor)

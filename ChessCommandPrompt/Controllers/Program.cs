@@ -20,11 +20,10 @@ namespace Chess
             //var lines = File.ReadLines($"../../{"MoveTests1.txt"}");
             //string[] splitString = SplitString('\n', fileMessage);
             InitializeBoard();
-            ParseInput("Bdc5");
-            ParseInput("Klc7");
+            ParseInput("Rda5");
+            ParseInput("Klb5");
 
-            ParseInput("c5 b6");
-            ParseInput("b6 c7");
+            ParseInput("a5 c5");
 
             //ParseInput("b2 a2");
             //foreach (string line in lines)
@@ -321,6 +320,23 @@ namespace Chess
             {
                 return (cc1.Column == cc2.Column && cc1.Row == cc2.Row);
             }
+
+            public override int GetHashCode()
+            {
+                var hashCode = 1875234118;
+                hashCode = hashCode * -1521134295 + column.GetHashCode();
+                hashCode = hashCode * -1521134295 + row.GetHashCode();
+                hashCode = hashCode * -1521134295 + EqualityComparer<ChessPiece>.Default.GetHashCode(piece);
+                hashCode = hashCode * -1521134295 + Column.GetHashCode();
+                hashCode = hashCode * -1521134295 + Row.GetHashCode();
+                hashCode = hashCode * -1521134295 + EqualityComparer<ChessPiece>.Default.GetHashCode(Piece);
+                return hashCode;
+            }
+
+            //public static override bool Equals(ChessCoordinates cc1, ChessCoordinates cc2)
+            //{
+            //    return false;
+            //}
         }
 
         static void InitializeBoard()

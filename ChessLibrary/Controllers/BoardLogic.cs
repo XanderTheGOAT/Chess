@@ -98,7 +98,7 @@ namespace ChessLibrary.Controllers
             }
         }
 
-        static void InitializeBoard()
+        public static void InitializeBoard()
         {
             char[] columnLetters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
             for (int i = 0; i < 8; i++)

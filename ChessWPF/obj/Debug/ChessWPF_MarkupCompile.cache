@@ -4,20 +4,16 @@
 winexe
 C#
 .cs
-C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\obj\Debug\
+C:\Users\Mania\Chess Repo\Chess\ChessWPF\obj\Debug\
 ChessWPF
 none
 false
 DEBUG;TRACE
-C:\Neumont Apps\Visual Studio\Project Course\ChessRepo\Chess\Chess\ChessWPF\App.xaml
+C:\Users\Mania\Chess Repo\Chess\ChessWPF\App.xaml
 2-1876393703
 
-<<<<<<< HEAD
-11936874821
-=======
 7-748493528
->>>>>>> GuiMovement
-15-1592981524
+152108345731
 MainWindow.xaml;WhiteBoard.xaml;
 
 False
