@@ -28,8 +28,8 @@ namespace ChessWPF
         }
 
         List<List<Board>> GUIBoard = new List<List<Board>>();
-
-            ComboBox promotionStatus = new ComboBox();
+        bool isBlackTurn = false;
+        ComboBox promotionStatus = new ComboBox();
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -254,17 +254,6 @@ namespace ChessWPF
 
         }
 
-        private void Image_MouseMove(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-
         Board clickedLocation = new Board();
         Board savedLocation = new Board();
         int column = 0;
@@ -325,7 +314,10 @@ namespace ChessWPF
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Pawn"))
                                 {
                                     GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                    GUIBoard[i][j] = PromotionValidation(GUIBoard[i][j]);
+                                    if (GUIBoard[i][j] == GUIBoard[0][j])
+                                    {
+                                        GUIBoard[i][j]= PromotionValidation(GUIBoard[i][j]);
+                                    }
                                 }
                             }
                         }
@@ -339,7 +331,11 @@ namespace ChessWPF
                         savedLocation.background.Fill = Brushes.OrangeRed;
 
                     }
-                    savedLocation.imgChessPiece.Source = null;
+                    if (validMove)
+                    {
+                        savedLocation.imgChessPiece.Source = null;
+                        isBlackTurn = isBlackTurn ? false : true;
+                    }
                     savedLocation = new Board();
                 }
             }
@@ -395,7 +391,10 @@ namespace ChessWPF
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Pawn"))
                                 {
                                     GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                    PromotionValidation(GUIBoard[i][j]);
+                                    if(GUIBoard[i][j] == GUIBoard[7][j])
+                                    {
+                                        GUIBoard[i][j] = PromotionValidation(GUIBoard[i][j]);
+                                    }
                                 }
                                 if (!(bool)savedLocation.cbxIsBlack.IsChecked)
                                 {
@@ -406,7 +405,10 @@ namespace ChessWPF
                                     savedLocation.background.Fill = Brushes.OrangeRed;
                                 }
                                 if (validMove)
+                                {
                                     savedLocation.imgChessPiece.Source = null;
+                                    isBlackTurn = isBlackTurn ? false : true;
+                                }
                                 savedLocation = new Board();
                             }
                         }
@@ -425,16 +427,19 @@ namespace ChessWPF
             {
                 if (clickedLocation.imgChessPiece.Source != null)
                 {
-                    clickedLocation.background.Fill = Brushes.LightBlue;
-                    savedLocation = clickedLocation;
-                    for (int i = 0; i < 8; i++)
+                    if ((clickedLocation.imgChessPiece.Source.ToString().Contains("WhitePiece") && !isBlackTurn) || (clickedLocation.imgChessPiece.Source.ToString().Contains("BlackPiece") && isBlackTurn))
                     {
-                        for (int j = 0; j < 8; j++)
+                        clickedLocation.background.Fill = Brushes.LightBlue;
+                        savedLocation = clickedLocation;
+                        for (int i = 0; i < 8; i++)
                         {
-                            if (GUIBoard[i][j] == savedLocation)
+                            for (int j = 0; j < 8; j++)
                             {
-                                column = i;
-                                row = j;
+                                if (GUIBoard[i][j] == savedLocation)
+                                {
+                                    column = i;
+                                    row = j;
+                                }
                             }
                         }
                     }
@@ -468,7 +473,7 @@ namespace ChessWPF
             ChessPiece piece = new Pawn();
             for (int i = 0; i < 8; i++)
             {
-                if(pawn.imgChessPiece.Source.ToString().Contains("WhitePiece"))
+                if (pawn.imgChessPiece.Source.ToString().Contains("WhitePiece"))
                 {
                     if (promotionStatus.Text.ToString().Contains("Queen"))
                     {
@@ -489,9 +494,9 @@ namespace ChessWPF
                         packUri = "pack://application:,,,/ChessWPF;component/Images/WhitePieces/WhiteKnight.png";
 
                     }
-                        pawn.imgChessPiece.Source = new ImageSourceConverter().ConvertFromString(packUri) as ImageSource;
+                    pawn.imgChessPiece.Source = new ImageSourceConverter().ConvertFromString(packUri) as ImageSource;
                 }
-                else if(pawn.imgChessPiece.Source.ToString().Contains("BlackPiece"))
+                else if (pawn.imgChessPiece.Source.ToString().Contains("BlackPiece"))
                 {
                     if (promotionStatus.Text.ToString().Contains("Queen"))
                     {
