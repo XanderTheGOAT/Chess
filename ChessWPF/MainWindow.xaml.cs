@@ -277,14 +277,14 @@ namespace ChessWPF
                                 if (savedLocation.imgChessPiece.Source.ToString().Contains("King"))
                                 {
                                     King king = new King();
-                                    validMove = king.ValidMovement(Program.board[row, column], Program.board[j, i]);
+                                    validMove = king.ValidMovement(Program.board[row, column], Program.board[i, j]);
                                     if (validMove)
                                         GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Queen"))
                                 {
                                     Queen queen = new Queen();
-                                    validMove = queen.ValidMovement(Program.board[row, column], Program.board[j, i]);
+                                    validMove = queen.ValidMovement(Program.board[row, column], Program.board[i, j]);
                                     if (validMove)
                                         GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
                                 }
@@ -306,7 +306,7 @@ namespace ChessWPF
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Bishop"))
                                 {
                                     Bishop bishop = new Bishop();
-                                    validMove = bishop.ValidMovement(Program.board[row, column], Program.board[j, i]);
+                                    validMove = bishop.ValidMovement(Program.board[row, column], Program.board[i, j]);
                                     if (validMove)
                                         GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
 
