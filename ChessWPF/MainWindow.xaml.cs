@@ -98,11 +98,15 @@ namespace ChessWPF
             promotionStatus.HorizontalContentAlignment = HorizontalAlignment.Center;
             for (int i = 0; i < 8; i++)
             {
+                Viewbox box = new Viewbox();
                 Label column = new Label();
                 column.HorizontalContentAlignment = HorizontalAlignment.Center;
+                column.VerticalContentAlignment = VerticalAlignment.Bottom;
                 column.Foreground = Brushes.White;
+                //column.FontSize = Double.NaN;
                 column.Content = Columns[i].ToString();
-                ugChessBoard.Children.Add(column);
+                box.Child = column;
+                ugChessBoard.Children.Add(box);
             }
             if(isBlackTurn)
             {
@@ -112,18 +116,23 @@ namespace ChessWPF
             {
                 emptySpot2.Content = "White Turn";
             }
+            Viewbox viewbox = new Viewbox();
             emptySpot2.VerticalContentAlignment = VerticalAlignment.Center;
             emptySpot2.HorizontalContentAlignment = HorizontalAlignment.Center;
             emptySpot2.Foreground = Brushes.White;
-            ugChessBoard.Children.Add(emptySpot2);
+            viewbox.Child = emptySpot2;
+            ugChessBoard.Children.Add(viewbox);
 
             for (int i = 0; i < 8; i++)
             {
                 Label rowNumber = new Label();
                 rowNumber.HorizontalContentAlignment = HorizontalAlignment.Right;
+                rowNumber.VerticalContentAlignment = VerticalAlignment.Center;
                 rowNumber.Content = i + 1;
                 rowNumber.Foreground = Brushes.White;
-                ugChessBoard.Children.Add(rowNumber);
+                Viewbox rowResize = new Viewbox();
+                rowResize.Child = rowNumber;
+                ugChessBoard.Children.Add(rowResize);
                 for (int j = 0; j < 8; j++)
                 {
                     GUIBoard[i][j].Name = $"{Columns[j]}{i + 1}";
@@ -131,9 +140,12 @@ namespace ChessWPF
                     ugChessBoard.Children.Add(GUIBoard[i][j]);
                 }
                 Label endRowNumber = new Label();
+                endRowNumber.VerticalContentAlignment = VerticalAlignment.Center;
                 endRowNumber.Foreground = Brushes.White;
                 endRowNumber.Content = i + 1;
-                ugChessBoard.Children.Add(endRowNumber);
+                Viewbox rowBottomResize = new Viewbox();
+                rowBottomResize.Child = endRowNumber;
+                ugChessBoard.Children.Add(rowBottomResize);
             }
             Label emptySpot3 = new Label();
             ugChessBoard.Children.Add(emptySpot3);
@@ -143,7 +155,9 @@ namespace ChessWPF
                 column.HorizontalContentAlignment = HorizontalAlignment.Center;
                 column.Foreground = Brushes.White;
                 column.Content = Columns[i].ToString();
-                ugChessBoard.Children.Add(column);
+                Viewbox columnBottomResize = new Viewbox();
+                columnBottomResize.Child = column;
+                ugChessBoard.Children.Add(columnBottomResize);
             }
             Label emptySpot4 = new Label();
             ugChessBoard.Children.Add(emptySpot4);
@@ -277,6 +291,7 @@ namespace ChessWPF
         private void ValidateMovement()
         {
             bool validMove = true;
+            bool check = false;
             #region WhitePiece Validation
             if (savedLocation.imgChessPiece.Source.ToString() != null && savedLocation.imgChessPiece.Source.ToString().Contains("WhitePieces"))
             {
@@ -292,40 +307,60 @@ namespace ChessWPF
                                 {
                                     King king = new King();
                                     validMove = king.ValidMovement(Program.board[column, row], Program.board[i, j]);
+                                    check = king.Check(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
                                         GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                        Program.board[i, j].Piece = Program.board[column, row].Piece;                                        
+                                    }
+                                    if(check)
+                                    {
+                                        MessageBox.Show("Black King is in check");
                                     }
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Queen"))
                                 {
                                     Queen queen = new Queen();
                                     validMove = queen.ValidMovement(Program.board[column, row], Program.board[i, j]);
+                                    check = queen.Check(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
                                         GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
                                         Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                    }
+                                    if(check)
+                                    {
+                                        MessageBox.Show("Black King is in check");
                                     }
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Knight"))
                                 {
                                     Knight knight = new Knight();
                                     validMove = knight.ValidMovement(Program.board[column, row], Program.board[i, j]);
+                                    check = knight.Check(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
                                         GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
                                         Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                    }
+                                    if(check)
+                                    {
+                                        MessageBox.Show("Black King is in check");
                                     }
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Rook"))
                                 {
                                     Rook rook = new Rook();
                                     validMove = rook.ValidMovement(Program.board[column, row], Program.board[i, j]);
+                                    check = rook.Check(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
                                         GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
                                         Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                    }
+                                    if(check)
+                                    {
+                                        MessageBox.Show("Black King is in check");
                                     }
 
                                 }
@@ -333,20 +368,30 @@ namespace ChessWPF
                                 {
                                     Bishop bishop = new Bishop();
                                     validMove = bishop.ValidMovement(Program.board[column, row], Program.board[i, j]);
+                                    check = bishop.Check(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
                                         GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
                                         Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                    }
+                                    if(check)
+                                    {
+                                        MessageBox.Show("Black King is in check");
                                     }
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Pawn"))
                                 {
                                     Pawn pawn = new Pawn();
                                     validMove = pawn.ValidMovement(Program.board[column, row], Program.board[i, j]);
+                                    //check = pawn.Check(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
                                         GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
                                         Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                    }
+                                    if(check)
+                                    {
+                                        MessageBox.Show("Black King is in check");
                                     }
                                 }
                             }
@@ -436,8 +481,12 @@ namespace ChessWPF
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Pawn"))
                                 {
-                                    GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                    Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                    Pawn pawn = new Pawn();
+                                    if(pawn.ValidMovement(Program.board[column, row], Program.board[i, j]))
+                                    {
+                                        GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
+                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                    }
                                     if (GUIBoard[i][j] == GUIBoard[7][j])
                                     {
                                         GUIBoard[i][j] = PromotionValidation(GUIBoard[i][j]);
@@ -466,6 +515,12 @@ namespace ChessWPF
 
             }
         }
+
+        private void Check()
+        {
+
+        }
+
         private void ImageLocation(object sender, MouseButtonEventArgs e)
         {
             char[] Columns = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
