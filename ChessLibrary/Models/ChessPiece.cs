@@ -12,11 +12,18 @@ namespace ChessLibrary.Models
     {
         bool isLight;
 
+        List<BoardLogic.ChessCoordinates> ValidMoves;
+
         public ChessPiece()
         {
 
         }
         public bool IsLight { get; set; }
+
+        public virtual bool Check(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)
+        {
+            return false;
+        }
 
         public virtual bool ValidMovement(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)
         {

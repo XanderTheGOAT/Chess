@@ -14,13 +14,26 @@ namespace ChessLibrary.Models
 
         }
         bool isLight;
+        public new List<BoardLogic.ChessCoordinates> ValidMoves = new List<BoardLogic.ChessCoordinates>();
 
         public new bool IsLight { get; set; }
+
+        public override bool Check(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)
+        {
+            ValidMovement(startLocation, endLocation);
+            foreach (var space in ValidMoves)
+            {
+                if (space.Piece.ToString() == "K" && space.Piece.IsLight != startLocation.Piece.IsLight)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public override bool ValidMovement(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)
         {
             //validate movement eventually
-            List<BoardLogic.ChessCoordinates> validMoves = new List<BoardLogic.ChessCoordinates>();
 
             //validate movement eventually
             int column = FileLogic.GetColumnFromChar(startLocation.Column).GetHashCode();
@@ -32,22 +45,22 @@ namespace ChessLibrary.Models
                 {
                     if (Program.board[column - 1, row - 2].Piece == null)
                     {
-                        validMoves.Add(Program.board[column - 1, row - 2]);
+                        ValidMoves.Add(Program.board[column - 1, row - 2]);
                     }
                     else if (Program.board[column - 1, row - 2].Piece.IsLight != Program.board[column, row].Piece.IsLight)
                     {
-                        validMoves.Add(Program.board[column - 1, row - 2]);
+                        ValidMoves.Add(Program.board[column - 1, row - 2]);
                     }
                 }
                 if (column + 1 <= 7)
                 {
                     if (Program.board[column + 1, row - 2].Piece == null)
                     {
-                        validMoves.Add(Program.board[column + 1, row - 2]);
+                        ValidMoves.Add(Program.board[column + 1, row - 2]);
                     }
                     else if (Program.board[column + 1, row - 2].Piece.IsLight != Program.board[column, row].Piece.IsLight)
                     {
-                        validMoves.Add(Program.board[column + 1, row - 2]);
+                        ValidMoves.Add(Program.board[column + 1, row - 2]);
                     }
                 }
             }
@@ -57,22 +70,22 @@ namespace ChessLibrary.Models
                 {
                     if (Program.board[column - 1, row + 2].Piece == null)
                     {
-                        validMoves.Add(Program.board[column - 1, row + 2]);
+                        ValidMoves.Add(Program.board[column - 1, row + 2]);
                     }
                     else if (Program.board[column - 1, row + 2].Piece.IsLight != Program.board[column, row].Piece.IsLight)
                     {
-                        validMoves.Add(Program.board[column - 1, row + 2]);
+                        ValidMoves.Add(Program.board[column - 1, row + 2]);
                     }
                 }
                 if (column + 1 <= 7)
                 {
                     if (Program.board[column + 1, row + 2].Piece == null)
                     {
-                        validMoves.Add(Program.board[column + 1, row + 2]);
+                        ValidMoves.Add(Program.board[column + 1, row + 2]);
                     }
                     else if (Program.board[column + 1, row + 2].Piece.IsLight != Program.board[column, row].Piece.IsLight)
                     {
-                        validMoves.Add(Program.board[column + 1, row + 2]);
+                        ValidMoves.Add(Program.board[column + 1, row + 2]);
                     }
                 }
             }
@@ -82,22 +95,22 @@ namespace ChessLibrary.Models
                 {
                     if (Program.board[column - 2, row - 1].Piece == null)
                     {
-                        validMoves.Add(Program.board[column - 2, row - 1]);
+                        ValidMoves.Add(Program.board[column - 2, row - 1]);
                     }
                     else if (Program.board[column - 2, row - 1].Piece.IsLight != Program.board[column, row].Piece.IsLight)
                     {
-                        validMoves.Add(Program.board[column - 2, row - 1]);
+                        ValidMoves.Add(Program.board[column - 2, row - 1]);
                     }
                 }
                 if (row + 1 <= 7)
                 {
                     if (Program.board[column - 2, row + 1].Piece == null)
                     {
-                        validMoves.Add(Program.board[column - 2, row + 1]);
+                        ValidMoves.Add(Program.board[column - 2, row + 1]);
                     }
                     else if (Program.board[column - 2, row + 1].Piece.IsLight != Program.board[column, row].Piece.IsLight)
                     {
-                        validMoves.Add(Program.board[column - 2, row + 1]);
+                        ValidMoves.Add(Program.board[column - 2, row + 1]);
                     }
                 }
             }
@@ -107,28 +120,28 @@ namespace ChessLibrary.Models
                 {
                     if (Program.board[column + 2, row - 1].Piece == null)
                     {
-                        validMoves.Add(Program.board[column + 2, row - 1]);
+                        ValidMoves.Add(Program.board[column + 2, row - 1]);
                     }
                     else if (Program.board[column + 2, row - 1].Piece.IsLight != Program.board[column, row].Piece.IsLight)
                     {
-                        validMoves.Add(Program.board[column + 2, row - 1]);
+                        ValidMoves.Add(Program.board[column + 2, row - 1]);
                     }
                 }
                 if (row + 1 <= 7)
                 {
                     if (Program.board[column + 2, row + 1].Piece == null)
                     {
-                        validMoves.Add(Program.board[column + 2, row + 1]);
+                        ValidMoves.Add(Program.board[column + 2, row + 1]);
                     }
                     else if (Program.board[column + 2, row + 1].Piece.IsLight != Program.board[column, row].Piece.IsLight)
                     {
-                        validMoves.Add(Program.board[column + 2, row + 1]);
+                        ValidMoves.Add(Program.board[column + 2, row + 1]);
                     }
                 }
             }
             BoardLogic.ChessCoordinates lookingFor = new BoardLogic.ChessCoordinates(BoardLogic.GetCharFromNumber(FileLogic.GetColumnFromChar(endLocation.Column).GetHashCode()), endLocation.Row, null);
 
-            foreach (var space in validMoves)
+            foreach (var space in ValidMoves)
             {
                 if (space == lookingFor)
                 {
