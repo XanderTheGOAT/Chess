@@ -98,11 +98,15 @@ namespace ChessWPF
             promotionStatus.HorizontalContentAlignment = HorizontalAlignment.Center;
             for (int i = 0; i < 8; i++)
             {
+                Viewbox box = new Viewbox();
                 Label column = new Label();
                 column.HorizontalContentAlignment = HorizontalAlignment.Center;
+                column.VerticalContentAlignment = VerticalAlignment.Bottom;
                 column.Foreground = Brushes.White;
+                //column.FontSize = Double.NaN;
                 column.Content = Columns[i].ToString();
-                ugChessBoard.Children.Add(column);
+                box.Child = column;
+                ugChessBoard.Children.Add(box);
             }
             if(isBlackTurn)
             {
@@ -112,18 +116,23 @@ namespace ChessWPF
             {
                 emptySpot2.Content = "White Turn";
             }
+            Viewbox viewbox = new Viewbox();
             emptySpot2.VerticalContentAlignment = VerticalAlignment.Center;
             emptySpot2.HorizontalContentAlignment = HorizontalAlignment.Center;
             emptySpot2.Foreground = Brushes.White;
-            ugChessBoard.Children.Add(emptySpot2);
+            viewbox.Child = emptySpot2;
+            ugChessBoard.Children.Add(viewbox);
 
             for (int i = 0; i < 8; i++)
             {
                 Label rowNumber = new Label();
                 rowNumber.HorizontalContentAlignment = HorizontalAlignment.Right;
+                rowNumber.VerticalContentAlignment = VerticalAlignment.Center;
                 rowNumber.Content = i + 1;
                 rowNumber.Foreground = Brushes.White;
-                ugChessBoard.Children.Add(rowNumber);
+                Viewbox rowResize = new Viewbox();
+                rowResize.Child = rowNumber;
+                ugChessBoard.Children.Add(rowResize);
                 for (int j = 0; j < 8; j++)
                 {
                     GUIBoard[i][j].Name = $"{Columns[j]}{i + 1}";
@@ -131,9 +140,12 @@ namespace ChessWPF
                     ugChessBoard.Children.Add(GUIBoard[i][j]);
                 }
                 Label endRowNumber = new Label();
+                endRowNumber.VerticalContentAlignment = VerticalAlignment.Center;
                 endRowNumber.Foreground = Brushes.White;
                 endRowNumber.Content = i + 1;
-                ugChessBoard.Children.Add(endRowNumber);
+                Viewbox rowBottomResize = new Viewbox();
+                rowBottomResize.Child = endRowNumber;
+                ugChessBoard.Children.Add(rowBottomResize);
             }
             Label emptySpot3 = new Label();
             ugChessBoard.Children.Add(emptySpot3);
@@ -143,7 +155,9 @@ namespace ChessWPF
                 column.HorizontalContentAlignment = HorizontalAlignment.Center;
                 column.Foreground = Brushes.White;
                 column.Content = Columns[i].ToString();
-                ugChessBoard.Children.Add(column);
+                Viewbox columnBottomResize = new Viewbox();
+                columnBottomResize.Child = column;
+                ugChessBoard.Children.Add(columnBottomResize);
             }
             Label emptySpot4 = new Label();
             ugChessBoard.Children.Add(emptySpot4);

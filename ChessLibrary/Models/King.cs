@@ -80,7 +80,7 @@ namespace ChessLibrary.Models
                 {
                     validMoves.Add(Program.board[column - 1, row]);
                 }
-                if (row - 1 >= 7)
+                if (row - 1 >= 0)
                 {
                     if (Program.board[column - 1, row - 1].Piece == null)
                     {
