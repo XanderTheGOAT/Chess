@@ -23,9 +23,12 @@ namespace ChessLibrary.Models
             ValidMovement(startLocation, endLocation);
             foreach (var space in ValidMoves)
             {
-                if (space.Piece.ToString() == "K" && space.Piece.IsLight != startLocation.Piece.IsLight)
+                if (space.Piece != null)
                 {
-                    return true;
+                    if (space.Piece.ToString() == "K" && space.Piece.IsLight != startLocation.Piece.IsLight)
+                    {
+                        return true;
+                    }
                 }
             }
             return false;
