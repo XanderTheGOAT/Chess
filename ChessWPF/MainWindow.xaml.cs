@@ -355,11 +355,12 @@ namespace ChessWPF
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Pawn"))
                                 {
-                                    GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                    Program.board[i, j].Piece = Program.board[column, row].Piece;
-                                    if (GUIBoard[i][j] == GUIBoard[0][j])
+                                    Pawn pawn = new Pawn();
+                                    validMove = pawn.ValidMovement(Program.board[column, row], Program.board[i, j]);
+                                    if (validMove)
                                     {
-                                        GUIBoard[i][j] = PromotionValidation(GUIBoard[i][j]);
+                                        GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
+                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
                                     }
                                 }
                             }

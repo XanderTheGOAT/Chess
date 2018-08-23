@@ -11,15 +11,28 @@ namespace ChessLibrary.Models
     {
         bool isLight;
         bool shouldStop;
+        public new List<BoardLogic.ChessCoordinates> ValidMoves = new List<BoardLogic.ChessCoordinates>();
         public Rook()
         {
 
         }
         public new bool IsLight { get; set; }
 
+        public override bool Check(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)
+        {
+            ValidMovement(startLocation, endLocation);
+            foreach (var space in ValidMoves)
+            {
+                if (space.Piece.ToString() == "K" && space.Piece.IsLight != startLocation.Piece.IsLight)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public override bool ValidMovement(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)
         {
-            List<BoardLogic.ChessCoordinates> validMoves = new List<BoardLogic.ChessCoordinates>();
 
             int column = FileLogic.GetColumnFromChar(startLocation.Column).GetHashCode();
             int row = startLocation.Row;
@@ -38,7 +51,7 @@ namespace ChessLibrary.Models
                         }
                         else
                         {
-                            validMoves.Add(maybeGood);
+                            ValidMoves.Add(maybeGood);
                             goingDown = goingDown - 1;
                             if (shouldStop)
                             {
@@ -67,7 +80,7 @@ namespace ChessLibrary.Models
                         }
                         else
                         {
-                            validMoves.Add(maybeGood);
+                            ValidMoves.Add(maybeGood);
                             goingUp = goingUp + 1;
                             if (shouldStop)
                             {
@@ -97,7 +110,7 @@ namespace ChessLibrary.Models
                         }
                         else
                         {
-                            validMoves.Add(maybeGood);
+                            ValidMoves.Add(maybeGood);
                             goingLeft = goingLeft - 1;
                             if (shouldStop)
                             {
@@ -126,7 +139,7 @@ namespace ChessLibrary.Models
                         }
                         else
                         {
-                            validMoves.Add(maybeGood);
+                            ValidMoves.Add(maybeGood);
                             goingRight = goingRight + 1;
                             if (shouldStop)
                             {
@@ -142,8 +155,8 @@ namespace ChessLibrary.Models
                 }
             }
             BoardLogic.ChessCoordinates lookingFor = new BoardLogic.ChessCoordinates(BoardLogic.GetCharFromNumber(FileLogic.GetColumnFromChar(endLocation.Column).GetHashCode()), endLocation.Row, null);
-            
-            foreach (var space in validMoves)
+
+            foreach (var space in ValidMoves)
             {
                 if (space == lookingFor)
                 {
