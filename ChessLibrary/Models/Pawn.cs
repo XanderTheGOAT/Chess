@@ -82,7 +82,7 @@ namespace ChessLibrary.Models
                             }
                         }
                     }
-                    if (row - 1 <= 7 && Program.board[column + 1, row - 1].Piece != null && Program.board[column + 1, row - 1].Piece.IsLight != Program.board[column, row].Piece.IsLight)
+                    if (row - 1 >= 0 && Program.board[column + 1, row - 1].Piece != null && Program.board[column + 1, row - 1].Piece.IsLight != Program.board[column, row].Piece.IsLight)
                     {
                         ValidMoves.Add(Program.board[column + 1, row - 1]);
                     }

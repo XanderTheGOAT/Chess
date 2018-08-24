@@ -11,8 +11,10 @@ namespace ChessLibrary.Models
     {
         bool isLight;
         bool shouldStop = false;
-        public new List<BoardLogic.ChessCoordinates> ValidMoves = new List<BoardLogic.ChessCoordinates>();
+        List<BoardLogic.ChessCoordinates> validMoves = new List<BoardLogic.ChessCoordinates>();
 
+        public new List<BoardLogic.ChessCoordinates> ValidMoves { get { return validMoves; } set { } }
+        
         public new bool IsLight { get; set; }
 
         public override bool Check(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)
@@ -20,7 +22,7 @@ namespace ChessLibrary.Models
             ValidMovement(startLocation, endLocation);
             foreach (var space in ValidMoves)
             {
-                if (space.Piece.ToString() == "K" && space.Piece.IsLight != startLocation.Piece.IsLight)
+                if (space.Piece != null && space.Piece.ToString() == "K" && space.Piece.IsLight != startLocation.Piece.IsLight)
                 {
                     return true;
                 }
