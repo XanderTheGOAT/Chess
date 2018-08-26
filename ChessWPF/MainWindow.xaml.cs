@@ -290,6 +290,10 @@ namespace ChessWPF
         int column = 0;
         int row = 0;
 
+        ChessPiece savedPiece;
+        ImageSource savedBoard;
+
+
 
         private void ValidateMovement()
         {
@@ -310,122 +314,153 @@ namespace ChessWPF
                                 {
                                     King king = new King();
                                     validMove = king.ValidMovement(Program.board[column, row], Program.board[i, j]);
-                                    check = king.Check(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
-                                        GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
+                                        savedPiece = Program.board[i, j].Piece;
+                                        savedBoard = GUIBoard[i][j].imgChessPiece.Source;
+
                                         Program.board[i, j].Piece = Program.board[column, row].Piece;
-                                    }
-                                    if (check)
-                                    {
-                                        MessageBox.Show("Black King is in check");
-                                        blackCheck = true;
+                                        int k;
+                                        int l;
+                                        for (k = 0; k < 8; k++)
+                                        {
+                                            for (l = 0; l < 8; l++)
+                                            {
+                                                if (Program.board[k, l].Piece != null && !Program.board[k, l].Piece.IsLight && Program.board[k, l].Piece.Check(Program.board[k, l], Program.board[i, j]))
+                                                {
+                                                    MessageBox.Show("King cannot place himself in check");
+                                                    k = 9;
+                                                    l = 9;
+                                                }
+                                            }
+                                        }
+                                        if (k == 10)
+                                        {
+                                            Program.board[i, j].Piece = savedPiece;
+                                            validMove = false;
+                                        }
                                     }
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Queen"))
                                 {
                                     Queen queen = new Queen();
                                     validMove = queen.ValidMovement(Program.board[column, row], Program.board[i, j]);
-                                    check = queen.Check(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
-                                        GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
-                                    }
-                                    if (check)
-                                    {
-                                        MessageBox.Show("Black King is in check");
-                                        blackCheck = true;
+                                        savedPiece = Program.board[i, j].Piece;
+                                        savedBoard = GUIBoard[i][j].imgChessPiece.Source;
                                     }
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Knight"))
                                 {
                                     Knight knight = new Knight();
                                     validMove = knight.ValidMovement(Program.board[column, row], Program.board[i, j]);
-                                    check = knight.Check(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
-                                        GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
-                                    }
-                                    if (check)
-                                    {
-                                        MessageBox.Show("Black King is in check");
-                                        blackCheck = true;
+                                        savedPiece = Program.board[i, j].Piece;
+                                        savedBoard = GUIBoard[i][j].imgChessPiece.Source;
                                     }
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Rook"))
                                 {
                                     Rook rook = new Rook();
                                     validMove = rook.ValidMovement(Program.board[column, row], Program.board[i, j]);
-                                    check = rook.Check(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
-                                        GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                        savedPiece = Program.board[i, j].Piece;
+                                        savedBoard = GUIBoard[i][j].imgChessPiece.Source;
                                     }
-                                    if (check)
-                                    {
-                                        MessageBox.Show("Black King is in check");
-                                        blackCheck = true;
-                                    }
-
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Bishop"))
                                 {
                                     Bishop bishop = new Bishop();
                                     validMove = bishop.ValidMovement(Program.board[column, row], Program.board[i, j]);
-                                    check = bishop.Check(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
-                                        GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
-                                    }
-                                    if (check)
-                                    {
-                                        MessageBox.Show("Black King is in check");
-                                        blackCheck = true;
+                                        savedPiece = Program.board[i, j].Piece;
+                                        savedBoard = GUIBoard[i][j].imgChessPiece.Source;
                                     }
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Pawn"))
                                 {
                                     Pawn pawn = new Pawn();
                                     validMove = pawn.ValidMovement(Program.board[column, row], Program.board[i, j]);
-                                    check = pawn.Check(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
-                                        GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                        savedPiece = Program.board[i, j].Piece;
+                                        savedBoard = GUIBoard[i][j].imgChessPiece.Source;
                                     }
                                     if (validMove && GUIBoard[i][j] == GUIBoard[7][j])
                                     {
                                         GUIBoard[i][j] = PromotionValidation(GUIBoard[i][j]);
                                     }
+                                }
+                                if (whiteCheck && validMove)
+                                {
+                                    int k;
+                                    int l;
+                                    for (k = 0; k < 8; k++)
+                                    {
+                                        for (l = 0; l < 8; l++)
+                                        {
+                                            if (Program.board[k, l].Piece != null && !Program.board[k, l].Piece.IsLight && Program.board[k, l].Piece.Check(Program.board[k, l], Program.board[i, j]))
+                                            {
+                                                if (Program.board[column, row].Piece.ValidMovement(Program.board[column, row], Program.board[k, l]) && Program.board[k, l] == Program.board[i, j])
+                                                {
+                                                    validMove = true;
+                                                }
+                                                else if (Program.board[column, row].Piece.ValidMovement(Program.board[column, row], Program.board[i, j]) && !Program.board[k, l].Piece.ValidMoves.Contains(Program.board[i, j]))
+                                                {
+                                                    validMove = true;
+                                                }
+                                                else
+                                                {
+                                                    validMove = false;
+                                                }
+                                                //savedLocation.imgChessPiece.Source = GUIBoard[i][j].imgChessPiece.Source;
+                                                //GUIBoard[i][j].imgChessPiece.Source = savedBoard;
+                                                //Program.board[column, row].Piece = Program.board[i, j].Piece;
+                                                //Program.board[i, j].Piece = savedPiece.Piece;
+                                                l = 10;
+                                                k = 10;
+                                            }
+                                        }
+                                    }
+                                    if (k == 10)
+                                    {
+                                        GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
+                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                    }
+                                }
+                                if (!(bool)savedLocation.cbxIsBlack.IsChecked)
+                                {
+                                    savedLocation.background.Fill = Brushes.Pink;
+                                }
+                                else if ((bool)savedLocation.cbxIsBlack.IsChecked)
+                                {
+                                    savedLocation.background.Fill = Brushes.OrangeRed;
+                                }
+                                if (validMove)
+                                {
+                                    GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
+                                    Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                    check = Program.board[i, j].Piece.Check(Program.board[i, j], Program.board[i, j]);
                                     if (check)
                                     {
                                         MessageBox.Show("Black King is in check");
                                         blackCheck = true;
                                     }
+                                    Program.board[column, row].Piece = null;
+                                    savedLocation.imgChessPiece.Source = null;
+                                    isBlackTurn = isBlackTurn ? false : true;
+                                    whiteCheck = false;
                                 }
+                                savedLocation = new Board();
                             }
+
                         }
                     }
-                    if (!(bool)savedLocation.cbxIsBlack.IsChecked)
-                    {
-                        savedLocation.background.Fill = Brushes.Pink;
-                    }
-                    else if ((bool)savedLocation.cbxIsBlack.IsChecked)
-                    {
-                        savedLocation.background.Fill = Brushes.OrangeRed;
 
-                    }
-                    if (validMove)
-                    {
-                        Program.board[column, row].Piece = null;
-                        savedLocation.imgChessPiece.Source = null;
-                        isBlackTurn = isBlackTurn ? false : true;
-                    }
-                    savedLocation = new Board();
                 }
             }
             #endregion
@@ -439,188 +474,155 @@ namespace ChessWPF
                     {
                         for (int j = 0; j < 8; j++)
                         {
-                            if (blackCheck)
+                            if (GUIBoard[i][j].Name.ToString() == clickedLocation.Name.ToString())
                             {
-                                for (int k = 0; k < 8; k++)
+
+                                if (savedLocation.imgChessPiece.Source.ToString().Contains("King"))
                                 {
-                                    for (int l = 0; l < 8; l++)
-                                    {
-                                        if (Program.board[i, j].Piece != null)
-                                        {
-                                            if (Program.board[i, j].Piece.IsLight)
-                                            {
-                                                if (Program.board[i, j].Piece.Check(Program.board[k, l], Program.board[column, row]))
-                                                {}
-                                                else if (savedLocation.imgChessPiece.Source.ToString().Contains("King"))
-                                                {
-                                                    King king = new King();
-                                                    validMove = king.ValidMovement(Program.board[column, row], Program.board[i, j]);
-                                                    if (validMove)
-                                                    {
-                                                        GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
-                                                    }
-                                                }
-                                                else if (savedLocation.imgChessPiece.Source.ToString().Contains("Queen"))
-                                                {
-                                                    Queen queen = new Queen();
-                                                    validMove = queen.ValidMovement(Program.board[column, row], Program.board[i, j]);
-                                                    if (validMove)
-                                                    {
-                                                        GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
-                                                    }
-                                                }
-                                                else if (savedLocation.imgChessPiece.Source.ToString().Contains("Knight"))
-                                                {
-                                                    Knight knight = new Knight();
-                                                    validMove = knight.ValidMovement(Program.board[column, row], Program.board[i, j]);
-                                                    if (validMove)
-                                                    {
-                                                        GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
-                                                    }
-                                                }
-                                                else if (savedLocation.imgChessPiece.Source.ToString().Contains("Rook"))
-                                                {
-                                                    Rook rook = new Rook();
-                                                    validMove = rook.ValidMovement(Program.board[column, row], Program.board[i, j]);
-                                                    if (validMove)
-                                                    {
-                                                        GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
-                                                    }
-
-                                                }
-                                                else if (savedLocation.imgChessPiece.Source.ToString().Contains("Bishop"))
-                                                {
-                                                    Bishop bishop = new Bishop();
-                                                    validMove = bishop.ValidMovement(Program.board[column, row], Program.board[i, j]);
-                                                    if (validMove)
-                                                    {
-                                                        GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
-                                                    }
-                                                }
-                                                else if (savedLocation.imgChessPiece.Source.ToString().Contains("Pawn"))
-                                                {
-                                                    Pawn pawn = new Pawn();
-                                                    if (pawn.ValidMovement(Program.board[column, row], Program.board[i, j]))
-                                                    {
-                                                        GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
-                                                    }
-                                                    if (GUIBoard[i][j] == GUIBoard[7][j])
-                                                    {
-                                                        GUIBoard[i][j] = PromotionValidation(GUIBoard[i][j]);
-                                                    }
-                                                }
-                                                if (!(bool)savedLocation.cbxIsBlack.IsChecked)
-                                                {
-                                                    savedLocation.background.Fill = Brushes.Pink;
-                                                }
-                                                else if ((bool)savedLocation.cbxIsBlack.IsChecked)
-                                                {
-                                                    savedLocation.background.Fill = Brushes.OrangeRed;
-                                                }
-                                                if (validMove)
-                                                {
-                                                    Program.board[column, row].Piece = null;
-                                                    savedLocation.imgChessPiece.Source = null;
-                                                    isBlackTurn = isBlackTurn ? false : true;
-                                                }
-                                                savedLocation = new Board();
-                                            }
-                                        }
-
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                if (GUIBoard[i][j].Name.ToString() == clickedLocation.Name.ToString())
-                                {
-                                    if (savedLocation.imgChessPiece.Source.ToString().Contains("King"))
-                                    {
-                                        King king = new King();
-                                        validMove = king.ValidMovement(Program.board[column, row], Program.board[i, j]);
-                                        if (validMove)
-                                        {
-                                            GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                            Program.board[i, j].Piece = Program.board[column, row].Piece;
-                                        }
-                                    }
-                                    else if (savedLocation.imgChessPiece.Source.ToString().Contains("Queen"))
-                                    {
-                                        Queen queen = new Queen();
-                                        validMove = queen.ValidMovement(Program.board[column, row], Program.board[i, j]);
-                                        if (validMove)
-                                        {
-                                            GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                            Program.board[i, j].Piece = Program.board[column, row].Piece;
-                                        }
-                                    }
-                                    else if (savedLocation.imgChessPiece.Source.ToString().Contains("Knight"))
-                                    {
-                                        Knight knight = new Knight();
-                                        validMove = knight.ValidMovement(Program.board[column, row], Program.board[i, j]);
-                                        if (validMove)
-                                        {
-                                            GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                            Program.board[i, j].Piece = Program.board[column, row].Piece;
-                                        }
-                                    }
-                                    else if (savedLocation.imgChessPiece.Source.ToString().Contains("Rook"))
-                                    {
-                                        Rook rook = new Rook();
-                                        validMove = rook.ValidMovement(Program.board[column, row], Program.board[i, j]);
-                                        if (validMove)
-                                        {
-                                            GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                            Program.board[i, j].Piece = Program.board[column, row].Piece;
-                                        }
-
-                                    }
-                                    else if (savedLocation.imgChessPiece.Source.ToString().Contains("Bishop"))
-                                    {
-                                        Bishop bishop = new Bishop();
-                                        validMove = bishop.ValidMovement(Program.board[column, row], Program.board[i, j]);
-                                        if (validMove)
-                                        {
-                                            GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                            Program.board[i, j].Piece = Program.board[column, row].Piece;
-                                        }
-                                    }
-                                    else if (savedLocation.imgChessPiece.Source.ToString().Contains("Pawn"))
-                                    {
-                                        Pawn pawn = new Pawn();
-                                        validMove = pawn.ValidMovement(Program.board[column, row], Program.board[i, j]);
-                                        if (validMove)
-                                        {
-                                            GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
-                                            Program.board[i, j].Piece = Program.board[column, row].Piece;
-                                        }
-                                        if (validMove && GUIBoard[i][j] == GUIBoard[7][j])
-                                        {
-                                            GUIBoard[i][j] = PromotionValidation(GUIBoard[i][j]);
-                                        }
-                                    }
-                                    if (!(bool)savedLocation.cbxIsBlack.IsChecked)
-                                    {
-                                        savedLocation.background.Fill = Brushes.Pink;
-                                    }
-                                    else if ((bool)savedLocation.cbxIsBlack.IsChecked)
-                                    {
-                                        savedLocation.background.Fill = Brushes.OrangeRed;
-                                    }
+                                    King king = new King();
+                                    validMove = king.ValidMovement(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
-                                        Program.board[column, row].Piece = null;
-                                        savedLocation.imgChessPiece.Source = null;
-                                        isBlackTurn = isBlackTurn ? false : true;
+                                        savedPiece = Program.board[i, j].Piece;
+                                        savedBoard = GUIBoard[i][j].imgChessPiece.Source;
+
+                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                        int k;
+                                        int l;
+                                        for (k = 0; k < 8; k++)
+                                        {
+                                            for (l = 0; l < 8; l++)
+                                            {
+                                                if (Program.board[k, l].Piece != null && Program.board[k, l].Piece.IsLight && Program.board[k, l].Piece.Check(Program.board[k, l], Program.board[i, j]))
+                                                {
+                                                    MessageBox.Show("King cannot place himself in check");
+                                                    k = 9;
+                                                    l = 9;
+                                                }
+                                            }
+                                        }
+                                        if (k == 10)
+                                        {
+                                            Program.board[i, j].Piece = savedPiece;
+                                            validMove = false;
+                                        }
                                     }
-                                    savedLocation = new Board();
                                 }
+                                else if (savedLocation.imgChessPiece.Source.ToString().Contains("Queen"))
+                                {
+                                    Queen queen = new Queen();
+                                    validMove = queen.ValidMovement(Program.board[column, row], Program.board[i, j]);
+                                    if (validMove)
+                                    {
+                                        savedPiece = Program.board[i, j].Piece;
+                                        savedBoard = GUIBoard[i][j].imgChessPiece.Source;
+                                    }
+                                }
+                                else if (savedLocation.imgChessPiece.Source.ToString().Contains("Knight"))
+                                {
+                                    Knight knight = new Knight();
+                                    validMove = knight.ValidMovement(Program.board[column, row], Program.board[i, j]);
+                                    if (validMove)
+                                    {
+                                        savedPiece = Program.board[i, j].Piece;
+                                        savedBoard = GUIBoard[i][j].imgChessPiece.Source;
+                                    }
+                                }
+                                else if (savedLocation.imgChessPiece.Source.ToString().Contains("Rook"))
+                                {
+                                    Rook rook = new Rook();
+                                    validMove = rook.ValidMovement(Program.board[column, row], Program.board[i, j]);
+                                    if (validMove)
+                                    {
+                                        savedPiece = Program.board[i, j].Piece;
+                                        savedBoard = GUIBoard[i][j].imgChessPiece.Source;
+                                    }
+                                }
+                                else if (savedLocation.imgChessPiece.Source.ToString().Contains("Bishop"))
+                                {
+                                    Bishop bishop = new Bishop();
+                                    validMove = bishop.ValidMovement(Program.board[column, row], Program.board[i, j]);
+                                    if (validMove)
+                                    {
+                                        savedPiece = Program.board[i, j].Piece;
+                                        savedBoard = GUIBoard[i][j].imgChessPiece.Source;
+                                    }
+                                }
+                                else if (savedLocation.imgChessPiece.Source.ToString().Contains("Pawn"))
+                                {
+                                    Pawn pawn = new Pawn();
+                                    validMove = pawn.ValidMovement(Program.board[column, row], Program.board[i, j]);
+                                    if (validMove)
+                                    {
+                                        savedPiece = Program.board[i, j].Piece;
+                                        savedBoard = GUIBoard[i][j].imgChessPiece.Source;
+                                    }
+                                    if (validMove && GUIBoard[i][j] == GUIBoard[7][j])
+                                    {
+                                        GUIBoard[i][j] = PromotionValidation(GUIBoard[i][j]);
+                                    }
+                                }
+                                if (blackCheck && validMove)
+                                {
+                                    int k;
+                                    int l;
+                                    for (k = 0; k < 8; k++)
+                                    {
+                                        for (l = 0; l < 8; l++)
+                                        {
+                                            if (Program.board[k, l].Piece != null && Program.board[k, l].Piece.IsLight && Program.board[k, l].Piece.Check(Program.board[k, l], Program.board[i, j]))
+                                            {
+                                                if (Program.board[column, row].Piece.ValidMovement(Program.board[column, row], Program.board[k, l]) && Program.board[k, l] == Program.board[i, j])
+                                                {
+                                                    validMove = true;
+                                                }
+                                                else if (Program.board[column, row].Piece.ValidMovement(Program.board[column, row], Program.board[i, j]) && !Program.board[k, l].Piece.ValidMoves.Contains(Program.board[i, j]))
+                                                {
+                                                    validMove = true;
+                                                }
+                                                else
+                                                {
+                                                    validMove = false;
+                                                }
+                                                //savedLocation.imgChessPiece.Source = GUIBoard[i][j].imgChessPiece.Source;
+                                                //GUIBoard[i][j].imgChessPiece.Source = savedBoard;
+                                                //Program.board[column, row].Piece = Program.board[i, j].Piece;
+                                                //Program.board[i, j].Piece = savedPiece.Piece;
+                                                l = 10;
+                                                k = 10;
+                                            }
+                                        }
+                                    }
+                                    if (k == 10)
+                                    {
+                                        GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
+                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                    }
+                                }
+                                if (!(bool)savedLocation.cbxIsBlack.IsChecked)
+                                {
+                                    savedLocation.background.Fill = Brushes.Pink;
+                                }
+                                else if ((bool)savedLocation.cbxIsBlack.IsChecked)
+                                {
+                                    savedLocation.background.Fill = Brushes.OrangeRed;
+                                }
+                                if (validMove)
+                                {
+                                    GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
+                                    Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                    check = Program.board[i, j].Piece.Check(Program.board[i, j], Program.board[i, j]);
+                                    if (check)
+                                    {
+                                        MessageBox.Show("White King is in check");
+                                        whiteCheck = true;
+                                    }
+                                    Program.board[column, row].Piece = null;
+                                    savedLocation.imgChessPiece.Source = null;
+                                    isBlackTurn = isBlackTurn ? false : true;
+                                    blackCheck = false;
+                                }
+                                savedLocation = new Board();
                             }
                         }
                     }

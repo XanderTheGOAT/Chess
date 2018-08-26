@@ -12,7 +12,7 @@ namespace ChessLibrary.Models
     {
         bool isLight;
 
-        List<BoardLogic.ChessCoordinates> ValidMoves;
+        public List<BoardLogic.ChessCoordinates> ValidMoves { get; set; }
 
         public ChessPiece()
         {
