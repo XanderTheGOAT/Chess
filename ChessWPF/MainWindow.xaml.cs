@@ -290,7 +290,7 @@ namespace ChessWPF
         int column = 0;
         int row = 0;
 
-        BoardLogic.ChessCoordinates savedCoordinates;
+        ChessPiece savedPiece;
         ImageSource savedBoard;
 
 
@@ -316,8 +316,29 @@ namespace ChessWPF
                                     validMove = king.ValidMovement(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
-                                        savedCoordinates = Program.board[i, j];
+                                        savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
+
+                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                        int k;
+                                        int l;
+                                        for (k = 0; k < 8; k++)
+                                        {
+                                            for (l = 0; l < 8; l++)
+                                            {
+                                                if (Program.board[k, l].Piece != null && !Program.board[k, l].Piece.IsLight && Program.board[k, l].Piece.Check(Program.board[k, l], Program.board[i, j]))
+                                                {
+                                                    MessageBox.Show("King cannot place himself in check");
+                                                    k = 9;
+                                                    l = 9;
+                                                }
+                                            }
+                                        }
+                                        if (k == 10)
+                                        {
+                                            Program.board[i, j].Piece = savedPiece;
+                                            validMove = false;
+                                        }
                                     }
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Queen"))
@@ -326,7 +347,7 @@ namespace ChessWPF
                                     validMove = queen.ValidMovement(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
-                                        savedCoordinates = Program.board[i, j];
+                                        savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
                                     }
                                 }
@@ -336,7 +357,7 @@ namespace ChessWPF
                                     validMove = knight.ValidMovement(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
-                                        savedCoordinates = Program.board[i, j];
+                                        savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
                                     }
                                 }
@@ -346,7 +367,7 @@ namespace ChessWPF
                                     validMove = rook.ValidMovement(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
-                                        savedCoordinates = Program.board[i, j];
+                                        savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
                                     }
                                 }
@@ -356,7 +377,7 @@ namespace ChessWPF
                                     validMove = bishop.ValidMovement(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
-                                        savedCoordinates = Program.board[i, j];
+                                        savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
                                     }
                                 }
@@ -366,7 +387,7 @@ namespace ChessWPF
                                     validMove = pawn.ValidMovement(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
-                                        savedCoordinates = Program.board[i, j];
+                                        savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
                                     }
                                     if (validMove && GUIBoard[i][j] == GUIBoard[7][j])
@@ -399,7 +420,7 @@ namespace ChessWPF
                                                 //savedLocation.imgChessPiece.Source = GUIBoard[i][j].imgChessPiece.Source;
                                                 //GUIBoard[i][j].imgChessPiece.Source = savedBoard;
                                                 //Program.board[column, row].Piece = Program.board[i, j].Piece;
-                                                //Program.board[i, j].Piece = savedCoordinates.Piece;
+                                                //Program.board[i, j].Piece = savedPiece.Piece;
                                                 l = 10;
                                                 k = 10;
                                             }
@@ -462,8 +483,29 @@ namespace ChessWPF
                                     validMove = king.ValidMovement(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
-                                        savedCoordinates = Program.board[i, j];
+                                        savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
+
+                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                        int k;
+                                        int l;
+                                        for (k = 0; k < 8; k++)
+                                        {
+                                            for (l = 0; l < 8; l++)
+                                            {
+                                                if (Program.board[k, l].Piece != null && Program.board[k, l].Piece.IsLight && Program.board[k, l].Piece.Check(Program.board[k, l], Program.board[i, j]))
+                                                {
+                                                    MessageBox.Show("King cannot place himself in check");
+                                                    k = 9;
+                                                    l = 9;
+                                                }
+                                            }
+                                        }
+                                        if (k == 10)
+                                        {
+                                            Program.board[i, j].Piece = savedPiece;
+                                            validMove = false;
+                                        }
                                     }
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Queen"))
@@ -472,7 +514,7 @@ namespace ChessWPF
                                     validMove = queen.ValidMovement(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
-                                        savedCoordinates = Program.board[i, j];
+                                        savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
                                     }
                                 }
@@ -482,7 +524,7 @@ namespace ChessWPF
                                     validMove = knight.ValidMovement(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
-                                        savedCoordinates = Program.board[i, j];
+                                        savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
                                     }
                                 }
@@ -492,7 +534,7 @@ namespace ChessWPF
                                     validMove = rook.ValidMovement(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
-                                        savedCoordinates = Program.board[i, j];
+                                        savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
                                     }
                                 }
@@ -502,7 +544,7 @@ namespace ChessWPF
                                     validMove = bishop.ValidMovement(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
-                                        savedCoordinates = Program.board[i, j];
+                                        savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
                                     }
                                 }
@@ -512,7 +554,7 @@ namespace ChessWPF
                                     validMove = pawn.ValidMovement(Program.board[column, row], Program.board[i, j]);
                                     if (validMove)
                                     {
-                                        savedCoordinates = Program.board[i, j];
+                                        savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
                                     }
                                     if (validMove && GUIBoard[i][j] == GUIBoard[7][j])
@@ -545,7 +587,7 @@ namespace ChessWPF
                                                 //savedLocation.imgChessPiece.Source = GUIBoard[i][j].imgChessPiece.Source;
                                                 //GUIBoard[i][j].imgChessPiece.Source = savedBoard;
                                                 //Program.board[column, row].Piece = Program.board[i, j].Piece;
-                                                //Program.board[i, j].Piece = savedCoordinates.Piece;
+                                                //Program.board[i, j].Piece = savedPiece.Piece;
                                                 l = 10;
                                                 k = 10;
                                             }
