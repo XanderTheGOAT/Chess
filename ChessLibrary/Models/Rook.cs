@@ -9,14 +9,20 @@ namespace ChessLibrary.Models
 {
     public class Rook : ChessPiece
     {
-        bool isLight;
         bool shouldStop;
         public new List<BoardLogic.ChessCoordinates> ValidMoves = new List<BoardLogic.ChessCoordinates>();
         public Rook()
         {
 
         }
-        public new bool IsLight { get; set; }
+
+        public Rook(bool isLight)
+        {
+            IsLight = isLight;
+        }
+
+        override
+        public bool IsLight { get; set; }
 
         public override bool Check(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)
         {

@@ -9,13 +9,21 @@ namespace ChessLibrary.Models
 {
     public class Queen : ChessPiece
     {
-        bool isLight;
         bool shouldStop = false;
+        public Queen()
+        {
+
+        }
+        public Queen(bool isLight)
+        {
+            IsLight = isLight;
+        }
         List<BoardLogic.ChessCoordinates> validMoves = new List<BoardLogic.ChessCoordinates>();
 
         public new List<BoardLogic.ChessCoordinates> ValidMoves { get { return validMoves; } set { } }
         
-        public new bool IsLight { get; set; }
+        override
+        public bool IsLight { get; set; }
 
         public override bool Check(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)
         {

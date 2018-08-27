@@ -13,10 +13,16 @@ namespace ChessLibrary.Models
         {
 
         }
-        bool isLight;
+
+        public Knight(bool isLight)
+        {
+            IsLight = isLight;
+        }
+
         public new List<BoardLogic.ChessCoordinates> ValidMoves = new List<BoardLogic.ChessCoordinates>();
 
-        public new bool IsLight { get; set; }
+        override
+        public bool IsLight { get; set; }
 
         public override bool Check(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)
         {

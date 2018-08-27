@@ -10,7 +10,6 @@ namespace ChessLibrary.Models
 {
     public abstract class ChessPiece : IChessPiece
     {
-        bool isLight;
 
         public List<BoardLogic.ChessCoordinates> ValidMoves { get; set; }
 
@@ -18,7 +17,8 @@ namespace ChessLibrary.Models
         {
 
         }
-        public bool IsLight { get; set; }
+
+        public virtual bool IsLight { get; set; }
 
         public virtual bool Check(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)
         {

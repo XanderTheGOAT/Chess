@@ -9,7 +9,6 @@ namespace ChessLibrary.Models
 {
     public class Bishop : ChessPiece
     {
-        bool isLight;
         bool shouldStop = false;
         List<BoardLogic.ChessCoordinates> ValidMoves = new List<BoardLogic.ChessCoordinates>();
 
@@ -18,7 +17,13 @@ namespace ChessLibrary.Models
 
         }
 
-        public new bool IsLight { get; set; }
+        public Bishop(bool isLight)
+        {
+            IsLight = isLight;
+        }
+
+        override
+        public bool IsLight { get; set; }
 
         public override bool Check(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)
         {
