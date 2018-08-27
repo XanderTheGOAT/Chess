@@ -95,6 +95,7 @@ namespace ChessWPF
             #region Assigns the board
             promotionStatus.ItemsSource = promotionTypes;
             promotionStatus.SelectedIndex = 0;
+            promotionStatus.FontSize = 20.0;
             ugChessBoard.Children.Add(promotionStatus);
 
             promotionStatus.VerticalContentAlignment = VerticalAlignment.Center;
@@ -390,10 +391,6 @@ namespace ChessWPF
                                         savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
                                     }
-                                    if (validMove && GUIBoard[i][j] == GUIBoard[7][j])
-                                    {
-                                        GUIBoard[i][j] = PromotionValidation(GUIBoard[i][j]);
-                                    }
                                 }
                                 if (whiteCheck && validMove)
                                 {
@@ -450,6 +447,7 @@ namespace ChessWPF
                                         MessageBox.Show("Black King is in check");
                                         blackCheck = true;
                                     }
+                                    PromotionValidation();
                                     Program.board[column, row].Piece = null;
                                     savedLocation.imgChessPiece.Source = null;
                                     isBlackTurn = isBlackTurn ? false : true;
@@ -557,10 +555,6 @@ namespace ChessWPF
                                         savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
                                     }
-                                    if (validMove && GUIBoard[i][j] == GUIBoard[7][j])
-                                    {
-                                        GUIBoard[i][j] = PromotionValidation(GUIBoard[i][j]);
-                                    }
                                 }
                                 if (blackCheck && validMove)
                                 {
@@ -576,10 +570,7 @@ namespace ChessWPF
                                                 {
                                                     validMove = true;
                                                 }
-                                                else if (Program.board[column, row].Piece.ValidMovement(Program.board[column, row], Program.board[i, j]) && !Program.board[k, l].Piece.ValidMoves.Contains(Program.board[i, j]))
-                                                {
-                                                    validMove = true;
-                                                }
+
                                                 else
                                                 {
                                                     validMove = false;
@@ -617,6 +608,7 @@ namespace ChessWPF
                                         MessageBox.Show("White King is in check");
                                         whiteCheck = true;
                                     }
+                                    PromotionValidation();
                                     Program.board[column, row].Piece = null;
                                     savedLocation.imgChessPiece.Source = null;
                                     isBlackTurn = isBlackTurn ? false : true;
@@ -629,9 +621,159 @@ namespace ChessWPF
                 }
             }
             #endregion
+            Checkmate(!isBlackTurn);
+            Checkmate(isBlackTurn);
         }
 
+        private bool Checkmate(bool isLight)
+        {
+            List<BoardLogic.ChessCoordinates> kingCheck = new List<BoardLogic.ChessCoordinates>();
+            King king;
+            int threatenedLocations = 0;
+            #region Check Surrounding King Locations
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if (Program.board[i, j].Piece != null)
+                    {
+                        if (Program.board[i, j].Piece.ToString().Equals("k"))
+                        {
 
+                            if (Program.board[i, j].Piece.IsLight == isLight)
+                            {
+                                king = (King)Program.board[i, j].Piece;
+                                Program.board[i, j].Piece = null;
+                                if (j - 1 >= 0)
+                                {
+                                    if (Program.board[i, j - 1].Piece == null)
+                                    {
+                                        kingCheck.Add(Program.board[i, j - 1]);
+                                    }
+                                    else if (Program.board[i, j - 1].Piece.IsLight != Program.board[i, j].Piece.IsLight)
+                                    {
+                                        kingCheck.Add(Program.board[i, j - 1]);
+                                    }
+                                    if (i + 1 <= 7)
+                                    {
+                                        if (Program.board[i + 1, j - 1].Piece == null)
+                                        {
+                                            kingCheck.Add(Program.board[i + 1, j - 1]);
+                                        }
+                                        else if (Program.board[i + 1, j - 1].Piece.IsLight != Program.board[i, j].Piece.IsLight)
+                                        {
+                                            kingCheck.Add(Program.board[i + 1, j - 1]);
+                                        }
+                                    }
+                                }
+                                if (j + 1 <= 7)
+                                {
+                                    if (Program.board[i, j + 1].Piece == null)
+                                    {
+                                        kingCheck.Add(Program.board[i, j + 1]);
+                                    }
+                                    else if (Program.board[i, j + 1].Piece.IsLight != Program.board[i, j].Piece.IsLight)
+                                    {
+                                        kingCheck.Add(Program.board[i, j + 1]);
+                                    }
+                                    if (i - 1 >= 0)
+                                    {
+                                        if (Program.board[i - 1, j + 1].Piece == null)
+                                        {
+                                            kingCheck.Add(Program.board[i - 1, j + 1]);
+                                        }
+                                        else if (Program.board[i - 1, j + 1].Piece.IsLight != Program.board[i, j].Piece.IsLight)
+                                        {
+                                            kingCheck.Add(Program.board[i - 1, j + 1]);
+                                        }
+                                    }
+                                }
+                                if (i - 1 >= 0)
+                                {
+                                    if (Program.board[i - 1, j].Piece == null)
+                                    {
+                                        kingCheck.Add(Program.board[i - 1, j]);
+                                    }
+                                    else if (Program.board[i - 1, j].Piece.IsLight != Program.board[i, j].Piece.IsLight)
+                                    {
+                                        kingCheck.Add(Program.board[i - 1, j]);
+                                    }
+                                    if (j - 1 >= 0)
+                                    {
+                                        if (Program.board[i - 1, j - 1].Piece == null)
+                                        {
+                                            kingCheck.Add(Program.board[i - 1, j - 1]);
+                                        }
+                                        else if (Program.board[i - 1, j - 1].Piece.IsLight != Program.board[i, j].Piece.IsLight)
+                                        {
+                                            kingCheck.Add(Program.board[i - 1, j - 1]);
+                                        }
+                                    }
+                                }
+                                if (i + 1 <= 7)
+                                {
+                                    if (Program.board[i + 1, j].Piece == null)
+                                    {
+                                        kingCheck.Add(Program.board[i + 1, j]);
+                                    }
+                                    else if (Program.board[i + 1, j].Piece.IsLight != Program.board[i, j].Piece.IsLight)
+                                    {
+                                        kingCheck.Add(Program.board[i + 1, j]);
+                                    }
+                                    if (j + 1 <= 7)
+                                    {
+                                        if (Program.board[i + 1, j + 1].Piece == null)
+                                        {
+                                            kingCheck.Add(Program.board[i + 1, j + 1]);
+                                        }
+                                        else if (Program.board[i + 1, j + 1].Piece.IsLight != Program.board[i, j].Piece.IsLight)
+                                        {
+                                            kingCheck.Add(Program.board[i + 1, j + 1]);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            #endregion
+            #region Checks Kings Possible Movemements for Threats
+
+            foreach (var location in kingCheck)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    for (int j = 0; j < 8; j++)
+                    {
+                        if (Program.board[i, j].Piece != null)
+                        {
+                            if (Program.board[i, j].Piece.IsLight != !isLight)
+                            {
+                                if (Program.board[i, j].Piece.ValidMovement(Program.board[i, j], location))
+                                {
+                                    threatenedLocations++;
+                                    i = 10;
+                                    j = 10;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            #endregion
+            if (kingCheck.Count().Equals(threatenedLocations) && kingCheck.Count != 0)
+            {
+                if (isBlackTurn)
+                    MessageBox.Show("Black Team Wins");
+                if (!isBlackTurn)
+                    MessageBox.Show("White Team Wins");
+                return true;
+            }
+
+            return false;
+        }
 
         private void ImageLocation(object sender, MouseButtonEventArgs e)
         {
@@ -718,57 +860,70 @@ namespace ChessWPF
         }
 
 
-        private Board PromotionValidation(Board pawn)
+        private void PromotionValidation()
         {
-            string packUri = "";
-            ChessPiece piece = new Pawn();
             for (int i = 0; i < 8; i++)
             {
-                if (pawn.imgChessPiece.Source.ToString().Contains("WhitePiece"))
+                if (GUIBoard[0][i].imgChessPiece.Source != null)
                 {
-                    if (promotionStatus.Text.ToString().Contains("Queen"))
+                    if (GUIBoard[0][i].imgChessPiece.Source.ToString().Contains("Pawn"))
                     {
-                        packUri = "pack://application:,,,/ChessWPF;component/Images/WhitePieces/WhiteQueen.png";
-                    }
-                    else if (promotionStatus.Text.ToString().Contains("Bishop"))
-                    {
-                        packUri = "pack://application:,,,/ChessWPF;component/Images/WhitePieces/WhiteBishop.png";
+                        Board pawn = GUIBoard[0][i];
+                        string packUri = "";
+                        if (pawn.imgChessPiece.Source.ToString().Contains("WhitePiece"))
+                        {
+                            if (promotionStatus.Text.ToString().Contains("Queen"))
+                            {
+                                packUri = "pack://application:,,,/ChessWPF;component/Images/WhitePieces/WhiteQueen.png";
+                            }
+                            else if (promotionStatus.Text.ToString().Contains("Bishop"))
+                            {
+                                packUri = "pack://application:,,,/ChessWPF;component/Images/WhitePieces/WhiteBishop.png";
 
-                    }
-                    else if (promotionStatus.Text.ToString().Contains("Rook"))
-                    {
-                        packUri = "pack://application:,,,/ChessWPF;component/Images/WhitePieces/WhiteRook.png";
+                            }
+                            else if (promotionStatus.Text.ToString().Contains("Rook"))
+                            {
+                                packUri = "pack://application:,,,/ChessWPF;component/Images/WhitePieces/WhiteRook.png";
 
-                    }
-                    else if (promotionStatus.Text.ToString().Contains("Knight"))
-                    {
-                        packUri = "pack://application:,,,/ChessWPF;component/Images/WhitePieces/WhiteKnight.png";
+                            }
+                            else if (promotionStatus.Text.ToString().Contains("Knight"))
+                            {
+                                packUri = "pack://application:,,,/ChessWPF;component/Images/WhitePieces/WhiteKnight.png";
 
+                            }
+                            GUIBoard[0][i].imgChessPiece.Source = new ImageSourceConverter().ConvertFromString(packUri) as ImageSource;
+                        }
                     }
-                    pawn.imgChessPiece.Source = new ImageSourceConverter().ConvertFromString(packUri) as ImageSource;
                 }
-                else if (pawn.imgChessPiece.Source.ToString().Contains("BlackPiece"))
+                if (GUIBoard[7][i].imgChessPiece.Source != null)
                 {
-                    if (promotionStatus.Text.ToString().Contains("Queen"))
+                    if (GUIBoard[7][i].imgChessPiece.Source.ToString().Contains("Pawn"))
                     {
-                        packUri = "pack://application:,,,/ChessWPF;component/Images/BlackPieces/BlackQueen.png";
+                        Board pawn = GUIBoard[7][i];
+                        string packUri = "";
+                        if (pawn.imgChessPiece.Source.ToString().Contains("BlackPiece"))
+                        {
+                            if (promotionStatus.Text.ToString().Contains("Queen"))
+                            {
+                                packUri = "pack://application:,,,/ChessWPF;component/Images/BlackPieces/BlackQueen.png";
+                            }
+                            else if (promotionStatus.Text.ToString().Contains("Bishop"))
+                            {
+                                packUri = "pack://application:,,,/ChessWPF;component/Images/BlackPieces/BlackBishop.png";
+                            }
+                            else if (promotionStatus.Text.ToString().Contains("Rook"))
+                            {
+                                packUri = "pack://application:,,,/ChessWPF;component/Images/BlackPieces/BlackRook.png";
+                            }
+                            else if (promotionStatus.Text.ToString().Contains("Knight"))
+                            {
+                                packUri = "pack://application:,,,/ChessWPF;component/Images/BlackPieces/BlackKnight.png";
+                            }
+                            GUIBoard[7][i].imgChessPiece.Source = new ImageSourceConverter().ConvertFromString(packUri) as ImageSource;
+                        }
                     }
-                    else if (promotionStatus.Text.ToString().Contains("Bishop"))
-                    {
-                        packUri = "pack://application:,,,/ChessWPF;component/Images/BlackPieces/BlackBishop.png";
-                    }
-                    else if (promotionStatus.Text.ToString().Contains("Rook"))
-                    {
-                        packUri = "pack://application:,,,/ChessWPF;component/Images/BlackPieces/BlackRook.png";
-                    }
-                    else if (promotionStatus.Text.ToString().Contains("Knight"))
-                    {
-                        packUri = "pack://application:,,,/ChessWPF;component/Images/BlackPieces/BlackKnight.png";
-                    }
-                    pawn.imgChessPiece.Source = new ImageSourceConverter().ConvertFromString(packUri) as ImageSource;
                 }
             }
-            return pawn;
         }
     }
 }
