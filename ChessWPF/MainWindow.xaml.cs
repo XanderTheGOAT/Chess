@@ -809,6 +809,12 @@ namespace ChessWPF
                         }
                     }
                 }
+                Program.board[column, row].Piece.ValidMovement(Program.board[column, row], Program.board[column, row]);
+                List<BoardLogic.ChessCoordinates> moves = Program.board[column, row].Piece.ValidMoves;
+                foreach (var move in moves)
+                {
+                    GUIBoard[FileLogic.GetColumnFromChar(move.Column).GetHashCode()][move.Row].Background = Brushes.Yellow;
+                }
             }
             #endregion
             #region If same location is clicked
