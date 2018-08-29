@@ -1082,6 +1082,7 @@ namespace ChessWPF
                         {
                             pieceForLater = Program.board[FileLogic.GetColumnFromChar(move.Column).GetHashCode(), move.Row].Piece;
                             Program.board[FileLogic.GetColumnFromChar(move.Column).GetHashCode(), move.Row].Piece = Program.board[i, j].Piece;
+                            Program.board[i, j].Piece = null;
                             int k;
                             int l;
                             for (k = 0; k < 8; k++)
