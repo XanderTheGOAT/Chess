@@ -18,10 +18,10 @@ namespace ChessLibrary.Models
         {
             IsLight = isLight;
         }
-        List<BoardLogic.ChessCoordinates> validMoves = new List<BoardLogic.ChessCoordinates>();
 
-        public new List<BoardLogic.ChessCoordinates> ValidMoves { get { return validMoves; } set { } }
-        
+        List<BoardLogic.ChessCoordinates> validMoves = new List<BoardLogic.ChessCoordinates>();
+        public override List<BoardLogic.ChessCoordinates> ValidMoves { set { } get { return validMoves; } }
+
         override
         public bool IsLight { get; set; }
 
@@ -40,6 +40,7 @@ namespace ChessLibrary.Models
 
         public override bool ValidMovement(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)
         {
+            ValidMoves.Clear();
             //validate movement eventually
 
             int column = FileLogic.GetColumnFromChar(startLocation.Column).GetHashCode();

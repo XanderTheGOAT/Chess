@@ -10,7 +10,9 @@ namespace ChessLibrary.Models
     public class Bishop : ChessPiece
     {
         bool shouldStop = false;
-        List<BoardLogic.ChessCoordinates> ValidMoves = new List<BoardLogic.ChessCoordinates>();
+
+        List<BoardLogic.ChessCoordinates> validMoves = new List<BoardLogic.ChessCoordinates>();
+        public override List<BoardLogic.ChessCoordinates> ValidMoves { set { } get { return validMoves; } }
 
         public Bishop()
         {

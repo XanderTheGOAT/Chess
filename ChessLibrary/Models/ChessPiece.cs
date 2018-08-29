@@ -11,7 +11,7 @@ namespace ChessLibrary.Models
     public abstract class ChessPiece : IChessPiece
     {
 
-        public List<BoardLogic.ChessCoordinates> ValidMoves { get; set; }
+        public virtual List<BoardLogic.ChessCoordinates> ValidMoves { get; set; }
 
         public ChessPiece()
         {
