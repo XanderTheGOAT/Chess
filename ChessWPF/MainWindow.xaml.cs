@@ -31,6 +31,7 @@ namespace ChessWPF
         bool whiteCheck = false;
 
         List<List<Board>> GUIBoard = new List<List<Board>>();
+        bool endGame = false;
         Random r = new Random();
         bool isBlackTurn = true;
         Label emptySpot2 = new Label();
@@ -564,6 +565,18 @@ namespace ChessWPF
                                 {
                                     savedLocation.background.Fill = Brushes.OrangeRed;
                                 }
+                                reset.ForEach(r =>
+                                {
+                                    if ((bool)GUIBoard[FileLogic.GetColumnFromChar(r.Column).GetHashCode()][r.Row].cbxIsBlack.IsChecked)
+                                    {
+                                        GUIBoard[FileLogic.GetColumnFromChar(r.Column).GetHashCode()][r.Row].background.Fill = Brushes.OrangeRed;
+                                    }
+                                    else
+                                    {
+                                        GUIBoard[FileLogic.GetColumnFromChar(r.Column).GetHashCode()][r.Row].background.Fill = Brushes.Pink;
+                                    }
+                                });
+                                reset.Clear();
                                 if (validMove)
                                 {
                                     GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
@@ -856,6 +869,18 @@ namespace ChessWPF
                                 {
                                     savedLocation.background.Fill = Brushes.OrangeRed;
                                 }
+                                reset.ForEach(r =>
+                                {
+                                    if ((bool)GUIBoard[FileLogic.GetColumnFromChar(r.Column).GetHashCode()][r.Row].cbxIsBlack.IsChecked)
+                                    {
+                                        GUIBoard[FileLogic.GetColumnFromChar(r.Column).GetHashCode()][r.Row].background.Fill = Brushes.OrangeRed;
+                                    }
+                                    else
+                                    {
+                                        GUIBoard[FileLogic.GetColumnFromChar(r.Column).GetHashCode()][r.Row].background.Fill = Brushes.Pink;
+                                    }
+                                });
+                                reset.Clear();
                                 if (validMove)
                                 {
                                     GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
@@ -879,8 +904,12 @@ namespace ChessWPF
                 }
             }
             #endregion
-            Checkmate(!isBlackTurn);
-            Checkmate(isBlackTurn);
+            endGame = Checkmate(!isBlackTurn);
+            endGame = Checkmate(isBlackTurn);
+            if(endGame)
+            {
+                this.Close();
+            }
         }
 
         private bool Checkmate(bool isLight)
@@ -1082,6 +1111,8 @@ namespace ChessWPF
             return true;
         }
 
+        List<BoardLogic.ChessCoordinates> reset = new List<BoardLogic.ChessCoordinates>();
+
         private void ImageLocation(object sender, MouseButtonEventArgs e)
         {
             char[] Columns = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
@@ -1106,15 +1137,28 @@ namespace ChessWPF
                                 }
                             }
                         }
-                    }
-                    Program.board[column, row].Piece.ValidMovement(Program.board[column, row], Program.board[column, row]);
-                    List<BoardLogic.ChessCoordinates> moves = Program.board[column, row].Piece.ValidMoves;
-                    //Do stuff in here
-                    foreach (var move in moves)
-                    {
-                        //This is the location corresponding to the piece it can move to. I don't know how to make it the right color
-                        //so you'll have to do that
-                        GUIBoard[FileLogic.GetColumnFromChar(move.Column).GetHashCode()][move.Row].Background = Brushes.Yellow;
+                        reset.ForEach(r =>
+                        {
+                            if ((bool)GUIBoard[FileLogic.GetColumnFromChar(r.Column).GetHashCode()][r.Row].cbxIsBlack.IsChecked)
+                            {
+                                GUIBoard[FileLogic.GetColumnFromChar(r.Column).GetHashCode()][r.Row].background.Fill = Brushes.OrangeRed;
+                            }
+                            else
+                            {
+                                GUIBoard[FileLogic.GetColumnFromChar(r.Column).GetHashCode()][r.Row].background.Fill = Brushes.Pink;
+                            }
+                        });
+                        reset.Clear();
+                        if (Program.board[column, row].Piece != null)
+                        {
+                            Program.board[column, row].Piece.ValidMovement(Program.board[column, row], Program.board[column, row]);
+                            List<BoardLogic.ChessCoordinates> moves = Program.board[column, row].Piece.ValidMoves;
+                            foreach (var move in moves)
+                            {
+                                GUIBoard[FileLogic.GetColumnFromChar(move.Column).GetHashCode()][move.Row].background.Fill = Brushes.LightBlue;
+                                reset.Add(move);
+                            }
+                        }
                     }
                 }
             }
@@ -1130,6 +1174,19 @@ namespace ChessWPF
                 {
                     savedLocation.background.Fill = Brushes.OrangeRed;
                 }
+                reset.ForEach(r =>
+                {
+                    if ((bool)GUIBoard[FileLogic.GetColumnFromChar(r.Column).GetHashCode()][r.Row].cbxIsBlack.IsChecked)
+                    {
+                        GUIBoard[FileLogic.GetColumnFromChar(r.Column).GetHashCode()][r.Row].background.Fill = Brushes.OrangeRed;
+                    }
+                    else
+                    {
+                        GUIBoard[FileLogic.GetColumnFromChar(r.Column).GetHashCode()][r.Row].background.Fill = Brushes.Pink;
+                    }
+                });
+                reset.Clear();
+                savedLocation = new Board();
             }
             #endregion
             #region if same color is clicked
@@ -1155,6 +1212,28 @@ namespace ChessWPF
                             column = i;
                             row = j;
                         }
+                    }
+                }
+                reset.ForEach(r =>
+                {
+                    if ((bool)GUIBoard[FileLogic.GetColumnFromChar(r.Column).GetHashCode()][r.Row].cbxIsBlack.IsChecked)
+                    {
+                        GUIBoard[FileLogic.GetColumnFromChar(r.Column).GetHashCode()][r.Row].background.Fill = Brushes.OrangeRed;
+                    }
+                    else
+                    {
+                        GUIBoard[FileLogic.GetColumnFromChar(r.Column).GetHashCode()][r.Row].background.Fill = Brushes.Pink;
+                    }
+                });
+                reset.Clear();
+                if (Program.board[column, row].Piece != null)
+                {
+                    Program.board[column, row].Piece.ValidMovement(Program.board[column, row], Program.board[column, row]);
+                    List<BoardLogic.ChessCoordinates> moves = Program.board[column, row].Piece.ValidMoves;
+                    foreach (var move in moves)
+                    {
+                        GUIBoard[FileLogic.GetColumnFromChar(move.Column).GetHashCode()][move.Row].background.Fill = Brushes.LightBlue;
+                        reset.Add(move);
                     }
                 }
             }
