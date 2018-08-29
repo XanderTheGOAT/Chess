@@ -352,6 +352,31 @@ namespace ChessWPF
                                     {
                                         savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
+
+                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                        Program.board[column, row].Piece = null;
+                                        int k;
+                                        int l;
+                                        for (k = 0; k < 8; k++)
+                                        {
+                                            for (l = 0; l < 8; l++)
+                                            {
+                                                if (Program.board[k, l].Piece != null && !Program.board[k, l].Piece.IsLight && Program.board[k, l].Piece.Check(Program.board[k, l], Program.board[i, j]))
+                                                {
+                                                    MessageBox.Show("Cannot place the king in check");
+                                                    validMove = false;
+                                                    k = 9;
+                                                    l = 9;
+                                                }
+                                            }
+                                        }
+                                        if (k != 10)
+                                        {
+                                            whiteCheck = false;
+                                            validMove = true;
+                                        }
+                                        Program.board[column, row].Piece = Program.board[i, j].Piece;
+                                        Program.board[i, j].Piece = savedPiece;
                                     }
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Knight"))
@@ -362,6 +387,31 @@ namespace ChessWPF
                                     {
                                         savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
+
+                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                        Program.board[column, row].Piece = null;
+                                        int k;
+                                        int l;
+                                        for (k = 0; k < 8; k++)
+                                        {
+                                            for (l = 0; l < 8; l++)
+                                            {
+                                                if (Program.board[k, l].Piece != null && !Program.board[k, l].Piece.IsLight && Program.board[k, l].Piece.Check(Program.board[k, l], Program.board[i, j]))
+                                                {
+                                                    MessageBox.Show("Cannot place the king in check");
+                                                    validMove = false;
+                                                    k = 9;
+                                                    l = 9;
+                                                }
+                                            }
+                                        }
+                                        if (k != 10)
+                                        {
+                                            whiteCheck = false;
+                                            validMove = true;
+                                        }
+                                        Program.board[column, row].Piece = Program.board[i, j].Piece;
+                                        Program.board[i, j].Piece = savedPiece;
                                     }
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Rook"))
@@ -372,6 +422,31 @@ namespace ChessWPF
                                     {
                                         savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
+
+                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                        Program.board[column, row].Piece = null;
+                                        int k;
+                                        int l;
+                                        for (k = 0; k < 8; k++)
+                                        {
+                                            for (l = 0; l < 8; l++)
+                                            {
+                                                if (Program.board[k, l].Piece != null && !Program.board[k, l].Piece.IsLight && Program.board[k, l].Piece.Check(Program.board[k, l], Program.board[i, j]))
+                                                {
+                                                    MessageBox.Show("Cannot place the king in check");
+                                                    validMove = false;
+                                                    k = 9;
+                                                    l = 9;
+                                                }
+                                            }
+                                        }
+                                        if (k != 10)
+                                        {
+                                            whiteCheck = false;
+                                            validMove = true;
+                                        }
+                                        Program.board[column, row].Piece = Program.board[i, j].Piece;
+                                        Program.board[i, j].Piece = savedPiece;
                                     }
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Bishop"))
@@ -382,6 +457,31 @@ namespace ChessWPF
                                     {
                                         savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
+
+                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                        Program.board[column, row].Piece = null;
+                                        int k;
+                                        int l;
+                                        for (k = 0; k < 8; k++)
+                                        {
+                                            for (l = 0; l < 8; l++)
+                                            {
+                                                if (Program.board[k, l].Piece != null && !Program.board[k, l].Piece.IsLight && Program.board[k, l].Piece.Check(Program.board[k, l], Program.board[i, j]))
+                                                {
+                                                    MessageBox.Show("Cannot place the king in check");
+                                                    validMove = false;
+                                                    k = 9;
+                                                    l = 9;
+                                                }
+                                            }
+                                        }
+                                        if (k != 10)
+                                        {
+                                            whiteCheck = false;
+                                            validMove = true;
+                                        }
+                                        Program.board[column, row].Piece = Program.board[i, j].Piece;
+                                        Program.board[i, j].Piece = savedPiece;
                                     }
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Pawn"))
@@ -392,6 +492,31 @@ namespace ChessWPF
                                     {
                                         savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
+
+                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                        Program.board[column, row].Piece = null;
+                                        int k;
+                                        int l;
+                                        for (k = 0; k < 8; k++)
+                                        {
+                                            for (l = 0; l < 8; l++)
+                                            {
+                                                if (Program.board[k, l].Piece != null && !Program.board[k, l].Piece.IsLight && Program.board[k, l].Piece.Check(Program.board[k, l], Program.board[i, j]))
+                                                {
+                                                    MessageBox.Show("Cannot place the king in check");
+                                                    validMove = false;
+                                                    k = 9;
+                                                    l = 9;
+                                                }
+                                            }
+                                        }
+                                        if (k != 10)
+                                        {
+                                            whiteCheck = false;
+                                            validMove = true;
+                                        }
+                                        Program.board[column, row].Piece = Program.board[i, j].Piece;
+                                        Program.board[i, j].Piece = savedPiece;
                                     }
                                 }
                                 if (whiteCheck && validMove)
@@ -519,6 +644,31 @@ namespace ChessWPF
                                     {
                                         savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
+
+                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                        Program.board[column, row].Piece = null;
+                                        int k;
+                                        int l;
+                                        for (k = 0; k < 8; k++)
+                                        {
+                                            for (l = 0; l < 8; l++)
+                                            {
+                                                if (Program.board[k, l].Piece != null && Program.board[k, l].Piece.IsLight && Program.board[k, l].Piece.Check(Program.board[k, l], Program.board[i, j]))
+                                                {
+                                                    MessageBox.Show("Cannot place the king in check");
+                                                    validMove = false;
+                                                    k = 9;
+                                                    l = 9;
+                                                }
+                                            }
+                                        }
+                                        if (k != 10)
+                                        {
+                                            blackCheck = false;
+                                            validMove = true;
+                                        }
+                                        Program.board[column, row].Piece = Program.board[i, j].Piece;
+                                        Program.board[i, j].Piece = savedPiece;
                                     }
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Knight"))
@@ -529,6 +679,31 @@ namespace ChessWPF
                                     {
                                         savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
+
+                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                        Program.board[column, row].Piece = null;
+                                        int k;
+                                        int l;
+                                        for (k = 0; k < 8; k++)
+                                        {
+                                            for (l = 0; l < 8; l++)
+                                            {
+                                                if (Program.board[k, l].Piece != null && Program.board[k, l].Piece.IsLight && Program.board[k, l].Piece.Check(Program.board[k, l], Program.board[i, j]))
+                                                {
+                                                    MessageBox.Show("Cannot place the king in check");
+                                                    validMove = false;
+                                                    k = 9;
+                                                    l = 9;
+                                                }
+                                            }
+                                        }
+                                        if (k != 10)
+                                        {
+                                            blackCheck = false;
+                                            validMove = true;
+                                        }
+                                        Program.board[column, row].Piece = Program.board[i, j].Piece;
+                                        Program.board[i, j].Piece = savedPiece;
                                     }
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Rook"))
@@ -539,6 +714,31 @@ namespace ChessWPF
                                     {
                                         savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
+
+                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                        Program.board[column, row].Piece = null;
+                                        int k;
+                                        int l;
+                                        for (k = 0; k < 8; k++)
+                                        {
+                                            for (l = 0; l < 8; l++)
+                                            {
+                                                if (Program.board[k, l].Piece != null && Program.board[k, l].Piece.IsLight && Program.board[k, l].Piece.Check(Program.board[k, l], Program.board[i, j]))
+                                                {
+                                                    MessageBox.Show("Cannot place the king in check");
+                                                    validMove = false;
+                                                    k = 9;
+                                                    l = 9;
+                                                }
+                                            }
+                                        }
+                                        if (k != 10)
+                                        {
+                                            blackCheck = false;
+                                            validMove = true;
+                                        }
+                                        Program.board[column, row].Piece = Program.board[i, j].Piece;
+                                        Program.board[i, j].Piece = savedPiece;
                                     }
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Bishop"))
@@ -549,6 +749,31 @@ namespace ChessWPF
                                     {
                                         savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
+
+                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                        Program.board[column, row].Piece = null;
+                                        int k;
+                                        int l;
+                                        for (k = 0; k < 8; k++)
+                                        {
+                                            for (l = 0; l < 8; l++)
+                                            {
+                                                if (Program.board[k, l].Piece != null && Program.board[k, l].Piece.IsLight && Program.board[k, l].Piece.Check(Program.board[k, l], Program.board[i, j]))
+                                                {
+                                                    MessageBox.Show("Cannot place the king in check");
+                                                    validMove = false;
+                                                    k = 9;
+                                                    l = 9;
+                                                }
+                                            }
+                                        }
+                                        if (k != 10)
+                                        {
+                                            blackCheck = false;
+                                            validMove = true;
+                                        }
+                                        Program.board[column, row].Piece = Program.board[i, j].Piece;
+                                        Program.board[i, j].Piece = savedPiece;
                                     }
                                 }
                                 else if (savedLocation.imgChessPiece.Source.ToString().Contains("Pawn"))
@@ -559,6 +784,31 @@ namespace ChessWPF
                                     {
                                         savedPiece = Program.board[i, j].Piece;
                                         savedBoard = GUIBoard[i][j].imgChessPiece.Source;
+
+                                        Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                        Program.board[column, row].Piece = null;
+                                        int k;
+                                        int l;
+                                        for (k = 0; k < 8; k++)
+                                        {
+                                            for (l = 0; l < 8; l++)
+                                            {
+                                                if (Program.board[k, l].Piece != null && Program.board[k, l].Piece.IsLight && Program.board[k, l].Piece.Check(Program.board[k, l], Program.board[i, j]))
+                                                {
+                                                    MessageBox.Show("Cannot place the king in check");
+                                                    validMove = false;
+                                                    k = 9;
+                                                    l = 9;
+                                                }
+                                            }
+                                        }
+                                        if (k != 10)
+                                        {
+                                            blackCheck = false;
+                                            validMove = true;
+                                        }
+                                        Program.board[column, row].Piece = Program.board[i, j].Piece;
+                                        Program.board[i, j].Piece = savedPiece;
                                     }
                                 }
                                 if (blackCheck && validMove)
@@ -636,7 +886,8 @@ namespace ChessWPF
         private bool Checkmate(bool isLight)
         {
             List<BoardLogic.ChessCoordinates> kingCheck = new List<BoardLogic.ChessCoordinates>();
-            King king;
+            King king = null;
+            BoardLogic.ChessCoordinates kingSpot = new BoardLogic.ChessCoordinates('a', -1, null);
             int threatenedLocations = 0;
             #region Check Surrounding King Locations
             for (int i = 0; i < 8; i++)
@@ -645,13 +896,14 @@ namespace ChessWPF
                 {
                     if (Program.board[i, j].Piece != null)
                     {
-                        if (Program.board[i, j].Piece.ToString().Equals("k"))
+                        if (Program.board[i, j].Piece.ToString().Equals("K"))
                         {
 
                             if (Program.board[i, j].Piece.IsLight == isLight)
                             {
                                 king = (King)Program.board[i, j].Piece;
-                                Program.board[i, j].Piece = null;
+                                kingSpot = Program.board[i, j];
+                                kingCheck.Add(Program.board[i, j]);
                                 if (j - 1 >= 0)
                                 {
                                     if (Program.board[i, j - 1].Piece == null)
@@ -747,7 +999,7 @@ namespace ChessWPF
             }
             #endregion
             #region Checks Kings Possible Movemements for Threats
-
+            kingSpot.Piece = null;
             foreach (var location in kingCheck)
             {
                 for (int i = 0; i < 8; i++)
@@ -756,31 +1008,78 @@ namespace ChessWPF
                     {
                         if (Program.board[i, j].Piece != null)
                         {
-                            if (Program.board[i, j].Piece.IsLight != !isLight)
+                            if (Program.board[i, j].Piece.IsLight != isLight)
                             {
                                 if (Program.board[i, j].Piece.ValidMovement(Program.board[i, j], location))
                                 {
                                     threatenedLocations++;
                                     i = 10;
                                     j = 10;
-                                    break;
                                 }
                             }
                         }
                     }
                 }
             }
+            kingSpot.Piece = king;
             #endregion
-            if (kingCheck.Count().Equals(threatenedLocations) && kingCheck.Count != 0)
+            kingSpot.Piece = king;
+            if (kingCheck.Count == threatenedLocations && kingCheck.Count != 0)
             {
-                if (isBlackTurn)
-                    MessageBox.Show("Black Team Wins");
-                if (!isBlackTurn)
-                    MessageBox.Show("White Team Wins");
-                return true;
+                if (CheckAllPlaces(isLight))
+                {
+                    if (!isBlackTurn)
+                        MessageBox.Show("Black Team Wins");
+                    if (isBlackTurn)
+                        MessageBox.Show("White Team Wins");
+                }
+
             }
 
             return false;
+        }
+
+        private bool CheckAllPlaces(bool isLight)
+        {
+            ChessPiece pieceForLater = null;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if (Program.board[i, j].Piece != null && Program.board[i, j].Piece.IsLight == isLight)
+                    {
+                        Program.board[i, j].Piece.ValidMovement(Program.board[i, j], Program.board[i, j]);
+                        foreach (var move in Program.board[i, j].Piece.ValidMoves)
+                        {
+                            pieceForLater = Program.board[FileLogic.GetColumnFromChar(move.Column).GetHashCode(), move.Row].Piece;
+                            Program.board[FileLogic.GetColumnFromChar(move.Column).GetHashCode(), move.Row].Piece = Program.board[i, j].Piece;
+                            int k;
+                            int l;
+                            for (k = 0; k < 8; k++)
+                            {
+                                for (l = 0; l < 8; l++)
+                                {
+                                    if (Program.board[k, l].Piece != null && Program.board[k, l].Piece.IsLight != isLight)
+                                    {
+                                        if (Program.board[k, l].Piece.Check(Program.board[k, l], Program.board[k, l]))
+                                        {
+                                            k = 9;
+                                            l = 9;
+                                        }
+                                    }
+                                }
+                            }
+                            Program.board[i, j].Piece = Program.board[FileLogic.GetColumnFromChar(move.Column).GetHashCode(), move.Row].Piece;
+                            Program.board[FileLogic.GetColumnFromChar(move.Column).GetHashCode(), move.Row].Piece = pieceForLater;
+                            if (k == 8)
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
         }
 
         private void ImageLocation(object sender, MouseButtonEventArgs e)
@@ -808,12 +1107,15 @@ namespace ChessWPF
                             }
                         }
                     }
-                }
-                Program.board[column, row].Piece.ValidMovement(Program.board[column, row], Program.board[column, row]);
-                List<BoardLogic.ChessCoordinates> moves = Program.board[column, row].Piece.ValidMoves;
-                foreach (var move in moves)
-                {
-                    GUIBoard[FileLogic.GetColumnFromChar(move.Column).GetHashCode()][move.Row].Background = Brushes.Yellow;
+                    Program.board[column, row].Piece.ValidMovement(Program.board[column, row], Program.board[column, row]);
+                    List<BoardLogic.ChessCoordinates> moves = Program.board[column, row].Piece.ValidMoves;
+                    //Do stuff in here
+                    foreach (var move in moves)
+                    {
+                        //This is the location corresponding to the piece it can move to. I don't know how to make it the right color
+                        //so you'll have to do that
+                        GUIBoard[FileLogic.GetColumnFromChar(move.Column).GetHashCode()][move.Row].Background = Brushes.Yellow;
+                    }
                 }
             }
             #endregion
