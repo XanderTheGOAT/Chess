@@ -41,6 +41,7 @@ namespace ChessLibrary.Models
 
         public override bool ValidMovement(BoardLogic.ChessCoordinates startLocation, BoardLogic.ChessCoordinates endLocation)
         {
+            ValidMoves.Clear();
 
             int column = FileLogic.GetColumnFromChar(startLocation.Column).GetHashCode();
             int row = startLocation.Row;

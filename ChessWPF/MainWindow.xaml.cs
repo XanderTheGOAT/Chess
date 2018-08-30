@@ -906,7 +906,7 @@ namespace ChessWPF
             #endregion
             endGame = Checkmate(!isBlackTurn);
             endGame = Checkmate(isBlackTurn);
-            if(endGame)
+            if (endGame)
             {
                 this.Close();
             }
@@ -1040,11 +1040,24 @@ namespace ChessWPF
                         {
                             if (Program.board[i, j].Piece.IsLight != isLight)
                             {
-                                if (Program.board[i, j].Piece.ValidMovement(Program.board[i, j], location))
+                                for (int k = 0; k < 8; k++)
                                 {
-                                    threatenedLocations++;
-                                    i = 10;
-                                    j = 10;
+                                    for (int l = 0; l < 8; l++)
+                                    {
+                                        if (Program.board[k, l] == location)
+                                        {
+                                            pieceForLater = Program.board[k, l].Piece;
+                                            Program.board[k, l].Piece = null;
+                                            if (Program.board[i, j].Piece.ValidMovement(Program.board[i, j], Program.board[k, l]))
+                                            {
+                                                threatenedLocations++;
+                                                i = 10;
+                                                j = 10;
+                                            }
+                                            Program.board[k, l].Piece = pieceForLater;
+                                        }
+
+                                    }
                                 }
                             }
                         }
