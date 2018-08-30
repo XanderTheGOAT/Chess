@@ -908,7 +908,7 @@ namespace ChessWPF
             endGame = Checkmate(isBlackTurn);
             if (endGame)
             {
-                this.Close();
+                Close();
             }
         }
 
@@ -1072,9 +1072,16 @@ namespace ChessWPF
                 if (CheckAllPlaces(isLight))
                 {
                     if (!isBlackTurn)
+                    {
                         MessageBox.Show("Black Team Wins");
+                        return true;
+                    }
+                        
                     if (isBlackTurn)
+                    {
                         MessageBox.Show("White Team Wins");
+                        return true;
+                    }
                 }
 
             }
