@@ -1029,6 +1029,7 @@ namespace ChessWPF
             #endregion
             #region Checks Kings Possible Movemements for Threats
             kingSpot.Piece = null;
+            ChessPiece pieceForLater;
             foreach (var location in kingCheck)
             {
                 for (int i = 0; i < 8; i++)
@@ -1039,12 +1040,15 @@ namespace ChessWPF
                         {
                             if (Program.board[i, j].Piece.IsLight != isLight)
                             {
+                                pieceForLater = Program.board[i, j].Piece;
+                                Program.board[i, j].Piece = null;
                                 if (Program.board[i, j].Piece.ValidMovement(Program.board[i, j], location))
                                 {
                                     threatenedLocations++;
                                     i = 10;
                                     j = 10;
                                 }
+                                Program.board[i, j].Piece = pieceForLater;
                             }
                         }
                     }
