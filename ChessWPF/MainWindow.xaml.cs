@@ -249,8 +249,8 @@ namespace ChessWPF
             Program.board[0, 0].Piece = new Rook();
             Program.board[0, 1].Piece = new Knight();
             Program.board[0, 2].Piece = new Bishop();
-            Program.board[0, 3].Piece = new King();
-            Program.board[0, 4].Piece = new Queen();
+            Program.board[0, 3].Piece = new Queen();
+            Program.board[0, 4].Piece = new King();
             Program.board[0, 5].Piece = new Bishop();
             Program.board[0, 6].Piece = new Knight();
             Program.board[0, 7].Piece = new Rook();
@@ -262,9 +262,9 @@ namespace ChessWPF
             Program.board[7, 1].Piece.IsLight = true;
             Program.board[7, 2].Piece = new Bishop();
             Program.board[7, 2].Piece.IsLight = true;
-            Program.board[7, 3].Piece = new King();
+            Program.board[7, 3].Piece = new Queen();
             Program.board[7, 3].Piece.IsLight = true;
-            Program.board[7, 4].Piece = new Queen();
+            Program.board[7, 4].Piece = new King();
             Program.board[7, 4].Piece.IsLight = true;
             Program.board[7, 5].Piece = new Bishop();
             Program.board[7, 5].Piece.IsLight = true;
@@ -581,13 +581,13 @@ namespace ChessWPF
                                 {
                                     GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
                                     Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                    PromotionValidation();
                                     check = Program.board[i, j].Piece.Check(Program.board[i, j], Program.board[i, j]);
                                     if (check)
                                     {
                                         MessageBox.Show("Black King is in check");
                                         blackCheck = true;
                                     }
-                                    PromotionValidation();
                                     Program.board[column, row].Piece = null;
                                     savedLocation.imgChessPiece.Source = null;
                                     isBlackTurn = isBlackTurn ? false : true;
@@ -885,13 +885,13 @@ namespace ChessWPF
                                 {
                                     GUIBoard[i][j].imgChessPiece.Source = savedLocation.imgChessPiece.Source;
                                     Program.board[i, j].Piece = Program.board[column, row].Piece;
+                                    PromotionValidation();
                                     check = Program.board[i, j].Piece.Check(Program.board[i, j], Program.board[i, j]);
                                     if (check)
                                     {
                                         MessageBox.Show("White King is in check");
                                         whiteCheck = true;
                                     }
-                                    PromotionValidation();
                                     Program.board[column, row].Piece = null;
                                     savedLocation.imgChessPiece.Source = null;
                                     isBlackTurn = isBlackTurn ? false : true;
@@ -1044,10 +1044,11 @@ namespace ChessWPF
                                 {
                                     for (int l = 0; l < 8; l++)
                                     {
-                                        if (Program.board[k, l] == location)
+                                        bool sameSpace = (i == k && j == l);
+                                        if (Program.board[k, l] == location && !sameSpace)
                                         {
                                             pieceForLater = Program.board[k, l].Piece;
-                                            Program.board[k, l].Piece = null;
+                                            Program.board[k, l].Piece = king;
                                             if (Program.board[i, j].Piece.ValidMovement(Program.board[i, j], Program.board[k, l]))
                                             {
                                                 threatenedLocations++;
@@ -1076,7 +1077,7 @@ namespace ChessWPF
                         MessageBox.Show("Black Team Wins");
                         return true;
                     }
-                        
+
                     if (isBlackTurn)
                     {
                         MessageBox.Show("White Team Wins");
