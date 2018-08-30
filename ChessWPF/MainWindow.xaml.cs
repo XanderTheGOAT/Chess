@@ -1040,15 +1040,12 @@ namespace ChessWPF
                         {
                             if (Program.board[i, j].Piece.IsLight != isLight)
                             {
-                                pieceForLater = Program.board[i, j].Piece;
-                                Program.board[i, j].Piece = null;
                                 if (Program.board[i, j].Piece.ValidMovement(Program.board[i, j], location))
                                 {
                                     threatenedLocations++;
                                     i = 10;
                                     j = 10;
                                 }
-                                Program.board[i, j].Piece = pieceForLater;
                             }
                         }
                     }
